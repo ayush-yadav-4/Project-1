@@ -9,9 +9,6 @@ import EnterpriseAdvantage from "@/components/EnterpriseAdvantage";
 import ExpertsSection from "@/components/ExpertsSection";
 import IntegrationSection from "@/components/IntegrationSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import DataIPSection from "@/components/DataIPSection";
-import WorkflowSection from "@/components/WorkflowSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -25,9 +22,6 @@ export default function Home() {
         <ExpertsSection />
         <IntegrationSection />
         <FeaturesSection />
-        {/* <DataIPSection /> */}
-        {/* <WorkflowSection /> */}
-        {/* <TestimonialsSection /> */}
         <Footer />
       </main>
     </div>
