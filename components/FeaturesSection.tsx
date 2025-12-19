@@ -1,87 +1,361 @@
-"use client";
+"use client"
 
-import { Cpu, Layers, Zap, Shield } from "lucide-react";
+import type React from "react"
+
+import { useState, useRef, useEffect } from "react"
+import { Archive, Menu, ChevronRight } from "lucide-react"
+
+interface Card {
+  id: number
+  title: string
+  subtitle: string
+  date: string
+  dateLabel: string
+  image: string
+}
+
+const cards: Card[] = [
+  {
+    id: 1,
+    title: "Test Blog Post",
+    subtitle: "A simple test post to verify everything works",
+    date: "December 10, 2024",
+    dateLabel: "Dec 10",
+    image: "/Herosection.png",
+  },
+  {
+    id: 2,
+    title: "Building with Next.js 15",
+    subtitle: "Server components, and the future of React",
+    date: "December 9, 2024",
+    dateLabel: "Dec 9",
+    image: "/Experts.png",
+  },
+  {
+    id: 3,
+    title: "Design Systems at Scale",
+    subtitle: "Managing consistency across large applications",
+    date: "December 8, 2024",
+    dateLabel: "Dec 8",
+    image: "/signupbg.png",
+  },
+  {
+    id: 4,
+    title: "Advanced TypeScript Patterns",
+    subtitle: "Type gymnastics and practical patterns",
+    date: "November 14, 2024",
+    dateLabel: "Nov 14",
+    image: "/Footer.png",
+  },
+  {
+    id: 5,
+    title: "Modern CSS Architecture",
+    subtitle: "From utility-first to component styles",
+    date: "November 12, 2024",
+    dateLabel: "Nov 12",
+    image: "/Herosection.png",
+  },
+  {
+    id: 6,
+    title: "Developer Experience Matters",
+    subtitle: "Tools and workflows that make developers happy",
+    date: "November 11, 2024",
+    dateLabel: "Nov 11",
+    image: "/Experts.png",
+  },
+  {
+    id: 7,
+    title: "State Management in 2024",
+    subtitle: "Beyond Redux—modern approaches to app state",
+    date: "September 18, 2024",
+    dateLabel: "Sep 18",
+    image: "/signupbg.png",
+  },
+  {
+    id: 8,
+    title: "Web Performance Deep Dive",
+    subtitle: "Core Web Vitals and beyond",
+    date: "September 17, 2024",
+    dateLabel: "Sep 17",
+    image: "/Footer.png",
+  },
+  {
+    id: 9,
+    title: "API Design Principles",
+    subtitle: "Building APIs developers love",
+    date: "September 16, 2024",
+    dateLabel: "Sep 16",
+    image: "/Herosection.png",
+  },
+  {
+    id: 10,
+    title: "React Server Components Explained",
+    subtitle: "The paradigm shift in React architecture",
+    date: "July 22, 2024",
+    dateLabel: "Jul 22",
+    image: "/Experts.png",
+  },
+  {
+    id: 11,
+    title: "What's New in Tailwind v4",
+    subtitle: "CSS-first configuration and lightning fast builds",
+    date: "July 20, 2024",
+    dateLabel: "Jul 20",
+    image: "/signupbg.png",
+  },
+  {
+    id: 12,
+    title: "Edge Computing for Web Apps",
+    subtitle: "Running code closer to your users",
+    date: "July 19, 2024",
+    dateLabel: "Jul 19",
+    image: "/Footer.png",
+  },
+]
 
 export default function FeaturesSection() {
-  return (
-    <section className="container mx-auto py-24 px-4 md:px-6 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-pink-50/50 via-white to-transparent -z-10 pointer-events-none"></div>
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-pink-100/30 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+  const [position, setPosition] = useState(0)
+  const [viewMode, setViewMode] = useState<"stack" | "list">("stack")
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const containerRef = useRef<HTMLDivElement>(null)
+  const positionRef = useRef(0)
 
-      <div className="text-center mb-16 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-medium mb-4">Why AgentMarketplace?</h2>
+  useEffect(() => {
+    positionRef.current = position
+  }, [position])
+
+  const handleScroll = (e: WheelEvent) => {
+    if (viewMode !== "stack") return
+
+    // Check if mouse is within the central card area (800px width)
+    const containerWidth = window.innerWidth
+    const cardAreaWidth = 800
+    const leftBound = (containerWidth - cardAreaWidth) / 2
+    const rightBound = (containerWidth + cardAreaWidth) / 2
+    
+    // If mouse is outside the card area, allow default scroll
+    if (e.clientX < leftBound || e.clientX > rightBound) return
+
+    const currentPos = positionRef.current
+    const isAtStart = currentPos <= 0
+    const isAtEnd = currentPos >= cards.length - 1
+    const isScrollingUp = e.deltaY < 0
+    const isScrollingDown = e.deltaY > 0
+
+    // If at boundaries and scrolling away, allow default scroll
+    if ((isAtStart && isScrollingUp) || (isAtEnd && isScrollingDown)) return
+
+    e.preventDefault()
+
+    const scrollSensitivity = 0.008
+    const delta = e.deltaY * scrollSensitivity
+
+    setPosition((prev) => {
+      const newPosition = prev + delta
+      return Math.max(0, Math.min(cards.length - 1, newPosition))
+    })
+  }
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener("wheel", handleScroll, { passive: false })
+      return () => container.removeEventListener("wheel", handleScroll)
+    }
+  }, [viewMode])
+
+  const handleTimelineClick = (index: number) => {
+    setPosition(index)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY })
+  }
+
+  const activeIndex = Math.round(position)
+
+  return (
+    <div className="bg-white w-full mt-18 mb-18">
+      {/* Section Heading */}
+      <div className="text-center pt-20 pb-10 relative z-10 mb-16">
+        <h2 className="text-3xl md:text-4xl font-medium mb-4 text-black">Why AgentMarketplace?</h2>
         <p className="text-xl text-orange-500 font-medium">Your enterprise AI advantage</p>
       </div>
+    <div
+      ref={containerRef}
+      className="relative min-h-screen w-full overflow-hidden bg-white mb-30 "
+      onMouseMove={handleMouseMove}
+    >
+      
 
-      <div className="grid md:grid-cols-3 gap-8 relative z-10">
-        {/* Card 1 */}
-        <div className="group relative rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-orange-200">
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-orange-50/0 group-hover:from-orange-50/30 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
-          <div className="relative z-10">
-            <div className="h-12 w-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Cpu className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Pre-built agents</h3>
-            <p className="text-gray-600 mb-6">
-                Powering the future of work. Get access to agents specifically designed for your industry needs.
-            </p>
-            <div className="h-32 bg-gray-50 rounded-lg border border-gray-100 relative overflow-hidden group-hover:border-orange-200 transition-colors">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent"></div>
-                {/* Abstract UI */}
-                <div className="absolute top-4 left-4 right-4 h-2 bg-gray-200 rounded-full group-hover:bg-orange-200 transition-colors"></div>
-                <div className="absolute top-8 left-4 w-1/2 h-2 bg-gray-200 rounded-full group-hover:bg-orange-200 transition-colors delay-75"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 2 */}
-        <div className="group relative rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/30 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
-          <div className="relative z-10">
-            <div className="h-12 w-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Layers className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">A self-serve platform</h3>
-            <p className="text-gray-600 mb-6">
-                Built for every enterprise role. No coding required to deploy complex workflows.
-            </p>
-            <div className="h-32 bg-gray-50 rounded-lg border border-gray-100 relative overflow-hidden flex items-center justify-center group-hover:border-blue-200 transition-colors">
-                <div className="h-16 w-16 bg-white rounded-lg shadow-sm border border-gray-200 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Zap className="h-8 w-8 text-yellow-500 group-hover:rotate-12 transition-transform duration-300" />
-                </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="group relative rounded-2xl border border-gray-200 bg-white p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-purple-200">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-50/0 group-hover:from-purple-50/30 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
-          <div className="relative z-10">
-            <div className="h-12 w-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Enterprise: Posture & Control</h3>
-            <p className="text-gray-600 mb-6">
-                Security first. Maintain full control over your data and agent interactions.
-            </p>
-            <div className="h-32 bg-gray-50 rounded-lg border border-gray-100 relative overflow-hidden p-4 group-hover:border-purple-200 transition-colors">
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <div className="h-2 w-20 bg-gray-200 rounded-full group-hover:bg-purple-200 transition-colors"></div>
-                </div>
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse delay-75"></div>
-                    <div className="h-2 w-16 bg-gray-200 rounded-full group-hover:bg-purple-200 transition-colors delay-75"></div>
-                </div>
-                <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse delay-150"></div>
-                    <div className="h-2 w-24 bg-gray-200 rounded-full group-hover:bg-purple-200 transition-colors delay-150"></div>
-                </div>
-            </div>
-          </div>
-        </div>
+      {/* Header Navigation */}
+      <div className="absolute right-6 top-6 z-50 flex items-center gap-1 rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-sm backdrop-blur-sm">
+        <button
+          className={`rounded-md p-2 transition-colors ${viewMode === "stack" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
+          onClick={() => setViewMode("stack")}
+        >
+          <Archive className="h-5 w-5 text-neutral-700" />
+        </button>
+        <button
+          className={`rounded-md p-2 transition-colors ${viewMode === "list" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
+          onClick={() => setViewMode("list")}
+        >
+          <Menu className="h-5 w-5 text-neutral-700" />
+        </button>
       </div>
-    </section>
-  );
+
+      {viewMode === "stack" ? (
+        <>
+          {/* Cards Stack */}
+          <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1500px" }}>
+            <div className="relative h-[600px] w-[800px]" style={{ transformStyle: "preserve-3d" }}>
+              {[...cards].reverse().map((card, reverseIndex) => {
+                const index = cards.length - 1 - reverseIndex
+                const distanceFromActive = index - position
+
+                if (distanceFromActive < -1.5 || distanceFromActive > 5) {
+                  return null
+                }
+
+                const isBehind = distanceFromActive > 0
+                const isInFront = distanceFromActive < 0
+
+                const translateZ = distanceFromActive * -60
+                const translateY = distanceFromActive * -30
+                const scale = 1 - Math.abs(distanceFromActive) * 0.03
+
+                let opacity = 1
+                if (isInFront) {
+                  opacity = Math.max(0, 1 + distanceFromActive * 2)
+                }
+
+                return (
+                  <div
+                    key={card.id}
+                    className="absolute inset-0"
+                    style={{
+                      transform: `translateZ(${translateZ}px) translateY(${translateY}px) scale(${Math.max(0.7, scale)})`,
+                      opacity: Math.max(0, opacity),
+                      zIndex: Math.round((cards.length - Math.abs(distanceFromActive)) * 10),
+                      transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
+                      pointerEvents: Math.abs(distanceFromActive) < 0.5 ? "auto" : "none",
+                    }}
+                    onClick={() => handleTimelineClick(index)}
+                  >
+                    <div className="h-full w-full overflow-hidden bg-white shadow-2xl">
+                      <div className="relative h-[65%] overflow-hidden bg-neutral-200">
+                        <img
+                          src={card.image || "/placeholder.svg"}
+                          alt={card.title}
+                          className="h-full w-full object-cover"
+                        />
+                        {isBehind && (
+                          <div
+                            className="absolute inset-0 bg-black"
+                            style={{
+                              opacity: Math.min(0.3, Math.abs(distanceFromActive) * 0.08),
+                            }}
+                          />
+                        )}
+                      </div>
+                      <div className="bg-white p-8">
+                        <h2 className="text-3xl font-semibold tracking-tight text-neutral-900">{card.title}</h2>
+                        <p className="mt-2 text-lg text-neutral-500">{card.subtitle}</p>
+                        <p className="mt-3 text-sm text-neutral-400">{card.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Timeline */}
+          <div className="absolute bottom-20 right-8 top-20 z-40 flex flex-col items-end justify-between py-8">
+            {cards.map((card, index) => {
+              const isActive = index === activeIndex
+              const isNow = index === 0
+
+              return (
+                <button
+                  key={card.id}
+                  className="group flex items-center gap-2 transition-all duration-300"
+                  onClick={() => handleTimelineClick(index)}
+                >
+                  <span
+                    className={`text-sm font-medium transition-all duration-300 ${
+                      isActive ? "text-orange-500" : "text-neutral-400 group-hover:text-neutral-600"
+                    }`}
+                  >
+                    {isNow ? "Now" : card.dateLabel}
+                  </span>
+                  <div className="relative flex items-center">
+                    <div
+                      className={`h-0.5 transition-all duration-300 ${
+                        isActive ? "w-8 bg-orange-500" : "w-4 bg-neutral-300 group-hover:w-6 group-hover:bg-neutral-400"
+                      }`}
+                    />
+                    {isActive && <div className="absolute -right-1 h-2 w-2 rounded-full bg-orange-500" />}
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-neutral-400">
+            Scroll or click timeline to navigate
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="mx-auto max-w-5xl px-6 pb-12 pt-24">
+            <div className="divide-y divide-neutral-200">
+              {cards.map((card, index) => (
+                <button
+                  key={card.id}
+                  className="group flex w-full items-center gap-6 py-4 text-left transition-colors hover:bg-neutral-50"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => {
+                    setViewMode("stack")
+                    setPosition(index)
+                  }}
+                >
+                  <span className="w-32 shrink-0 text-sm text-neutral-400">
+                    {card.date.split(",")[0]}, {card.date.split(",")[1]?.trim().split(" ")[0]}
+                  </span>
+                  <span className="min-w-0 shrink-0 font-medium text-neutral-900" style={{ width: "280px" }}>
+                    {card.title}
+                  </span>
+                  <span className="min-w-0 flex-1 text-neutral-400">{card.subtitle}</span>
+                  <ChevronRight className="h-4 w-4 shrink-0 text-neutral-300 transition-transform group-hover:translate-x-1 group-hover:text-neutral-500" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Floating preview image */}
+          {hoveredIndex !== null && (
+            <div
+              className="pointer-events-none fixed z-50 overflow-hidden shadow-2xl transition-opacity duration-200"
+              style={{
+                left: mousePos.x + 20,
+                top: mousePos.y - 100,
+                width: 280,
+                height: 180,
+              }}
+            >
+              <img
+                src={cards[hoveredIndex].image || "/placeholder.svg"}
+                alt={cards[hoveredIndex].title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
+        </>
+      )}
+    </div>
+    </div>
+  )
 }

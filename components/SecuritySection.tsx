@@ -4,7 +4,7 @@ import { Shield, Lock } from "lucide-react";
 
 export default function SecuritySection() {
   return (
-    <section className="w-full bg-[#F3F4F6] rounded-t-[3rem] py-24 -mt-10 relative z-20">
+    <section className="w-full bg-white rounded-t-[3rem] py-24 -mt-8 relative z-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24">
           {/* Left Side - Badges */}
