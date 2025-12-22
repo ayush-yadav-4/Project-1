@@ -4,15 +4,15 @@ import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function EnterpriseAdvantage() {
   return (
-    <section className="container mx-auto py-24 px-4 md:px-6">
+    <section className="container mx-auto py-24 px-4 lg:px-6">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-medium mb-2 text-orange-500">Why AgentMarketplace ?</h2>
-        <p className="text-3xl md:text-4xl font-medium text-black">Your enterprise AI advantage</p>
+        <h2 className="text-3xl lg:text-4xl font-medium mb-2 text-orange-500">Why AgentMarketplace ?</h2>
+        <p className="text-3xl lg:text-4xl font-medium text-black">Your enterprise AI advantage</p>
       </div>
 
       <div className="flex flex-col gap-8">
         {/* Card 1 */}
-        <div className="w-full max-w-[95%] mx-auto bg-white rounded-[2.5rem] border border-gray-200 p-8 md:p-12 shadow-sm relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 group">
+        <div className="w-full max-w-[95%] mx-auto bg-white rounded-[2.5rem] border border-gray-200 p-8 lg:p-12 shadow-sm relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 group">
           {/* Hover Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
           
@@ -21,17 +21,17 @@ export default function EnterpriseAdvantage() {
                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 relative z-10">
             {/* Left Content */}
             <div className="flex-1 text-left">
-              <h3 className="text-3xl md:text-5xl font-light text-orange-500 mb-3 tracking-tight">Pre-built agents</h3>
-              <h4 className="text-3xl md:text-5xl font-thin text-gray-900 mb-6 tracking-tight">powering the future of work</h4>
+              <h3 className="text-3xl lg:text-5xl font-light text-orange-500 mb-3 tracking-tight">Pre-built agents</h3>
+              <h4 className="text-3xl lg:text-5xl font-thin text-gray-900 mb-6 tracking-tight">powering the future of work</h4>
               
-              <p className="text-lg md:text-xl font-light text-gray-500 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-lg lg:text-xl font-light text-gray-500 mb-8 leading-relaxed max-w-2xl">
                 Get a production-ready AI agent to solve your specific business problems, from cutting costs to boosting revenue. Our solutions are built to tackle challenges across industries and corporate functions.
               </p>
 
-              <button className="group flex items-center justify-between w-full md:w-[80%] px-6 py-4 rounded-full border border-gray-200 text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+              <button className="group flex items-center justify-between w-full lg:w-[80%] px-6 py-4 rounded-full border border-gray-200 text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors">
                 Talk to us
                 <ChevronRight className="h-4 w-4 text-gray-400 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -93,7 +93,7 @@ export default function EnterpriseAdvantage() {
         </div>
 
         {/* Card 2 */}
-        <div className="w-full max-w-[95%] mx-auto bg-white rounded-[2.5rem] border border-gray-200 p-8 md:p-12 shadow-sm relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 group">
+        <div className="w-full max-w-[95%] mx-auto bg-white rounded-[2.5rem] border border-gray-200 p-8 lg:p-12 shadow-sm relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 group">
           {/* Hover Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 

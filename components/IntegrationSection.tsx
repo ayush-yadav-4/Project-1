@@ -5,7 +5,7 @@ const IntegrationSection = () => {
     <section className="w-full py-24 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <div className="animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-4 tracking-tight">Enterprise - ready integrations</h2>
+            <h2 className="text-4xl lg:text-5xl font-medium text-gray-900 mb-4 tracking-tight">Enterprise - ready integrations</h2>
             <p className="text-xl text-gray-500 mb-16">Seamless connectivity with Lyzr</p>
         </div>
 

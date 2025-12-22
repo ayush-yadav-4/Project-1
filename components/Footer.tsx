@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer 
-      className="w-full pt-24 pb-40 px-4 md:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="w-full pt-24 pb-40 px-4 lg:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/Footer.png')" }}
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 relative z-10 animate-fade-in-up">
@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
 
         {/* Right Side - Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
           {/* Product */}
           <div className="flex flex-col gap-4">
             <h5 className="font-bold text-gray-900">Product</h5>

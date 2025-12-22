@@ -25,7 +25,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative w-full overflow-hidden flex flex-col items-center text-center pt-58 pb-58"
+      className="relative w-full overflow-hidden flex flex-col items-center text-center py-20 lg:py-32"
     >
       
       {/* Background Effect */}
@@ -58,12 +58,12 @@ export default function HeroSection() {
             <div className="relative z-10 animate-fade-in-up delay-100">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
               <h1 
-                className="max-w-5xl text-5xl md:text-7xl font-normal tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
+                className="max-w-5xl text-5xl lg:text-7xl font-normal tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
               >
               Bring 
               <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">
-                <div className="h-12 w-12 md:h-16 md:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
-                    <Sparkles className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                <div className="h-12 w-12 lg:h-16 lg:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
+                    <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
                 </div>
               </span>
               your AI Agents
@@ -97,7 +97,7 @@ export default function HeroSection() {
           <div className="w-full h-16 border-b-[3px] border-gray-100 shrink-0"></div>
           
           <div className="flex-1 flex flex-col items-center justify-center p-8">
-              <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-black font-bold">
+              <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-gray-500 font-bold">
                 Ask Aceternity UI Anything
               </h2>
               <PlaceholdersAndVanishInput

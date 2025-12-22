@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function ExpertsSection() {
   return (
     <section 
-      className="w-full py-24 px-4 md:px-6 relative overflow-hidden bg-cover bg-no-repeat"
+      className="w-full py-24 px-4 lg:px-6 relative overflow-hidden bg-cover bg-no-repeat"
       style={{ backgroundImage: "url('/Experts.png')", backgroundPosition: "center 25%" }}
     >
        {/* Background Gradient */}
@@ -13,13 +13,13 @@ export default function ExpertsSection() {
        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-pink-200/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
       <div className="text-center mb-16 relative z-10 animate-fade-in-up">
-        <h2 className="text-3xl md:text-5xl font-medium mb-2 text-orange-500">Trusted by experts.</h2>
-        <p className="text-3xl md:text-5xl font-medium text-black">Used by leaders.</p>
+        <h2 className="text-3xl lg:text-5xl font-medium mb-2 text-orange-500">Trusted by experts.</h2>
+        <p className="text-3xl lg:text-5xl font-medium text-black">Used by leaders.</p>
       </div>
 
       {/* Icons Row */}
       <div className="w-full max-w-[95%] mx-auto bg-white/60 backdrop-blur-md rounded-2xl border border-gray-100 p-8 shadow-sm mb-20 animate-fade-in-up delay-200">
-        <div className="flex items-center justify-between gap-4 px-4">
+        <div className="flex flex-wrap items-center justify-center gap-4 px-4">
             {/* Adobe Ai */}
             <div className="w-16 h-16 rounded-2xl bg-[#330000] flex items-center justify-center text-[#FF9A00] font-bold text-2xl border border-gray-100 shadow-sm shrink-0 hover:scale-110 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 animate-fade-in-up delay-300">Ai</div>
             

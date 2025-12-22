@@ -17,7 +17,7 @@ export const ContainerScroll = ({
 
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -36,11 +36,11 @@ export const ContainerScroll = ({
 
   return (
     <div
-      className="h-[50rem] md:h-[60rem] flex items-center justify-center relative p-2 md:px-0"
+      className="h-[60rem] lg:h-[80rem] flex items-center justify-center relative p-2 lg:px-0"
       ref={containerRef}
     >
       <div
-        className="py-10 md:py-20 w-full relative"
+        className="py-10 lg:py-20 w-full relative"
         style={{
           perspective: "1000px",
         }}
@@ -82,12 +82,10 @@ export const Card = ({
       style={{
         rotateX: rotate,
         scale,
-        boxShadow:
-          "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
       }}
-      className="max-w-full -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-gray-200 p-2 md:p-6 bg-white rounded-[30px] shadow-2xl"
+      className="max-w-full -mt-12 mx-auto h-[40rem] lg:h-[50rem] w-full border-4 border-gray-200 p-2 lg:p-6 bg-white rounded-[30px]"
     >
-      <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-50 md:rounded-2xl md:p-4 ">
+      <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-50 lg:rounded-2xl lg:p-4 ">
         {children}
       </div>
     </motion.div>

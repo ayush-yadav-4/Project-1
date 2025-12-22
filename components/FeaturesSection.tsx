@@ -125,28 +125,31 @@ export default function FeaturesSection() {
     positionRef.current = position
   }, [position])
 
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth < 1024) {
+        setViewMode("list")
+      }
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const handleScroll = (e: WheelEvent) => {
     if (viewMode !== "stack") return
 
     // Check if mouse is within the central card area (800px width)
     const containerWidth = window.innerWidth
-    const cardAreaWidth = 800
+    const cardAreaWidth = Math.min(800, containerWidth - 40) // Responsive width
     const leftBound = (containerWidth - cardAreaWidth) / 2
     const rightBound = (containerWidth + cardAreaWidth) / 2
     
     // If mouse is outside the card area, allow default scroll
     if (e.clientX < leftBound || e.clientX > rightBound) return
 
-    const currentPos = positionRef.current
-    const isAtStart = currentPos <= 0
-    const isAtEnd = currentPos >= cards.length - 1
-    const isScrollingUp = e.deltaY < 0
-    const isScrollingDown = e.deltaY > 0
-
-    // If at boundaries and scrolling away, allow default scroll
-    if ((isAtStart && isScrollingUp) || (isAtEnd && isScrollingDown)) return
-
     e.preventDefault()
+
 
     const scrollSensitivity = 0.008
     const delta = e.deltaY * scrollSensitivity
@@ -209,7 +212,7 @@ export default function FeaturesSection() {
         <>
           {/* Cards Stack */}
           <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1500px" }}>
-            <div className="relative h-[600px] w-[800px]" style={{ transformStyle: "preserve-3d" }}>
+            <div className="relative h-[400px] w-[90%] lg:h-[600px] lg:w-[800px]" style={{ transformStyle: "preserve-3d" }}>
               {[...cards].reverse().map((card, reverseIndex) => {
                 const index = cards.length - 1 - reverseIndex
                 const distanceFromActive = index - position
@@ -272,7 +275,7 @@ export default function FeaturesSection() {
           </div>
 
           {/* Timeline */}
-          <div className="absolute bottom-20 right-8 top-20 z-40 flex flex-col items-end justify-between py-8">
+          <div className="hidden lg:flex absolute bottom-20 right-8 top-20 z-40 flex-col items-end justify-between py-8">
             {cards.map((card, index) => {
               const isActive = index === activeIndex
               const isNow = index === 0
