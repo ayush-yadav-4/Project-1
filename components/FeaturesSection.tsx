@@ -115,7 +115,7 @@ const cards: Card[] = [
 
 export default function FeaturesSection() {
   const [position, setPosition] = useState(0)
-  const [viewMode, setViewMode] = useState<"stack" | "list">("stack")
+  const [viewMode, setViewMode] = useState<"stack" | "list">("list")
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
@@ -179,15 +179,15 @@ export default function FeaturesSection() {
   const activeIndex = Math.round(position)
 
   return (
-    <div className="bg-white w-full mt-18 mb-18">
+    <div className="bg-white w-full py-28">
       {/* Section Heading */}
-      <div className="text-center pt-20 pb-10 relative z-10 mb-16">
-        <h2 className="text-3xl md:text-4xl font-medium mb-4 text-black">Why AgentMarketplace?</h2>
-        <p className="text-xl text-orange-500 font-medium">Your enterprise AI advantage</p>
+      <div className="text-center relative z-10 mb-12">
+        <h2 className="text-3xl lg:text-4xl font-medium mb-4 text-orange-500">Why AgentMarketplace?</h2>
+        <p className="text-3xl lg:text-4xl font-medium text-black">Your enterprise AI advantage</p>
       </div>
     <div
       ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-white mb-30 "
+      className="relative min-h-screen w-full overflow-hidden bg-white"
       onMouseMove={handleMouseMove}
     >
       

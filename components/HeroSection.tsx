@@ -25,7 +25,8 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative w-full overflow-hidden flex flex-col items-center text-center py-20 lg:py-32"
+      className="relative w-full overflow-hidden flex flex-col items-center text-center py-32 lg:py-40"
+      style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
     >
       
       {/* Background Effect */}

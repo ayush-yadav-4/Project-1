@@ -4,13 +4,13 @@ import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function EnterpriseAdvantage() {
   return (
-    <section className="container mx-auto py-24 px-4 lg:px-6">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl lg:text-4xl font-medium mb-2 text-orange-500">Why AgentMarketplace ?</h2>
+    <section className="container mx-auto py-32 px-4 lg:px-6">
+      <div className="text-center mb-24">
+        <h2 className="text-3xl lg:text-4xl font-medium mb-4 text-orange-500">Why AgentMarketplace ?</h2>
         <p className="text-3xl lg:text-4xl font-medium text-black">Your enterprise AI advantage</p>
       </div>
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-12">
         {/* Card 1 */}
         <div className="w-full max-w-[95%] mx-auto bg-white rounded-[2.5rem] border border-gray-200 p-8 lg:p-12 shadow-sm relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 group">
           {/* Hover Gradient Overlay */}

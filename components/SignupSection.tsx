@@ -6,13 +6,10 @@ import { motion } from "framer-motion";
 export default function SignupSection() {
   return (
     <section 
-      className="relative w-full py-32 flex flex-col items-center text-center px-4 bg-white overflow-hidden"
+      className="relative w-full py-20 flex flex-col items-center text-center px-4 bg-white overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 w-full h-full bg-white z-0 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-orange-100/50 blur-3xl animate-blob" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-orange-100/50 blur-3xl animate-blob animation-delay-2000" />
-          <div className="absolute top-[40%] left-[40%] w-[30%] h-[30%] rounded-full bg-pink-100/30 blur-3xl animate-blob animation-delay-4000" />
       </div>
 
       {/* White Curve Top */}

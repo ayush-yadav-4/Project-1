@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer 
-      className="w-full pt-24 pb-40 px-4 lg:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="w-full pt-32 pb-40 px-4 lg:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/Footer.png')" }}
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 relative z-10 animate-fade-in-up">
