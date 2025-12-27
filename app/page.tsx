@@ -4,6 +4,7 @@
 
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HeroSection2 from "@/components/HeroSection2";
 import SecuritySection from "@/components/SecuritySection";
 import EnterpriseAdvantage from "@/components/EnterpriseAdvantage";
 import ExpertsSection from "@/components/ExpertsSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-col items-center w-full">
         <HeroSection />
+        <HeroSection2 />
         <SecuritySection />
         <EnterpriseAdvantage />
         <ExpertsSection />

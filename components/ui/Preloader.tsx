@@ -27,9 +27,9 @@ export const Preloader = ({ onComplete }: { onComplete?: () => void }) => {
         >
           <div className="w-full h-full flex items-center justify-center">
             <LiquidMetal
-              width={600}
-              height={600}
-              image="/diamond.svg"
+              width={1000}
+              height={1000}
+              image="/Loading.png"
               colorBack="#ffffff"
               colorTint="#ffffff"
               shape="diamond"

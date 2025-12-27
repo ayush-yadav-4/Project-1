@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { Sparkles, ChevronDown } from "lucide-react";
-import { MeshGradient } from "@paper-design/shaders-react";
 import { ContainerScroll } from "./ui/container-scroll-animation";
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
+import { useEffect, useState } from "react";
 
-export default function HeroSection() {
+export default function HeroSection2() {
   const placeholders = [
     "What's the first rule of Fight Club?",
     "Who is Tyler Durden?",
@@ -23,6 +23,35 @@ export default function HeroSection() {
     console.log("submitted");
   };
 
+  const [rainbows, setRainbows] = useState<Array<{ colors: string[], delay: number, duration: number }>>([]);
+
+  useEffect(() => {
+    // Lighter pastel colors
+    const purple = "rgb(245 180 255)";
+    const blue = "rgb(180 220 255)";
+    const green = "rgb(180 250 240)";
+    const animationTime = 45;
+    const length = 15;
+
+    const newRainbows = Array.from({ length }).map((_, i) => {
+      const r = Math.floor(Math.random() * 6) + 1;
+      let colors: string[] = [];
+      if (r === 1) colors = [purple, blue, green];
+      else if (r === 2) colors = [purple, green, blue];
+      else if (r === 3) colors = [green, purple, blue];
+      else if (r === 4) colors = [green, blue, purple];
+      else if (r === 5) colors = [blue, green, purple];
+      else colors = [blue, purple, green];
+
+      const delay = -((i + 1) / length) * animationTime;
+      const duration = animationTime - (animationTime / length / 2) * (i + 1);
+
+      return { colors, delay, duration };
+    });
+
+    setRainbows(newRainbows);
+  }, []);
+
   return (
     <section 
       className="relative w-full overflow-hidden flex flex-col items-center text-center py-32 lg:py-40"
@@ -30,18 +59,28 @@ export default function HeroSection() {
     >
       
       {/* Background Effect */}
-      <div className="absolute inset-0 z-0">
-        <MeshGradient
-          style={{ height: "100%", width: "100%" }}
-          distortion={0.8}
-          swirl={0.1}
-          offsetX={0}
-          offsetY={0}
-          scale={1}
-          rotation={0}
-          speed={1}
-          colors={["#FFFFFF", "#FFF5EB", "#FCE7F3", "#FFEDD5", "#FBCFE8", "#FFD8B1"]}
-        />
+      <div className="absolute inset-0 z-0 overflow-hidden bg-white">
+        {rainbows.map((rainbow, index) => (
+          <div
+            key={index}
+            className="rainbow"
+            style={{
+              // Straight strips with soft gradient edges
+              boxShadow: `
+                -120px 0 60px 30px white, 
+                -40px 0 40px 20px ${rainbow.colors[0]}, 
+                0 0 40px 20px ${rainbow.colors[1]}, 
+                40px 0 40px 20px ${rainbow.colors[2]}, 
+                120px 0 60px 30px white
+              `,
+              animationDuration: `${rainbow.duration}s`,
+              animationDelay: `${rainbow.delay}s`,
+            }}
+          />
+        ))}
+        <div className="h" />
+        <div className="v" />
+        <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-[1]" />
       </div>
 
       <ContainerScroll
