@@ -2,152 +2,72 @@
 
 import Link from "next/link";
 import { Sparkles, ChevronDown } from "lucide-react";
-import { ContainerScroll } from "./ui/container-scroll-animation";
-import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
-import { useEffect, useState } from "react";
 
 export default function HeroSection2() {
-  const placeholders = [
-    "What's the first rule of Fight Club?",
-    "Who is Tyler Durden?",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("submitted");
-  };
-
-  const [rainbows, setRainbows] = useState<Array<{ colors: string[], delay: number, duration: number }>>([]);
-
-  useEffect(() => {
-    // Lighter pastel colors
-    const purple = "rgb(245 180 255)";
-    const blue = "rgb(180 220 255)";
-    const green = "rgb(180 250 240)";
-    const animationTime = 45;
-    const length = 15;
-
-    const newRainbows = Array.from({ length }).map((_, i) => {
-      const r = Math.floor(Math.random() * 6) + 1;
-      let colors: string[] = [];
-      if (r === 1) colors = [purple, blue, green];
-      else if (r === 2) colors = [purple, green, blue];
-      else if (r === 3) colors = [green, purple, blue];
-      else if (r === 4) colors = [green, blue, purple];
-      else if (r === 5) colors = [blue, green, purple];
-      else colors = [blue, purple, green];
-
-      const delay = -((i + 1) / length) * animationTime;
-      const duration = animationTime - (animationTime / length / 2) * (i + 1);
-
-      return { colors, delay, duration };
-    });
-
-    setRainbows(newRainbows);
-  }, []);
-
   return (
     <section 
-      className="relative w-full overflow-hidden flex flex-col items-center text-center py-32 lg:py-40"
+      className="relative w-full overflow-hidden flex flex-col items-center text-center pt-32 pb-20 lg:pt-40 lg:pb-24"
       style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
     >
       
       {/* Background Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-white">
-        {rainbows.map((rainbow, index) => (
-          <div
-            key={index}
-            className="rainbow"
-            style={{
-              // Straight strips with soft gradient edges
-              boxShadow: `
-                -120px 0 60px 30px white, 
-                -40px 0 40px 20px ${rainbow.colors[0]}, 
-                0 0 40px 20px ${rainbow.colors[1]}, 
-                40px 0 40px 20px ${rainbow.colors[2]}, 
-                120px 0 60px 30px white
-              `,
-              animationDuration: `${rainbow.duration}s`,
-              animationDelay: `${rainbow.delay}s`,
-            }}
-          />
-        ))}
-        <div className="h" />
-        <div className="v" />
-        <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-[1]" />
+        <div className="absolute inset-0 top-24 bottom-24 bg-[url('/Herosection.png')] bg-top bg-no-repeat bg-[length:100%_100%] opacity-100 w-full" />
+        <div className="absolute inset-0 top-24 bottom-24 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.2)_10px,rgba(255,255,255,0.2)_11px)]" />
+        
+        {/* White Overlay for Tab Effect */}
+        <div className="absolute bottom-0 left-0 w-full h-16 md:h-24 lg:h-32 z-10 pointer-events-none">
+           <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
+              <path fill="#ffffff" d="M0,0 L100,0 C250,0 250,320 400,320 L0,320 Z" />
+              <path fill="#ffffff" d="M1440,0 L1340,0 C1190,0 1190,320 1040,320 L1440,320 Z" />
+           </svg>
+        </div>
       </div>
 
-      <ContainerScroll
-        titleComponent={
-          <div className="flex flex-col items-center text-center px-4">
-            {/* Badge */}
-            <div className="relative z-10 animate-fade-in-up mb-10">
-              <div className="inline-flex items-center gap-3 rounded-full bg-white border border-gray-100 px-8 py-3 text-lg font-medium text-gray-800 shadow-sm animate-float">
-                <Sparkles className="h-5 w-5 text-orange-500 animate-pulse" />
-                Bridging gap between Agents and Daily Life
-              </div>
-            </div>
-
-            {/* H1 */}
-            <div className="relative z-10 animate-fade-in-up delay-100">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
-              <h1 
-                className="max-w-5xl text-5xl lg:text-7xl font-normal tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
-              >
-              Bring 
-              <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">
-                <div className="h-12 w-12 lg:h-16 lg:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
-                    <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
-                </div>
-              </span>
-              your AI Agents
-              <br />
-              to market Stronger
-            </h1>
-            </div>
-            
-            {/* Subtext */}
-            <p className="relative z-10 max-w-2xl text-lg text-gray-600 mb-10 animate-fade-in-up delay-200">
-              World's 1st Agent builder platform with built-in Responsible
-              <br />
-              AI and Hallucination Manager.
-            </p>
-            
-            {/* CTA */}
-            <div className="relative z-10 mb-20 animate-fade-in-up delay-300">
-              <Link 
-                href="#" 
-                className="rounded-full bg-white border border-gray-200 px-8 py-3 text-base font-medium text-black hover:bg-gray-50 transition-all shadow-sm flex items-center gap-2 mx-auto hover:scale-105 active:scale-95 duration-300"
-              >
-                Explore Marketplace <ChevronDown className="h-4 w-4 -rotate-90" />
-              </Link>
-            </div>
-          </div>
-        }
-      >
-        {/* Image Placeholder */}
-        <div className="w-full h-full bg-white flex flex-col overflow-hidden">
-          {/* Top Bar Line */}
-          <div className="w-full h-16 border-b-[3px] border-gray-100 shrink-0"></div>
-          
-          <div className="flex-1 flex flex-col items-center justify-center p-8">
-              <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-gray-500 font-bold">
-                Ask Aceternity UI Anything
-              </h2>
-              <PlaceholdersAndVanishInput
-                placeholders={placeholders}
-                onChange={handleChange}
-                onSubmit={onSubmit}
-              />
+      <div className="flex flex-col items-center text-center px-4">
+        {/* Badge */}
+        <div className="relative z-10 animate-fade-in-up mb-10">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white border border-gray-100 px-8 py-3 text-lg font-medium text-gray-800 shadow-sm animate-float">
+            <Sparkles className="h-5 w-5 text-orange-500 animate-pulse" />
+            Bridging gap between Agents and Daily Life
           </div>
         </div>
-      </ContainerScroll>
+
+        {/* H1 */}
+        <div className="relative z-10 animate-fade-in-up delay-100">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
+          <h1 
+            className="max-w-5xl text-5xl lg:text-7xl font-normal tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
+          >
+          Bring 
+          <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">
+            <div className="h-12 w-12 lg:h-16 lg:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
+                <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
+            </div>
+          </span>
+          your AI Agents
+          <br />
+          to market Stronger
+        </h1>
+        </div>
+        
+        {/* Subtext */}
+        <p className="relative z-10 max-w-2xl text-lg text-gray-600 mb-10 animate-fade-in-up delay-200">
+          World's 1st Agent builder platform with built-in Responsible
+          <br />
+          AI and Hallucination Manager.
+        </p>
+        
+        {/* CTA */}
+        <div className="relative z-10 mb-20 animate-fade-in-up delay-300">
+          <Link 
+            href="#" 
+            className="rounded-full bg-white border border-gray-200 px-8 py-3 text-base font-medium text-black hover:bg-gray-50 transition-all shadow-sm flex items-center gap-2 mx-auto hover:scale-105 active:scale-95 duration-300"
+          >
+            Explore Marketplace <ChevronDown className="h-4 w-4 -rotate-90" />
+          </Link>
+        </div>
+      </div>
 
     </section>
   );

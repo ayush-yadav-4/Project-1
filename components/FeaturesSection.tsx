@@ -182,8 +182,8 @@ export default function FeaturesSection() {
     <div className="bg-white w-full py-28">
       {/* Section Heading */}
       <div className="text-center relative z-10 mb-12">
-        <h2 className="text-3xl lg:text-4xl font-medium mb-4 text-orange-500">Why AgentMarketplace?</h2>
-        <p className="text-3xl lg:text-4xl font-medium text-black">Your enterprise AI advantage</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Why AgentMarketplace?</h2>
+        <p className="text-xl font-medium text-black">Your enterprise AI advantage</p>
       </div>
     <div
       ref={containerRef}

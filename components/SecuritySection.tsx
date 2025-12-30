@@ -43,10 +43,12 @@ export default function SecuritySection() {
 
           {/* Right Side - Text */}
           <div className="max-w-xl text-left animate-fade-in-up delay-200">
-            <h2 className="text-4xl lg:text-5xl font-medium mb-6 text-gray-900 tracking-tight leading-tight">
-              Industry-grade<br />
-              security and compliance
+            <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">
+              Industry-grade
             </h2>
+            <p className="text-xl font-medium text-black mb-6">
+              security and compliance
+            </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               Lyzr Agent Studio is the only platform you need to create, business. Build smarter, faster, and scalable AI solutions in just a few clicks.
             </p>

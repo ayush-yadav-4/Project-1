@@ -6,8 +6,8 @@ export default function EnterpriseAdvantage() {
   return (
     <section className="container mx-auto py-32 px-4 lg:px-6">
       <div className="text-center mb-24">
-        <h2 className="text-3xl lg:text-4xl font-medium mb-4 text-orange-500">Why AgentMarketplace ?</h2>
-        <p className="text-3xl lg:text-4xl font-medium text-black">Your enterprise AI advantage</p>
+        <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Why AgentMarketplace ?</h2>
+        <p className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">Your enterprise AI advantage</p>
       </div>
 
       <div className="flex flex-col gap-12">
