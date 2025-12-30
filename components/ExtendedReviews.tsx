@@ -123,16 +123,29 @@ export default function ExtendedReviews() {
 
 			{/* Reviews Section */}
 			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-24 pb-20">
-				<div className="text-center mb-20">
+				<motion.div 
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					viewport={{ once: true }}
+					className="text-center mb-20"
+				>
 					<h2 className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">
 						Hear it from Insiders
 					</h2>
 					<p className="text-xl font-medium text-black">
 						
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[1000px] overflow-hidden mask-gradient">
+				<div className="relative">
+					{/* Top Gradient Blur */}
+					<div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white via-white/200 to-transparent z-20 pointer-events-none"></div>
+					
+					{/* Bottom Gradient Blur */}
+					<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-orange-400 via-orange-500/200 to-transparent z-20 pointer-events-none"></div>
+
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[1000px] overflow-hidden mask-gradient">
 					{/* Column 1 - Scroll Down */}
 					<div className="relative h-full overflow-hidden">
 						<div className="flex flex-col gap-6 animate-scroll-down">
@@ -160,12 +173,19 @@ export default function ExtendedReviews() {
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
 
 			{/* CTA Section */}
 			<div className="relative z-10 w-full h-[600px] flex flex-col items-center justify-center mt-30">
 				{/* Content */}
-				<div className="text-center px-4 max-w-5xl mx-auto mb-20">
+				<motion.div 
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					viewport={{ once: true }}
+					className="text-center px-4 max-w-5xl mx-auto mb-20"
+				>
 					<h2 className="text-5xl md:text-7xl font-bold text-[#FFF5E6] mb-12 leading-tight tracking-tight">
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
@@ -199,7 +219,7 @@ export default function ExtendedReviews() {
 					>
 						Start for free
 					</motion.button>
-				</div>
+				</motion.div>
 
 				{/* Bottom Text */}
 				<div className="absolute bottom-0 left-0 right-0 flex justify-center overflow-hidden pointer-events-none mt-14">

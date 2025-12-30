@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import Navbar from "@/components/Navbar";
@@ -10,6 +8,7 @@ import SecuritySection from "@/components/SecuritySection";
 import GlobalEnterprisesSection from "@/components/GlobalEnterprisesSection";
 import EnterpriseAdvantage from "@/components/EnterpriseAdvantage";
 import Cards from "@/components/Cards";
+import Cards2 from "@/components/Cards2";
 import IntegrationSection from "@/components/IntegrationSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import SignupSection from "@/components/SignupSection";
@@ -24,10 +23,11 @@ export default function Home() {
         {/* <HeroSection /> */}
         <HeroSection2 />
         <SubHeroSection />
-        <SecuritySection />
+        {/* <SecuritySection /> */}
         <GlobalEnterprisesSection />
-        <EnterpriseAdvantage />
-        <Cards />
+        {/* <EnterpriseAdvantage /> */}
+        {/* <Cards /> */}
+        <Cards2 />
         <IntegrationSection />
         <FeaturesSection />
         {/* <SignupSection /> */}
@@ -39,4 +39,3 @@ export default function Home() {
 }
 
 
-  

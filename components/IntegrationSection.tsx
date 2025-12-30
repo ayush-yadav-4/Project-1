@@ -1,13 +1,20 @@
 import React from 'react';
+import { motion } from "framer-motion";
 
 const IntegrationSection = () => {
   return (
     <section className="w-full py-32 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <div className="animate-fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="animate-fade-in-up"
+        >
             <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Enterprise - ready integrations</h2>
-            <p className="text-xl font-medium text-black mb-20">Seamless connectivity with Lyzr</p>
-        </div>
+            <p className="text-2xl font-medium text-black mb-20">Seamless connectivity with Lyzr</p>
+        </motion.div>
 
         <div className="flex flex-col gap-6 items-center max-w-6xl mx-auto">
            {/* Row 1 */}

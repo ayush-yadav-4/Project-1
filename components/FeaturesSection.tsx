@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { Archive, Menu, ChevronRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 interface Card {
   id: number
@@ -156,7 +157,7 @@ export default function FeaturesSection() {
 
     setPosition((prev) => {
       const newPosition = prev + delta
-      return Math.max(0, Math.min(cards.length - 1, newPosition))
+      return newPosition
     })
   }
 
@@ -169,22 +170,29 @@ export default function FeaturesSection() {
   }, [viewMode])
 
   const handleTimelineClick = (index: number) => {
-    setPosition(index)
+    const rounds = Math.round((position - index) / cards.length)
+    setPosition(index + rounds * cards.length)
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY })
   }
 
-  const activeIndex = Math.round(position)
+  const activeIndex = ((Math.round(position) % cards.length) + cards.length) % cards.length
 
   return (
     <div className="bg-white w-full py-28">
       {/* Section Heading */}
-      <div className="text-center relative z-10 mb-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center relative z-10 mb-12"
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Why AgentMarketplace?</h2>
-        <p className="text-xl font-medium text-black">Your enterprise AI advantage</p>
-      </div>
+        <p className="text-2xl font-medium text-black">Your enterprise AI advantage</p>
+      </motion.div>
     <div
       ref={containerRef}
       className="relative min-h-screen w-full overflow-hidden bg-white"
@@ -213,9 +221,11 @@ export default function FeaturesSection() {
           {/* Cards Stack */}
           <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1500px" }}>
             <div className="relative h-[400px] w-[90%] lg:h-[600px] lg:w-[800px]" style={{ transformStyle: "preserve-3d" }}>
-              {[...cards].reverse().map((card, reverseIndex) => {
-                const index = cards.length - 1 - reverseIndex
+              {Array.from({ length: 15 }).map((_, i) => {
+                const index = Math.floor(position) + 7 - i
                 const distanceFromActive = index - position
+                const cardIndex = ((index % cards.length) + cards.length) % cards.length
+                const card = cards[cardIndex]
 
                 if (distanceFromActive < -1.5 || distanceFromActive > 5) {
                   return null
@@ -235,7 +245,7 @@ export default function FeaturesSection() {
 
                 return (
                   <div
-                    key={card.id}
+                    key={`${card.id}-${index}`}
                     className="absolute inset-0"
                     style={{
                       transform: `translateZ(${translateZ}px) translateY(${translateY}px) scale(${Math.max(0.7, scale)})`,
@@ -244,7 +254,7 @@ export default function FeaturesSection() {
                       transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
                       pointerEvents: Math.abs(distanceFromActive) < 0.5 ? "auto" : "none",
                     }}
-                    onClick={() => handleTimelineClick(index)}
+                    onClick={() => handleTimelineClick(cardIndex)}
                   >
                     <div className="h-full w-full overflow-hidden bg-white shadow-2xl">
                       <div className="relative h-[65%] overflow-hidden bg-neutral-200">

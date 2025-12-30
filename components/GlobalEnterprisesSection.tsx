@@ -2,6 +2,7 @@
 
 import { LayoutGrid, MessageSquare, Sparkles, BarChart3 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function GlobalEnterprisesSection() {
   const [activeTab, setActiveTab] = useState("work");
@@ -47,7 +48,13 @@ export default function GlobalEnterprisesSection() {
 
   return (
     <section className="w-full bg-white py-24 px-4 md:px-8 flex flex-col items-center">
-      <div className="text-center mb-16 max-w-4xl">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-16 max-w-4xl"
+      >
         <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">
           We've built our business by serving 
         </h2>
@@ -57,7 +64,7 @@ export default function GlobalEnterprisesSection() {
         <p className="text-xl text-gray-400 font-medium">
           Trust us, we've learned from the best.
         </p>
-      </div>
+      </motion.div>
 
       <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFB070] to-[#FF7020] rounded-[2.5rem] p-8 md:p-12 pb-0 shadow-xl overflow-hidden relative">
         {/* Texture Overlay */}

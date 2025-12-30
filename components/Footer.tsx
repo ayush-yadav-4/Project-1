@@ -77,12 +77,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Text */}
-      <div className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none select-none">
-        <span className="text-[11.5vw] font-medium text-gray-300/60 leading-none tracking-tighter translate-y-[25%]">
-          AgentMarketplace
-        </span>
-      </div>
+      
     </footer>
   );
 }
