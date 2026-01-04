@@ -348,7 +348,7 @@ export default function M1Page() {
             <div className="flex-grow flex flex-col gap-2.5 px-5 pb-4 relative z-10 -mt-6">
               {/* Content Section */}
               <div className="block flex-grow">
-                <h3 className="text-base font-semibold mb-1.5 p-0 truncate text-foreground">
+                <h3 className="text-base font-bold mb-1.5 p-0 truncate text-black">
                   {agent.name}
                 </h3>
                 <p className="text-sm text-muted-foreground line-clamp-3 leading-snug">
@@ -407,14 +407,14 @@ export default function M1Page() {
               placeholder="Search agents..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full bg-background"
+              className="pl-10 pr-4 py-2 w-full bg-white"
             />
           </div>
-          <Button variant="ghost" size="icon" className="shrink-0 bg-background">
+          <Button variant="ghost" size="icon" className="shrink-0 bg-white text-black border border-input">
             <RefreshIcon className="w-5 h-5" />
           </Button>
           <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-            <SelectTrigger className="w-[150px] bg-background">
+            <SelectTrigger className="w-[150px] bg-white text-black">
               <SelectValue placeholder="Select Category" />
             </SelectTrigger>
             <SelectContent>
@@ -425,7 +425,7 @@ export default function M1Page() {
             </SelectContent>
           </Select>
           <Select>
-            <SelectTrigger className="w-[150px] bg-background">
+            <SelectTrigger className="w-[150px] bg-white text-black">
               <SelectValue placeholder="Select Industry" />
             </SelectTrigger>
             <SelectContent>
@@ -436,7 +436,7 @@ export default function M1Page() {
             </SelectContent>
           </Select>
           <Select>
-            <SelectTrigger className="w-[150px] bg-background">
+            <SelectTrigger className="w-[150px] bg-white text-black">
               <SelectValue placeholder="Select Function" />
             </SelectTrigger>
             <SelectContent>
@@ -447,7 +447,7 @@ export default function M1Page() {
             </SelectContent>
           </Select>
           <Select>
-            <SelectTrigger className="w-[140px] bg-background">
+            <SelectTrigger className="w-[140px] bg-white text-black">
               <SelectValue placeholder="All Agents" />
             </SelectTrigger>
             <SelectContent>

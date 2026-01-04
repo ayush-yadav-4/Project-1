@@ -286,7 +286,7 @@ export default function DataConnectorsPage() {
               placeholder="Search data connectors..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 w-full bg-background"
+              className="pl-10 pr-4 py-2 w-full bg-white"
             />
           </div>
         </div>

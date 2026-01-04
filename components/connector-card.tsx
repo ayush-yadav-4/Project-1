@@ -53,7 +53,7 @@ export function ConnectorCard({
       <div className="flex-grow flex flex-col gap-2.5 px-5 pb-4 relative z-10 -mt-6">
         {/* Title and Add Button Row */}
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-base font-semibold mb-1.5 p-0 truncate text-foreground flex-1">
+          <h3 className="text-base font-bold mb-1.5 p-0 truncate text-black flex-1">
             {name}
           </h3>
           <Button
