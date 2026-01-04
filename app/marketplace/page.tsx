@@ -137,7 +137,7 @@ export default function MarketplacePage() {
             </div>
             <div className="space-y-3">
               {blueprints.map((blueprint) => (
-                <Card key={blueprint.id} className="p-3 bg-white hover:shadow-lg transition-all cursor-pointer border hover:border-primary/50">
+                <Card key={blueprint.id} className="p-3 bg-white hover:shadow-lg transition-all cursor-pointer border border-gray-200 hover:border-primary/50">
                   <div className="flex items-start gap-3">
                     <div className={`w-12 h-12 rounded-lg bg-linear-to-br ${blueprint.gradient} shrink-0`}></div>
                     <div className="flex-1 min-w-0">
@@ -165,7 +165,7 @@ export default function MarketplacePage() {
                 const IconComponent = agent.icon
                 return (
                   <Link key={agent.id} href={`/marketplace/${agent.id}`}>
-                    <Card className="p-3 bg-white hover:shadow-lg transition-all cursor-pointer h-20 flex flex-row items-center gap-3 border hover:border-primary/50">
+                    <Card className="p-3 bg-white hover:shadow-lg transition-all cursor-pointer h-20 flex flex-row items-center gap-3 border border-gray-200 hover:border-primary/50">
                       <div className={`w-10 h-10 rounded-lg ${agent.color} flex items-center justify-center shadow-md shrink-0`}>
                         <IconComponent className="w-5 h-5 text-white" />
                       </div>

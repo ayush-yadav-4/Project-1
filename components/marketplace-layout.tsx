@@ -99,7 +99,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
       {/* Fixed: Sidebar at z-30 with light theme background */}
       <motion.div
         className={cn(
-          "sidebar fixed left-0 top-0 z-30 h-full shrink-0 border-r bg-white",
+          "sidebar fixed left-0 top-0 z-30 h-full shrink-0 border-r border-gray-400 bg-white",
         )}
         initial={isCollapsed ? "closed" : "open"}
         animate={isCollapsed ? "closed" : "open"}
@@ -116,7 +116,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
           <motion.ul variants={staggerVariants} className="flex h-full flex-col">
             <div className="flex grow flex-col items-center">
               {/* Organization Header */}
-              <div className="flex h-[54px] w-full shrink-0 border-b p-2">
+              <div className="flex h-[54px] w-full shrink-0 border-b border-gray-400 p-2">
                 <div className="mt-[1.5px] flex w-full">
                   <DropdownMenu modal={false}>
                     <DropdownMenuTrigger className="w-full" asChild>
@@ -187,7 +187,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </Link>
 
-                      <Separator className="w-full" />
+                      <Separator className="w-full bg-gray-400" />
 
                       {/* Orchestrate Section */}
                       <div className="px-2 py-1">
@@ -275,7 +275,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </Link>
 
-                      <Separator className="w-full" />
+                      <Separator className="w-full bg-gray-400" />
 
                       {/* Knowledge Source Section */}
                       <div className="px-2 py-1">
@@ -333,7 +333,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </Link>
 
-                      <Separator className="w-full" />
+                      <Separator className="w-full bg-gray-400" />
 
                       {/* Governance Section */}
                       <div className="px-2 py-1">
@@ -407,7 +407,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </Link>
 
-                      <Separator className="w-full" />
+                      <Separator className="w-full bg-gray-400" />
 
                       {/* Connect Section */}
                       <div className="px-2 py-1">
@@ -465,7 +465,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </Link>
 
-                      <Separator className="w-full" />
+                      <Separator className="w-full bg-gray-400" />
 
                       {/* Secondary Navigation */}
                       <Link
