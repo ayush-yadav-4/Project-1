@@ -61,7 +61,7 @@ export default function HeroSection2() {
         {/* CTA */}
         <div className="relative z-10 mb-20 animate-fade-in-up delay-300">
           <Link 
-            href="#" 
+            href="/marketplace" 
             className="rounded-full bg-white border border-gray-200 px-8 py-3 text-base font-medium text-black hover:bg-gray-50 transition-all shadow-sm flex items-center gap-2 mx-auto hover:scale-105 active:scale-95 duration-300"
           >
             Explore Marketplace <ChevronDown className="h-4 w-4 -rotate-90" />
