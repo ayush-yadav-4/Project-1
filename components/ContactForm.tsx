@@ -42,7 +42,7 @@ export default function ContactForm() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-500 to-yellow-200 rounded-bl-full -mr-16 -mt-16 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-500 to-yellow-200 rounded-tr-full -ml-16 -mb-16 pointer-events-none" />
 
-          <form onSubmit={handleSubmit} className="space-y-8 relative z-10 ">
+          <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2 group">
                 <label htmlFor="name" className="text-sm font-semibold text-gray-700 ml-1 group-focus-within:text-orange-600 transition-colors">Full Name</label>
