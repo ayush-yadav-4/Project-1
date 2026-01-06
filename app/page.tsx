@@ -11,8 +11,10 @@ import Cards from "@/components/Cards";
 import Cards2 from "@/components/Cards2";
 import IntegrationSection from "@/components/IntegrationSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import EnterpriseScaleSection from "@/components/EnterpriseScaleSection";
 import SignupSection from "@/components/SignupSection";
 import ExtendedReviews from "@/components/ExtendedReviews";
+import AnimatedPoints from "@/components/AnimatedPoints";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -30,7 +32,9 @@ export default function Home() {
         <Cards2 />
         <IntegrationSection />
         <FeaturesSection />
+        <EnterpriseScaleSection />
         {/* <SignupSection /> */}
+        <AnimatedPoints />
         <ExtendedReviews />
         <Footer />
       </main>

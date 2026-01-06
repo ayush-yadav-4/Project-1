@@ -8,69 +8,85 @@ const reviews = [
 		name: "Alexander Akers",
 		role: "Senior iOS Engineer",
 		company: "Apple",
+		image: "https://i.pravatar.cc/150?u=AlexanderAkers",
 		text: "I get worried when I use a computer without @paste_app. What if there's something important on the clipboard? It's like how you can \"hold\" a piece in Tetris but you have to remember what it is.",
 	},
 	{
 		name: "João Cunha",
 		role: "Senior Product Manager",
 		company: "Nubank",
+		image: "https://i.pravatar.cc/150?u=JoaoCunha",
 		text: "Few things have had as much impact on my Mac workflow as @paste_app. It may look irrelevant, but think of how many times you copy/paste things over the course of a day — Paste makes this process a gazillion times better.",
 	},
 	{
 		name: "Jonathan Z. White",
 		role: "Designer & Developer",
 		company: "Airbnb",
+		image: "https://i.pravatar.cc/150?u=JonathanZWhite",
 		text: "I've been using an app called @paste_app and it's almost hilarious how much of a workflow improvement it is.",
 	},
 	{
 		name: "Chris Messina",
 		role: "Hashtag Inventor",
 		company: "",
+		image: "https://i.pravatar.cc/150?u=ChrisMessina",
 		text: "This is a must-have Mac app for me. I use it dozens if not hundreds of times a day. So useful!",
 	},
 	{
 		name: "Kristen Wright",
 		role: "Marketing",
 		company: "Day One Journal",
+		image: "https://i.pravatar.cc/150?u=KristenWright",
 		text: "Finally bought @paste_app and I'm really digging it. Great for code snippets, hex colors & links you frequently use.",
 	},
 	{
 		name: "Diego Freniche Brito",
 		role: "Developer Advocate",
 		company: "Realm/MongoDB",
+		image: "https://i.pravatar.cc/150?u=DiegoFrenicheBrito",
 		text: "Using a clipboard manager has become second nature for me (and a necessity as developer). Have tried a bunch: @paste_app is the best by far. Instabuy. If you program and aren't using one of these, you're wasting time... Your time.",
 	},
 	{
 		name: "Sammy Schuckert",
 		role: "UX designer",
 		company: "IBM",
+		image: "https://i.pravatar.cc/150?u=SammySchuckert",
 		text: "I'm a heavy @paste_app user for 3 years. Paste is core to my everyday workflows. Even while writing this tweet I'm using it. It provides me with superpowers and makes me crazy efficient. Every time someone sees me using it they go like, \"Oh hey, what was that? I want that!\"",
 	},
 	{
 		name: "Matthias Feit",
 		role: "Musician, UX Designer, Dad",
 		company: "",
+		image: "https://i.pravatar.cc/150?u=MatthiasFeit",
 		text: "Thanks to @paste_app, I was able to cut the time I would have spent on copying and pasting today by about 75%.",
 	},
 	{
 		name: "Simon Sturmer",
 		role: "Software Engineer",
 		company: "Google",
+		image: "https://i.pravatar.cc/150?u=SimonSturmer",
 		text: "@paste_app is my new favorite Mac App! I don't know how I went so long without it!",
 	},
 ];
 
 const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
-	<div className="bg-[#FFF5E6] p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-		<div className="mb-4">
-			<h3 className="font-bold text-gray-900 text-lg">{review.name}</h3>
-			<p className="text-xs text-gray-500 uppercase tracking-wide font-medium mt-1">
-				{review.role}
-				{review.company && <br />}
-				{review.company}
-			</p>
+	<div className="bg-gradient-to-br from-white/40 to-white/10 backdrop-filter backdrop-blur-lg border border-white/30 p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
+		<div className="flex items-start gap-4 mb-4">
+			<img 
+				src={review.image} 
+				alt={review.name} 
+				className="w-12 h-12 rounded-full object-cover shrink-0 bg-white/20"
+			/>
+			<div>
+				<h3 className="font-bold text-gray-900 text-lg">{review.name}</h3>
+				<p className="text-xs text-gray-600 uppercase tracking-wide font-medium mt-1">
+					{review.role}
+					{review.company && <br />}
+					{review.company}
+				</p>
+			</div>
 		</div>
-		<p className="text-gray-800 text-base leading-relaxed">
+		<p className="text-gray-800 text-base leading-relaxed font-medium">
 			{review.text}
 		</p>
 	</div>
@@ -143,7 +159,10 @@ export default function ExtendedReviews() {
 					<div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white via-white/200 to-transparent z-20 pointer-events-none"></div>
 					
 					{/* Bottom Gradient Blur */}
-					<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-orange-400 via-orange-500/200 to-transparent z-20 pointer-events-none"></div>
+					<div 
+						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-[#FFD1A6] via-[#FFF0E0]/50 to-transparent backdrop-blur-md"
+						style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
+					></div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[1000px] overflow-hidden mask-gradient">
 					{/* Column 1 - Scroll Down */}

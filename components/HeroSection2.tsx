@@ -37,7 +37,7 @@ export default function HeroSection2() {
         <div className="relative z-10 animate-fade-in-up delay-100">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
           <h1 
-            className="max-w-5xl text-5xl lg:text-7xl font-normal tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
+            className="max-w-5xl text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight font-[family-name:var(--font-inter)] text-black"
           >
           Bring 
           <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">
@@ -62,9 +62,10 @@ export default function HeroSection2() {
         <div className="relative z-10 mb-20 animate-fade-in-up delay-300">
           <Link 
             href="/marketplace" 
-            className="rounded-full bg-white border border-gray-200 px-8 py-3 text-base font-medium text-black hover:bg-gray-50 transition-all shadow-sm flex items-center gap-2 mx-auto hover:scale-105 active:scale-95 duration-300"
+            className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-white border-2 border-white px-12 py-3 text-lg font-semibold text-black shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(255,255,255,1)] hover:-translate-y-1 active:scale-95"
           >
-            Explore Marketplace <ChevronDown className="h-4 w-4 -rotate-90" />
+            Explore Marketplace 
+            <ChevronDown className="h-5 w-5 -rotate-90 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>

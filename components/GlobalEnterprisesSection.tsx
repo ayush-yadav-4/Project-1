@@ -48,25 +48,8 @@ export default function GlobalEnterprisesSection() {
 
   return (
     <section className="w-full bg-white py-24 px-4 md:px-8 flex flex-col items-center">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-center mb-16 max-w-4xl"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">
-          We've built our business by serving 
-        </h2>
-         <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">
-          global enterprises
-        </h2>
-        <p className="text-xl text-gray-400 font-medium">
-          Trust us, we've learned from the best.
-        </p>
-      </motion.div>
-
-      <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFB070] to-[#FF7020] rounded-[2.5rem] p-8 md:p-12 pb-0 shadow-xl overflow-hidden relative">
+      
+      <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFB070] to-[#FF7020] rounded-[2.5rem] p-8 md:p-12 pb-0 overflow-hidden relative">
         {/* Texture Overlay */}
         <div className="absolute inset-0 opacity-20 pointer-events-none" 
              style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 11px)' }}>
@@ -96,13 +79,16 @@ export default function GlobalEnterprisesSection() {
         </div>
 
         {/* Content Area (White Card) */}
-        <div className="w-full bg-white rounded-t-[2rem] h-[400px] md:h-[500px] shadow-inner relative overflow-hidden mx-auto">
+        <div className="w-[102%] -ml-[1%] bg-white rounded-t-[2rem] rounded-b-[2rem] h-[300px] md:h-[400px] shadow-inner relative overflow-hidden text-center border-[12px] border-b-0 border-[#FFE4C4] -mb-12">
             {/* Placeholder for content/image inside the white area */}
             <div className="absolute inset-0 flex items-center justify-center text-gray-200">
                 {/* You can add an image or specific content for each tab here */}
                 {/* For now, leaving it blank as per the screenshot's white area */}
             </div>
         </div>
+
+        {/* Bottom White Cover to hide orange border/padding at bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-white z-0 hidden" />
       </div>
     </section>
   );

@@ -24,9 +24,9 @@ export default function Navbar() {
             <div className="flex items-center gap-1 cursor-pointer hover:text-black">
               Products <ChevronDown className="h-4 w-4" />
             </div>
-            <Link href="#" className="hover:text-black transition-colors">Company</Link>
-            <Link href="#" className="hover:text-black transition-colors">Pricing</Link>
-            <Link href="#" className="hover:text-black transition-colors">Resources</Link>
+          
+            <Link href="/about" className="hover:text-black transition-colors">About Us</Link>
+            <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
           </div>
           
           <div className="hidden lg:block">
