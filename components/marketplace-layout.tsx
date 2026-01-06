@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
@@ -41,7 +41,7 @@ import {
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-const sidebarVariants = {
+const sidebarVariants: Variants = {
   open: {
     width: "15rem",
   },
@@ -50,12 +50,12 @@ const sidebarVariants = {
   },
 }
 
-const contentVariants = {
+const contentVariants: Variants = {
   open: { display: "block", opacity: 1 },
   closed: { display: "block", opacity: 1 },
 }
 
-const variants = {
+const variants: Variants = {
   open: {
     x: 0,
     opacity: 1,
@@ -79,7 +79,7 @@ const transitionProps = {
   staggerChildren: 0.1,
 } as const
 
-const staggerVariants = {
+const staggerVariants: Variants = {
   open: {
     transition: { staggerChildren: 0.03, delayChildren: 0.02 },
   },
