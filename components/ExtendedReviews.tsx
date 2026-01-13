@@ -118,9 +118,9 @@ export default function ExtendedReviews() {
 			<div
 				className="absolute inset-0 z-0"
 				style={{
-					backgroundImage: "url('/Bg-2.png')",
+					backgroundImage: "url('/Bg-3.png')",
 					backgroundSize: "cover",
-					backgroundPosition: "center 99%",
+					backgroundPosition: "center 75%",
 					backgroundRepeat: "no-repeat",
 				}}
 			/>

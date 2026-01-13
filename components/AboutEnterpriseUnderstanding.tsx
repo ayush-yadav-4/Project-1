@@ -48,7 +48,7 @@ const cardVariants: Variants = {
 
 export default function AboutEnterpriseUnderstanding() {
   return (
-    <section className="bg-[#F2F7FA] py-16 px-4 md:px-8">
+    <section className="bg-[#FAF9F6] py-16 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
@@ -63,9 +63,9 @@ export default function AboutEnterpriseUnderstanding() {
               </p>
             </div>
             
-            <div className="relative pt-6 pl-0 border-t border-dotted border-gray-400 rounded-tl-3xl mt-auto">
-               <button className="bg-black text-white px-5 py-3 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors flex items-center gap-2">
-                  Understand More <span className="text-orange-500 text-lg leading-none">•</span>
+            <div className="relative pt-6 pl-0 mt-auto">
+               <button className="bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-all flex items-center gap-2 rounded-full shadow-lg">
+                  Understand More <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                </button>
             </div>
           </div>

@@ -2,96 +2,112 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
-import LoadingText from "./LoadingText";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "How do I list my AI Agent on the marketplace?",
-    answer: "Listing your agent is simple. Create an account, navigate to the 'Sell' dashboard, and follow the step-by-step submission process. Our team reviews all submissions within 24-48 hours to ensure quality and safety standards."
+    question: "What is an AI agent marketplace?",
+    answer: "An AI agent marketplace is a platform where you can discover, buy, and sell specialized AI agents designed to automate various business tasks and workflows."
   },
   {
-    question: "What are the fees for selling agents?",
-    answer: "We charge a flat 15% commission on all sales. There are no listing fees or monthly subscriptions for sellers. You only pay when you make a sale."
+    question: "How do I get started with AI agents?",
+    answer: "Simply browse our marketplace, select an agent that fits your needs, and follow the integration guide. Our agents come with detailed documentation and support."
   },
   {
-    question: "Do you offer enterprise support agreements?",
-    answer: "Yes, we offer tailored enterprise agreements that include dedicated support, SLA guarantees, and custom integration services. Contact our sales team for more details."
+    question: "What industries do you serve?",
+    answer: "We serve a wide range of industries including Finance, Healthcare, Marketing, Customer Support, Legal, and IT, providing tailored AI solutions for each sector."
   },
   {
-    question: "How are the AI agents vetted for safety?",
-    answer: "Every agent goes through our rigorous 'Hallucination Manager' and safety protocols. We test for security vulnerabilities, bias, and performance reliability before any agent goes live."
+    question: "Is there a free trial available?",
+    answer: "Yes, many of our agents offer a trial period or a free tier so you can test their capabilities before committing to a paid plan."
   },
   {
-    question: "Can I get a refund if an agent doesn't work?",
-    answer: "We offer a 7-day money-back guarantee if an agent fails to perform as described. Our support team will verify the issue and process your refund promptly."
+    question: "How secure is my data?",
+    answer: "Security is our top priority. We use enterprise-grade encryption and follow strict data privacy protocols to ensure your information remains safe and confidential."
+  },
+  {
+    question: "Can I integrate AI agents with my existing tools?",
+    answer: "Absolutely. Our agents are designed to integrate seamlessly with popular business tools like Slack, Salesforce, HubSpot, and Notion via APIs and native connectors."
   }
 ];
 
 export default function FAQSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full px-4 md:px-8 lg:px-16 py-24 bg-white relative overflow-hidden">
-      {/* Subtle Background Grid */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02] pointer-events-none" />
+    <section className="w-full px-4 md:px-8 lg:px-16 py-24 bg-[#F9F5F1] relative overflow-hidden">
+      
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block mb-6"
+          >
+            <span className="py-2 px-6 rounded-full bg-orange-100 text-orange-500 text-sm font-medium tracking-wide">
+              FAQ
+            </span>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-6 tracking-tight"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-500 text-lg md:text-xl max-w-xl mx-auto"
+          >
+            Find answers to common questions about our AI agent marketplace and services.
+          </motion.p>
+        </div>
 
-      <div className="max-w-7xl mx-auto 
-        bg-white rounded-[2.5rem] shadow-xl
-        border border-orange-600 p-8 md:p-20 relative overflow-hidden">
-        {/* Decorative Gradient Blobs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-full blur-[120px] -mr-40 -mt-40 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-orange-500/10 to-yellow-500/10 rounded-full blur-[120px] -ml-40 -mb-40 pointer-events-none" />
-        
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <LoadingText 
-              text="Frequently Asked Questions" 
-              className="text-3xl md:text-5xl font-bold text-gray-900 justify-center mb-6"
-            />
-            <p className="text-gray-500 text-lg">Everything you need to know about the marketplace.</p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`border rounded-2xl overflow-hidden transition-all duration-300 bg-white ${
-                  activeIndex === index ? "border-orange-200 shadow-[0_10px_30px_-10px_rgba(255,165,0,0.2)]" : "border-gray-100 hover:border-orange-200 hover:shadow-md"
-                }`}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="rounded-[2rem] overflow-hidden bg-white shadow-sm hover:shadow-lg hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <button
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                className="w-full px-8 py-5 flex items-center justify-between text-left focus:outline-none group"
               >
-                <button
-                  onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
-                >
-                  <span className={`text-lg font-semibold ${activeIndex === index ? "text-orange-600" : "text-gray-900"}`}>
-                    {faq.question}
-                  </span>
-                  <span className={`ml-4 p-2 rounded-full transition-colors ${activeIndex === index ? "bg-orange-100 text-orange-600" : "bg-gray-100 text-gray-500"}`}>
-                    {activeIndex === index ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                  </span>
-                </button>
-                <AnimatePresence>
-                  {activeIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                      <div className="px-8 pb-8 text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
+                <span className="text-lg font-medium text-[#1a1a1a]">
+                  {faq.question}
+                </span>
+                <span className={`transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""}`}>
+                  <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-gray-600" />
+                </span>
+              </button>
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className="px-8 pb-8 text-gray-500 leading-relaxed border-t border-gray-50 pt-4">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

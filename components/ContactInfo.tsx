@@ -6,7 +6,7 @@ import LoadingText from "./LoadingText";
 
 export default function ContactInfo() {
   return (
-    <section className="w-full px-4 md:px-8 lg:px-16 py-24 bg-white relative overflow-hidden">
+    <section className="w-full px-4 md:px-8 lg:px-16 py-24 bg-[#F9F5F1] relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">

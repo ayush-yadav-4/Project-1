@@ -3,16 +3,37 @@
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { scrollY } = useScroll();
+  
+  // Use spring for smoother animation
+  const smoothScrollY = useSpring(scrollY, {
+    stiffness: 50,
+    damping: 20,
+    mass: 0.5
+  });
+
+  // Animate width from 5xl (64rem) to 2xl/3xl based on scroll
+  // Slower transition (range 0-250 instead of 0-100)
+  const width = useTransform(smoothScrollY, [0, 250], ["64rem", "54rem"]);
+  
+  // Decrease padding when navbar compresses (range 0-250)
+  const paddingX = useTransform(smoothScrollY, [0, 250], ["1rem", "4rem"]);
 
   return (
     <>
-      <nav className="fixed top-6 left-0 right-0 z-50 max-w-5xl mx-4 lg:mx-auto rounded-full bg-gray-50/80 backdrop-blur-md border border-white shadow-sm">
-        <div className="flex h-16 items-center justify-between px-6 lg:px-8">
-          <div className="font-bold text-xl text-orange-500">
+      <motion.nav 
+        style={{ maxWidth: width }}
+        className="fixed top-6 left-0 right-0 z-50 mx-4 lg:mx-auto rounded-full bg-gray-50/80 backdrop-blur-md border border-white shadow-sm"
+      >
+        <motion.div 
+          style={{ paddingLeft: paddingX, paddingRight: paddingX }}
+          className="flex h-16 items-center justify-between px-4 lg:px-6"
+        >
+          <div className="font-bold text-xl text-orange-500 whitespace-nowrap">
             AgentMarketplace
           </div>
           
@@ -29,7 +50,7 @@ export default function Navbar() {
             <Link href="/contact" className="hover:text-black transition-colors">Contact Us</Link>
           </div>
           
-          <div className="hidden lg:block">
+          <div className="hidden lg:block whitespace-nowrap">
             <Link 
               href="#" 
               className="rounded-full bg-white border border-gray-200 px-6 py-2.5 text-sm font-medium text-black hover:bg-gray-50 transition-colors shadow-sm"
@@ -45,8 +66,8 @@ export default function Navbar() {
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-        </div>
-      </nav>
+        </motion.div>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

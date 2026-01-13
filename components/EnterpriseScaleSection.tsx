@@ -102,8 +102,8 @@ export default function EnterpriseScaleSection() {
       </div>
 
       <div className="relative z-10 mt-16">
-        <button className="bg-black text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-transform hover:scale-105 flex items-center gap-2 rounded-sm shadow-lg">
-          More Customer Stories <span className="text-orange-500 text-lg leading-none">•</span>
+        <button className="bg-black text-white px-8 py-3 text-sm font-medium hover:bg-gray-800 transition-all hover:scale-105 flex items-center gap-2 rounded-full shadow-lg">
+          More Customer Stories <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
         </button>
       </div>
 

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ContactHero from "@/components/ContactHero";
 import ContactForm from "@/components/ContactForm";
 import ContactInfo from "@/components/ContactInfo";
+import SocialPresence from "@/components/SocialPresence";
 import FAQSection from "@/components/FAQSection";
 
 export default function ContactPage() {
@@ -14,8 +15,9 @@ export default function ContactPage() {
       
       <main className="pt-24">
         <ContactHero />
-        <ContactForm />
+        {/* <ContactForm /> */}
         <ContactInfo />
+        <SocialPresence />
         <FAQSection />
       </main>
 
