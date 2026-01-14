@@ -28,13 +28,14 @@ export default function Home() {
         <SubHeroSection />
         {/* <SecuritySection /> */}
         <GlobalEnterprisesSection />
+         <AnimatedIconsSection />
         {/* <EnterpriseAdvantage /> */}
         {/* <Cards /> */}
         <Cards2 />
         <IntegrationSection />
         <FeaturesSection />
        
-        <AnimatedIconsSection />
+       
         {/* <SignupSection /> */}
         <AnimatedPoints />
         <ExtendedReviews />

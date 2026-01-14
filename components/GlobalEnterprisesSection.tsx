@@ -2,7 +2,7 @@
 
 import { LayoutGrid, MessageSquare, Sparkles, BarChart3 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function GlobalEnterprisesSection() {
   const [activeTab, setActiveTab] = useState("work");
@@ -12,25 +12,29 @@ export default function GlobalEnterprisesSection() {
       id: "work",
       label: "AI for Work",
       icon: LayoutGrid,
-      description: "Connect to your business systems to automate and orchestrate AI agents with precision."
+      description: "Connect to your business systems to automate and orchestrate AI agents with precision.",
+      image: "/cards-1.png"
     },
     {
       id: "service",
       label: "AI for Service",
       icon: MessageSquare,
-      description: "Reimagine quality service with AI agents who respond clearly in real time"
+      description: "Reimagine quality service with AI agents who respond clearly in real time",
+      image: "/cards-2.png"
     },
     {
       id: "process",
       label: "AI for Process",
       icon: Sparkles,
-      description: "Streamline business operations with autonomous AI agents that orchestrate complex workflows"
+      description: "Streamline business operations with autonomous AI agents that orchestrate complex workflows",
+      image: "/Herosection.png"
     },
     {
       id: "security",
       label: "AI Security + Governance",
       icon: BarChart3,
-      description: "Enterprise guardrails to enforce policies, meet regulatory standards AI behavior at scale"
+      description: "Enterprise guardrails to enforce policies, meet regulatory standards AI behavior at scale",
+      image: "/Herosection-3.png"
     }
   ];
 
@@ -49,7 +53,7 @@ export default function GlobalEnterprisesSection() {
   return (
     <section className="w-full bg-white py-24 px-4 md:px-8 flex flex-col items-center">
       
-      <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFB070] to-[#FF7020] rounded-[2.5rem] p-8 md:p-12 pb-0 overflow-hidden relative">
+      <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFD6C9] to-[#FF6FA5] rounded-[2.5rem] p-8 md:p-12 pb-0 overflow-hidden relative">
         {/* Texture Overlay */}
         <div className="absolute inset-0 opacity-20 pointer-events-none" 
              style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 11px)' }}>
@@ -79,12 +83,23 @@ export default function GlobalEnterprisesSection() {
         </div>
 
         {/* Content Area (White Card) */}
-        <div className="w-[102%] -ml-[1%] bg-white rounded-t-[2rem] rounded-b-[2rem] h-[300px] md:h-[400px] shadow-inner relative overflow-hidden text-center border-[12px] border-b-0 border-[#FFE4C4] -mb-12">
-            {/* Placeholder for content/image inside the white area */}
-            <div className="absolute inset-0 flex items-center justify-center text-gray-200">
-                {/* You can add an image or specific content for each tab here */}
-                {/* For now, leaving it blank as per the screenshot's white area */}
-            </div>
+        <div className="w-[102%] -ml-[1%] bg-white rounded-t-[2rem] rounded-b-[2rem] h-[300px] md:h-[400px] shadow-inner relative overflow-hidden text-center border-[12px] border-b-0 border-[#FFF0F5] -mb-12">
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full"
+                >
+                     <img 
+                        src={tabs.find(t => t.id === activeTab)?.image} 
+                        alt={tabs.find(t => t.id === activeTab)?.label}
+                        className="w-full h-full object-cover"
+                     />
+                </motion.div>
+            </AnimatePresence>
         </div>
 
         {/* Bottom White Cover to hide orange border/padding at bottom */}

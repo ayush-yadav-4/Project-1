@@ -47,7 +47,7 @@ export default function AnimatedIconsSection() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Why AgentMarketplace?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Why AgentMarketplace?</h2>
           <p className="text-2xl font-medium text-black">Your enterprise AI advantage</p>
         </div>
 
@@ -132,142 +132,137 @@ export default function AnimatedIconsSection() {
           </div>
 
           {/* Card 2: Seamless Integrations (Orbit Animation) */}
-          <div className="bg-gray-50 rounded-3xl border border-gray-100 flex flex-col justify-between h-[600px] overflow-hidden relative group">
+          <div className="bg-white rounded-3xl border border-gray-100 flex flex-col justify-between h-[600px] overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow">
              
              {/* Animation Container */}
-             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none pb-[60px]">
+             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pb-[60px]">
                 
-                {/* Diagonal Stripes Background Effect */}
-                <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(0,0,0,0.01)_10px,rgba(0,0,0,0.01)_11px)]"></div>
+                {/* --- Concentric Circles Background --- */}
+                
+                {/* Outer Circle (Lightest) */}
+                <div className="absolute w-[520px] h-[520px] rounded-full bg-gradient-to-b from-gray-50 to-white border border-gray-100/50"></div>
+                
+                {/* Middle Circle (Medium) */}
+                <div className="absolute w-[360px] h-[360px] rounded-full bg-gradient-to-b from-gray-100/50 to-transparent border border-gray-200/50"></div>
+                
+                {/* Inner Circle (Darker Gray Effect) */}
+                <div className="absolute w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/80 via-gray-100/50 to-transparent border border-gray-200 shadow-[inset_0_2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm"></div>
 
-                {/* Central Logo */}
-                <div className="relative z-20 w-20 h-20 bg-pink-400 rounded-full flex items-center justify-center text-white shadow-xl shadow-pink-200">
-                   <Zap size={40} fill="currentColor" />
+
+                {/* Central Icon (Blue) */}
+                <div className="relative z-20 w-16 h-16 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-xl shadow-blue-200 border-4 border-white">
+                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-8 h-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                   </svg>
                 </div>
 
-                {/* Semicircles Tracks & Icons */}
+                {/* --- Orbiting Icons --- */}
                 <div className="absolute inset-0 flex items-center justify-center">
                    
-                   {/* Track 1 (Inner) - Clockwise */}
-                   <div className="absolute w-[240px] h-[240px] rounded-full border-2 border-dashed border-gray-200 border-b-transparent rotate-45"></div>
+                   {/* Ring 1 (Inner) - Icons */}
                    <motion.div 
-                      className="absolute w-[240px] h-[240px] rounded-full"
+                      className="absolute w-[200px] h-[200px] rounded-full"
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                    >
-                      {/* Icon 1 - Top */}
+                      {/* Icon 1: Figma */}
                       <motion.div 
-                        className="absolute top-0 left-1/2 -translate-x-1/2 -mt-5 bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                        className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100"
                         animate={{ rotate: -360 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                       >
-                         <Slack size={24} color="#4A154B" />
+                         <div className="w-6 h-6 flex items-center justify-center">
+                            {/* Figma Colorful Icon Approximation */}
+                            <div className="grid grid-cols-2 gap-0.5 w-4 h-6">
+                                <div className="bg-[#F24E1E] rounded-l-full"></div>
+                                <div className="bg-[#FF7262] rounded-r-full"></div>
+                                <div className="bg-[#A259FF] rounded-l-full"></div>
+                                <div className="bg-[#1ABCFE] rounded-full"></div>
+                                <div className="bg-[#0ACF83] rounded-tl-full rounded-bl-full rounded-br-full"></div>
+                            </div>
+                         </div>
                       </motion.div>
-                      {/* Icon 2 - Bottom Right */}
+                      
+                      {/* Icon 2: Sparkle/Star (Linear) */}
                       <motion.div 
-                        className="absolute bottom-[15%] right-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                        className="absolute bottom-[15%] left-[10%] bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100"
                         animate={{ rotate: -360 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                       >
-                         <Github size={24} color="#181717" />
-                      </motion.div>
-                      {/* Icon 3 - Bottom Left */}
-                      <motion.div 
-                        className="absolute bottom-[15%] left-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                      >
-                          <Monitor size={24} color="#2563EB" />
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-[#5E6AD2]">
+                             <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" />
+                          </svg>
                       </motion.div>
                    </motion.div>
 
-                   {/* Track 2 (Middle) - Counter-Clockwise */}
-                   <div className="absolute w-[380px] h-[380px] rounded-full border-2 border-dashed border-gray-200 border-t-transparent -rotate-45"></div>
+                   {/* Ring 2 (Middle) - Icons */}
                    <motion.div 
-                      className="absolute w-[380px] h-[380px] rounded-full"
+                      className="absolute w-[360px] h-[360px] rounded-full"
                       animate={{ rotate: -360 }}
-                      transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                    >
-                       {/* Icon 1 - Right */}
+                       {/* Icon 1: GitHub */}
                        <motion.div 
-                          className="absolute top-1/2 right-0 -mr-5 -translate-y-1/2 bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                          className="absolute top-[20%] right-[10%] bg-white p-3 rounded-2xl shadow-sm border border-gray-100"
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                        >
-                          <Trello size={24} color="#0079BF" />
+                          <div className="w-7 h-7 bg-[#5865F2] rounded-lg flex items-center justify-center text-white">
+                             {/* Discord-ish */}
+                             <MessageSquare size={16} fill="currentColor" />
+                          </div>
                        </motion.div>
-                       {/* Icon 2 - Left */}
+                       
+                       {/* Icon 2: Notion/Triangle */}
                        <motion.div 
-                          className="absolute top-1/2 left-0 -ml-5 -translate-y-1/2 bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                          className="absolute bottom-[10%] left-[30%] bg-transparent p-0" // Using transparent container for the "floating" blur effect if needed
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                        >
-                          <Database size={24} color="#00C7B7" />
+                          <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
+                             <div className="w-7 h-7 bg-[#111] rounded-lg flex items-center justify-center text-white">
+                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28.047-.653 0-.466-.327-.793-1.12-.793H4.832c-.653 0-1.166.42-1.166 1.073v15.603c0 .653.466 1.12 1.12 1.12.466 0 .886-.233 1.12-.606l12.515-7.184V7.61c0-.466-.28-.793-.746-.793-.42 0-.793.233-1.073.606L5.392 14.84V5.327c0-.56-.187-.84-.933-1.12z"/></svg> 
+                             </div>
+                          </div>
                        </motion.div>
-                       {/* Icon 3 - Top */}
+                       
+                       {/* Icon 3: Linear/Triangle */}
                        <motion.div 
-                          className="absolute top-0 left-1/2 -mt-5 -translate-x-1/2 bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                          className="absolute -top-4 left-1/2 -ml-4 bg-white p-3 rounded-2xl shadow-sm border border-gray-100"
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                        >
-                          <LayoutGrid size={24} color="#FF9900" />
+                          <div className="w-7 h-7 bg-[#5E6AD2] rounded-full flex items-center justify-center text-white">
+                              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M12 2L2 22h20L12 2zm0 4l6 14H6l6-14z"/></svg>
+                          </div>
                        </motion.div>
-                       {/* Icon 4 - Bottom */}
-                       <motion.div 
-                          className="absolute bottom-0 left-1/2 -mb-5 -translate-x-1/2 bg-white p-3 rounded-full shadow-sm border border-gray-100"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                       >
-                          <Cloud size={24} color="#00A1E0" />
-                       </motion.div>
+
                    </motion.div>
 
-                   {/* Track 3 (Outer) - Clockwise */}
-                   <div className="absolute w-[520px] h-[520px] rounded-full border-2 border-dashed border-gray-200 border-b-transparent rotate-12"></div>
+                   {/* Ring 3 (Outer) - Icons */}
                    <motion.div 
                       className="absolute w-[520px] h-[520px] rounded-full"
                       animate={{ rotate: 360 }}
-                      transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                      transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
                    >
-                       {/* Icon 1 */}
+                       {/* Icon: Vercel/Triangle Black */}
                        <motion.div 
-                          className="absolute bottom-[15%] left-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                          className="absolute scale-90 top-[30%] -left-4 bg-white p-3 rounded-2xl shadow-sm border border-gray-100"
                           animate={{ rotate: -360 }}
-                          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
                        >
-                          <Mail size={24} color="#EA4335" />
+                           <div className="w-8 h-8 flex items-center justify-center">
+                              <svg viewBox="0 0 24 24" fill="black" className="w-6 h-6"><path d="M12 1L24 22H0L12 1z"/></svg>
+                           </div>
                        </motion.div>
-                       {/* Icon 2 */}
+
+                        {/* Icon: Stripe/Blue S */}
                        <motion.div 
-                          className="absolute top-[15%] right-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
+                          className="absolute scale-90 top-[30%] -right-4 bg-white p-3 rounded-2xl shadow-sm border border-gray-100"
                           animate={{ rotate: -360 }}
-                          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
                        >
-                          <FileText size={24} color="#FF9900" />
-                       </motion.div>
-                       {/* Icon 3 */}
-                       <motion.div 
-                          className="absolute top-[15%] left-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
-                          animate={{ rotate: -360 }}
-                          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                       >
-                          <Calendar size={24} color="#4285F4" />
-                       </motion.div>
-                        {/* Icon 4 */}
-                       <motion.div 
-                          className="absolute bottom-[15%] right-[15%] bg-white p-3 rounded-full shadow-sm border border-gray-100"
-                          animate={{ rotate: -360 }}
-                          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                       >
-                          <ShoppingBag size={24} color="#95BF47" />
-                       </motion.div>
-                        {/* Icon 5 */}
-                       <motion.div 
-                          className="absolute top-0 left-1/2 -mt-5 -translate-x-1/2 bg-white p-3 rounded-full shadow-sm border border-gray-100"
-                          animate={{ rotate: -360 }}
-                          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                       >
-                          <Linkedin size={24} color="#0A66C2" />
+                           <div className="w-8 h-8 bg-[#635BFF] rounded-lg flex items-center justify-center text-white font-bold text-lg">S</div>
                        </motion.div>
                    </motion.div>
 

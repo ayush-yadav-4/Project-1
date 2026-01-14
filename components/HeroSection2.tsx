@@ -47,7 +47,7 @@ export default function HeroSection2() {
           scale={1}
           rotation={0}
           speed={1}
-          colors={["#FFFFFF", "#F5F5DC", "#FFDAB9", "#FFC0CB", "#FFB6C1", "#FFF0F5"]}
+          colors={["#F472B6", "#FFB6C1", "#FFFFFF", "#FFDAB9", "#FEF9C3", "#FFF0F5"]}
         />
         
         {/* White Overlay for Tab Effect */}

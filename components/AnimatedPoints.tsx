@@ -129,9 +129,9 @@ export default function AnimatedPoints() {
              {/* Main Heading */}
              <div className="relative z-10 w-full max-w-7xl text-center">
                 <motion.h2 
-                    className="text-3xl md:text-5xl font-serif text-[#4A4A4A] leading-tight whitespace-nowrap"
+                    className="text-3xl md:text-5xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 leading-tight whitespace-nowrap"
                 >
-                Building agents that take action <span className="italic font-bold font-serif">is hard</span>
+                Building agents that take action <span className="italic font-bold font-serif text-[#4A4A4A]">is hard</span>
                 </motion.h2>
              </div>
 
@@ -187,7 +187,7 @@ export default function AnimatedPoints() {
 
              {/* Content */}
              <div className="relative z-10 text-center w-full px-4">
-                 <motion.h2 className="text-2xl md:text-4xl font-serif text-[#4A4A4A] leading-tight whitespace-nowrap overflow-visible">
+                 <motion.h2 className="text-2xl md:text-4xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 leading-tight whitespace-nowrap overflow-visible">
                     Composio erases that drag in <span className="font-bold text-black">one call</span>
                  </motion.h2>
              </div>

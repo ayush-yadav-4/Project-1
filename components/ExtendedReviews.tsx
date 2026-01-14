@@ -118,7 +118,7 @@ export default function ExtendedReviews() {
 			<div
 				className="absolute inset-0 z-0"
 				style={{
-					backgroundImage: "url('/Bg-3.png')",
+					backgroundImage: "url('/Bg-4.png')",
 					backgroundSize: "cover",
 					backgroundPosition: "center 75%",
 					backgroundRepeat: "no-repeat",
@@ -146,7 +146,7 @@ export default function ExtendedReviews() {
 					viewport={{ once: true }}
 					className="text-center mb-20"
 				>
-					<h2 className="text-4xl md:text-5xl font-bold text-black mb-4 tracking-tight">
+					<h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">
 						Hear it from Insiders
 					</h2>
 					<p className="text-xl font-medium text-black">
@@ -156,11 +156,11 @@ export default function ExtendedReviews() {
 
 				<div className="relative">
 					{/* Top Gradient Blur */}
-					<div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white via-white/200 to-transparent z-20 pointer-events-none"></div>
+					<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pink-50 via-pink-50/50 to-transparent z-20 pointer-events-none"></div>
 					
 					{/* Bottom Gradient Blur */}
 					<div 
-						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-[#FFD1A6] via-[#FFF0E0]/50 to-transparent backdrop-blur-md"
+						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-pink-200 via-pink-200/50 to-transparent backdrop-blur-md"
 						style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
 					></div>
 

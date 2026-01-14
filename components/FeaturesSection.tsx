@@ -190,7 +190,7 @@ export default function FeaturesSection() {
         viewport={{ once: true }}
         className="text-center relative z-10 mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-tight">Why AgentMarketplace?</h2>
+        <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Why AgentMarketplace?</h2>
         <p className="text-2xl font-medium text-black">Your enterprise AI advantage</p>
       </motion.div>
     <div

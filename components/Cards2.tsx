@@ -20,12 +20,12 @@ export default function Cards2() {
             return (
             <div key={i} className={`${isTopRow || isBottomRow ? 'aspect-[3/4]' : 'aspect-square'} bg-white rounded-3xl border border-gray-300 shadow-[0_0_20px_rgba(0,0,0,0.15)] p-6 relative group hover:shadow-xl transition-shadow z-20`}>
                 <div className={`absolute ${isTopRow ? 'top-32' : 'top-6'} left-6 transition-all duration-300`}>
-                    <div className="px-6 py-3 bg-white rounded-full border border-gray-200 shadow-sm text-base font-medium text-gray-700 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-colors duration-300">
+                    <div className="px-6 py-3 bg-white rounded-full border border-gray-200 shadow-sm text-base font-medium text-gray-700 group-hover:bg-pink-400 group-hover:text-white group-hover:border-pink-300 transition-colors duration-300">
                         AI Agent Name
                     </div>
                 </div>
                 <div className={`absolute ${isBottomRow ? 'bottom-32' : 'bottom-6'} right-6 transition-all duration-300`}>
-                    <div className="w-16 h-16 bg-white rounded-2xl border border-gray-200 flex items-center justify-center text-gray-700 shadow-sm cursor-pointer group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-colors duration-300">
+                    <div className="w-16 h-16 bg-white rounded-2xl border border-gray-200 flex items-center justify-center text-gray-700 shadow-sm cursor-pointer group-hover:bg-pink-300 group-hover:text-white group-hover:border-pink-300 transition-colors duration-300">
                         <ArrowUpRight className="w-8 h-8" />
                     </div>
                 </div>

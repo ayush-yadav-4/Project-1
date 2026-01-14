@@ -5,13 +5,13 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer 
-      className="w-full pt-22 pb-40 px-4 lg:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="w-full pt-22 px-4 lg:px-16 relative bg-cover bg-center bg-no-repeat overflow-hidden"
       // style={{ backgroundImage: "url('/Footer.png')" }}
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 relative z-10 animate-fade-in-up">
         {/* Left Side - Subscribe */}
         <div className="flex flex-col gap-6 max-w-sm">
-          <h3 className="text-orange-500 text-xl font-bold">AgentMarketplace</h3>
+          <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200">AgentMarketplace</h3>
           
           <div className="space-y-2">
             <h4 className="text-gray-900 font-bold text-lg">Subscribe to our newsletter</h4>
@@ -77,7 +77,34 @@ export default function Footer() {
         </div>
       </div>
 
-      
+      <div className="w-full mt-8 relative h-[150px] md:h-[300px] overflow-hidden select-none pointer-events-none -mx-4 lg:-mx-16" style={{ width: 'calc(100% + 8rem)' }}>
+         <svg className="w-full h-full absolute inset-0" width="100%" height="100%">
+             <defs>
+                 <pattern id="footer-dot-pattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                     <circle cx="1.5" cy="1.5" r="1.5" className="text-gray-300" fill="currentColor" />
+                 </pattern>
+                 <pattern id="footer-dot-pattern-active" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                     <circle cx="1.5" cy="1.5" r="2.5" className="text-gray-500" fill="currentColor" />
+                 </pattern>
+                 <mask id="footer-text-mask">
+                     <rect x="0" y="0" width="100%" height="100%" fill="black" />
+                     <text 
+                        x="50%" 
+                        y="55%" 
+                        textAnchor="middle" 
+                        dominantBaseline="middle" 
+                        className="font-bold tracking-tighter" 
+                        fill="white"
+                        style={{ fontFamily: 'system-ui, -apple-system, sans-serif', fontSize: '10vw', fontWeight: 800 }}
+                     >
+                         AgentMarketplace
+                     </text>
+                 </mask>
+             </defs>
+             <rect fill="url(#footer-dot-pattern)" width="100%" height="100%" />
+             <rect fill="url(#footer-dot-pattern-active)" width="100%" height="100%" mask="url(#footer-text-mask)" />
+         </svg>
+      </div>
     </footer>
   );
 }
