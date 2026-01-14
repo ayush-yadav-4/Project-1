@@ -114,9 +114,53 @@ export default function ExtendedReviews() {
           animation-play-state: paused;
         }
       `}</style>
-			{/* Background Image covering the whole section */}
+			
+			{/* Creative Background for Reviews Section - Full Width */}
+			<div className="absolute inset-0 z-0 w-screen left-1/2 -translate-x-1/2">
+				{/* Base Gradient */}
+				<div className="absolute inset-0 bg-gradient-to-b from-white via-[#FFF5F0] to-[#FFE4D6]"></div>
+				
+				{/* Floating Gradient Orbs */}
+				<div className="absolute top-[5%] left-[10%] w-[400px] h-[400px] bg-gradient-to-br from-pink-300/40 via-rose-200/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute top-[20%] right-[5%] w-[500px] h-[500px] bg-gradient-to-br from-orange-200/30 via-peach-100/20 to-transparent rounded-full blur-3xl"></div>
+				<div className="absolute top-[50%] left-[5%] w-[350px] h-[350px] bg-gradient-to-br from-pink-200/30 to-transparent rounded-full blur-3xl"></div>
+				<div className="absolute top-[40%] right-[15%] w-[300px] h-[300px] bg-gradient-to-br from-amber-100/40 to-transparent rounded-full blur-2xl"></div>
+				<div className="absolute bottom-[30%] left-[30%] w-[450px] h-[450px] bg-gradient-to-br from-rose-100/30 via-pink-50/20 to-transparent rounded-full blur-3xl"></div>
+				
+				{/* Decorative Mesh Grid */}
+				<svg className="absolute inset-0 w-full h-full opacity-[0.03]" width="100%" height="100%">
+					<defs>
+						<pattern id="reviews-grid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+							<path d="M 60 0 L 0 0 0 60" fill="none" stroke="#F472B6" strokeWidth="1" />
+						</pattern>
+					</defs>
+					<rect fill="url(#reviews-grid)" width="100%" height="100%" />
+				</svg>
+				
+				{/* Decorative Floating Shapes */}
+				<div className="absolute top-[15%] left-[20%] w-20 h-20 border-2 border-pink-200/30 rounded-full"></div>
+				<div className="absolute top-[25%] right-[25%] w-16 h-16 border-2 border-orange-200/30 rounded-full"></div>
+				<div className="absolute top-[60%] left-[15%] w-12 h-12 border-2 border-rose-200/30 rounded-full"></div>
+				<div className="absolute top-[45%] right-[10%] w-24 h-24 border-2 border-pink-100/30 rounded-full"></div>
+				
+				{/* Subtle Curved Lines */}
+				<svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1200 800" preserveAspectRatio="none">
+					<path d="M0,200 Q300,100 600,200 T1200,200" fill="none" stroke="url(#reviewCurve)" strokeWidth="2" />
+					<path d="M0,400 Q300,300 600,400 T1200,400" fill="none" stroke="url(#reviewCurve)" strokeWidth="1.5" />
+					<path d="M0,600 Q300,500 600,600 T1200,600" fill="none" stroke="url(#reviewCurve)" strokeWidth="1" />
+					<defs>
+						<linearGradient id="reviewCurve" x1="0%" y1="0%" x2="100%" y2="0%">
+							<stop offset="0%" stopColor="#F472B6" stopOpacity="0.5" />
+							<stop offset="50%" stopColor="#FB923C" stopOpacity="0.3" />
+							<stop offset="100%" stopColor="#FBBF24" stopOpacity="0.2" />
+						</linearGradient>
+					</defs>
+				</svg>
+			</div>
+
+			{/* Background Image covering the CTA section only */}
 			<div
-				className="absolute inset-0 z-0"
+				className="absolute bottom-0 left-0 right-0 h-[700px] z-0"
 				style={{
 					backgroundImage: "url('/Bg-4.png')",
 					backgroundSize: "cover",
@@ -125,8 +169,8 @@ export default function ExtendedReviews() {
 				}}
 			/>
 
-            {/* Tilted Vectors Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            {/* Tilted Vectors Background for CTA */}
+            <div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 pointer-events-none overflow-hidden">
                 <svg className="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="tilted-lines" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-25)">
@@ -138,7 +182,8 @@ export default function ExtendedReviews() {
             </div>
 
 			{/* Reviews Section */}
-			<div className="relative z-10 w-full max-w-7xl mx-auto px-4 pt-24 pb-20">
+			<div className="relative z-10 w-full px-4 pt-24 pb-20">
+				<div className="max-w-7xl mx-auto">
 				<motion.div 
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -156,11 +201,11 @@ export default function ExtendedReviews() {
 
 				<div className="relative">
 					{/* Top Gradient Blur */}
-					<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pink-50 via-pink-50/50 to-transparent z-20 pointer-events-none"></div>
+					<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white via-white/50 to-transparent z-20 pointer-events-none"></div>
 					
 					{/* Bottom Gradient Blur */}
 					<div 
-						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-pink-200 via-pink-200/50 to-transparent backdrop-blur-md"
+						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-md"
 						style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
 					></div>
 
@@ -193,6 +238,7 @@ export default function ExtendedReviews() {
 					</div>
 				</div>
 				</div>
+			</div>
 			</div>
 
 			{/* CTA Section */}

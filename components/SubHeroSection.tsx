@@ -1,8 +1,11 @@
 "use client";
 
 import { Play } from "lucide-react";
+import { useState } from "react";
 
 export default function SubHeroSection() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section className="w-full bg-white pb-20 flex flex-col items-center -mt-10 relative z-20">
       {/* Icons Row */}
@@ -121,17 +124,36 @@ export default function SubHeroSection() {
       {/* Video Placeholder Card */}
       <div className="w-full max-w-5xl px-4">
         <div className="relative aspect-video w-full bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 flex items-center justify-center group cursor-pointer overflow-hidden">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="https://www.youtube.com/embed/hpc5DO2dC-4?si=U6WIXJzuQoBBLK90" 
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen
-              className="w-full h-full rounded-2xl"
-            ></iframe>
+            {!isPlaying ? (
+              <>
+                {/* White background with subtle gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white via-pink-50/30 to-white"></div>
+                
+                {/* Play Button */}
+                <button 
+                  onClick={() => setIsPlaying(true)}
+                  className="relative z-10 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-pink-500 via-pink-400 to-pink-300 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group-hover:shadow-pink-200/50"
+                >
+                  <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+                </button>
+                
+                {/* Decorative rings */}
+                <div className="absolute w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-pink-200/50 animate-pulse"></div>
+                <div className="absolute w-44 h-44 md:w-56 md:h-56 rounded-full border border-pink-100/30"></div>
+              </>
+            ) : (
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/hpc5DO2dC-4?si=U6WIXJzuQoBBLK90&autoplay=1" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="w-full h-full rounded-2xl"
+              ></iframe>
+            )}
         </div>
       </div>
     </section>

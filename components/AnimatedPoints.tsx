@@ -10,29 +10,52 @@ import {
   Layout, Code, Box, Server, Shuffle, Share2, DollarSign
 } from "lucide-react";
 
-// Icons for the circular orbit (Scene 3) with Colors
-const orbitIcons = [
-  { Icon: FileText, color: "#000000" }, // Notion-like
-  { Icon: Linkedin, color: "#0A66C2" },
-  { Icon: Cloud, color: "#0052CC" }, // Jira-ish/Cloud
-  { Icon: ShoppingBag, color: "#95BF47" }, // Shopify
-  { Icon: Cloud, color: "#00A1E0" }, // Salesforce
-  { Icon: Slack, color: "#4A154B" },
-  { Icon: MessageCircle, color: "#FF4500" }, // Reddit
-  { Icon: Triangle, color: "#5E6AD2" }, // Linear
-  { Icon: MessageSquare, color: "#5865F2" }, // Discord
-  { Icon: Twitter, color: "#000000" }, // X
-  { Icon: Youtube, color: "#FF0000" },
-  { Icon: Trello, color: "#0079BF" },
-  { Icon: DollarSign, color: "#008CDD" }, // Stripe
-  { Icon: Database, color: "#00C7B7" }, // Snowflake
-  { Icon: MapPin, color: "#34A853" }, // Maps
-  { Icon: Globe, color: "#000000" }, // Vercel
-  { Icon: Mail, color: "#EA4335" }, // Gmail
-  { Icon: Calendar, color: "#4285F4" }, // Google Calendar
-  { Icon: Github, color: "#181717" },
-  { Icon: Monitor, color: "#2563EB" }, // Zoom?
-  { Icon: FileText, color: "#1A73E8" }, // Docs
+// Icons for the circular orbit (Scene 3) matching the reference image
+// Arranged clockwise starting from top-left to match the pasted image
+const orbitIconsData = [
+  // Top area - starting from top-left going clockwise
+  { type: "img", name: "Notion", src: "/icons/notion.svg", fallbackText: "N" },
+  { type: "img", name: "LinkedIn", src: "/icons/linkedin.svg", fallbackIcon: Linkedin, color: "#0A66C2" },
+  { type: "img", name: "Teams", src: "/icons/teams.svg", fallbackIcon: Cloud, color: "#6264A7" },
+  { type: "img", name: "PowerPoint", src: "/icons/powerpoint.svg", fallbackIcon: Monitor, color: "#B7472A" },
+  { type: "img", name: "Asana", src: "/icons/asana.svg", fallbackIcon: Layout, color: "#F06A6A" },
+  { type: "img", name: "Calendar", src: "/icons/calendar.svg", fallbackIcon: Calendar, color: "#4285F4" },
+  { type: "img", name: "Outlook", src: "/icons/outlook.svg", fallbackIcon: Mail, color: "#0078D4" },
+  { type: "img", name: "Drive", src: "/icons/drive.svg", fallbackIcon: Cloud, color: "#4285F4" },
+  // Right side
+  { type: "text", name: "Cal", text: "Cal", color: "#000000" },
+  { type: "img", name: "Checkmark", src: "/icons/check.svg", fallbackIcon: Check, color: "#34A853" },
+  { type: "img", name: "Cog", src: "/icons/cog.svg", fallbackIcon: Server, color: "#6B7280" },
+  { type: "img", name: "Framer", src: "/icons/framer.svg", fallbackIcon: Box, color: "#0055FF" },
+  { type: "img", name: "Jira", src: "/icons/jira.svg", fallbackIcon: Layout, color: "#0052CC" },
+  { type: "img", name: "Figma", src: "/icons/figma.svg", fallbackIcon: Figma, color: "#F24E1E" },
+  { type: "img", name: "Gmail", src: "/icons/gmail.svg", fallbackIcon: Mail, color: "#EA4335" },
+  // Bottom-right
+  { type: "img", name: "GitHub", src: "/icons/github.svg", fallbackIcon: Github, color: "#181717" },
+  { type: "img", name: "Docs", src: "/icons/docs.svg", fallbackIcon: FileText, color: "#4285F4" },
+  { type: "img", name: "HubSpot", src: "/icons/hubspot.svg", fallbackIcon: Share2, color: "#FF7A59" },
+  { type: "img", name: "Stripe", src: "/icons/stripe.svg", fallbackText: "stripe", color: "#635BFF" },
+  // Bottom
+  { type: "img", name: "Snowflake", src: "/icons/snowflake.svg", fallbackIcon: Database, color: "#29B5E8" },
+  { type: "img", name: "Airtable", src: "/icons/airtable.svg", fallbackIcon: Layout, color: "#18BFFF" },
+  { type: "img", name: "Maps", src: "/icons/maps.svg", fallbackIcon: MapPin, color: "#34A853" },
+  { type: "img", name: "Todoist", src: "/icons/todoist.svg", fallbackIcon: Check, color: "#E44332" },
+  { type: "img", name: "Sheets", src: "/icons/sheets.svg", fallbackIcon: FileText, color: "#34A853" },
+  { type: "img", name: "Linear", src: "/icons/linear.svg", fallbackIcon: Triangle, color: "#5E6AD2" },
+  // Bottom-left
+  { type: "img", name: "Trello", src: "/icons/trello.svg", fallbackIcon: Trello, color: "#0052CC" },
+  { type: "img", name: "YouTube", src: "/icons/youtube.svg", fallbackIcon: Youtube, color: "#FF0000" },
+  { type: "img", name: "X", src: "/icons/x.svg", fallbackIcon: Twitter, color: "#000000" },
+  { type: "img", name: "Discord", src: "/icons/discord.svg", fallbackIcon: MessageSquare, color: "#5865F2" },
+  // Left side
+  { type: "img", name: "Bolt", src: "/icons/bolt.svg", fallbackIcon: Shuffle, color: "#FBBF24" },
+  { type: "img", name: "RSS", src: "/icons/rss.svg", fallbackIcon: Shuffle, color: "#FFA500" },
+  { type: "img", name: "Slack", src: "/icons/slack.svg", fallbackIcon: Slack, color: "#4A154B" },
+  { type: "img", name: "Figshare", src: "/icons/figshare.svg", fallbackIcon: Layout, color: "#556B2F" },
+  { type: "img", name: "Reddit", src: "/icons/reddit.svg", fallbackIcon: MessageCircle, color: "#FF4500" },
+  // Top-left
+  { type: "img", name: "Shopify", src: "/icons/shopify.svg", fallbackIcon: ShoppingBag, color: "#95BF47" },
+  { type: "img", name: "Salesforce", src: "/icons/salesforce.svg", fallbackIcon: Cloud, color: "#00A1E0" },
 ];
 
 const points = [
@@ -129,7 +152,7 @@ export default function AnimatedPoints() {
              {/* Main Heading */}
              <div className="relative z-10 w-full max-w-7xl text-center">
                 <motion.h2 
-                    className="text-3xl md:text-5xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 leading-tight whitespace-nowrap"
+                    className="text-3xl md:text-5xl font-serif text-[#1a1a1a] leading-tight whitespace-nowrap"
                 >
                 Building agents that take action <span className="italic font-bold font-serif text-[#4A4A4A]">is hard</span>
                 </motion.h2>
@@ -142,7 +165,7 @@ export default function AnimatedPoints() {
                 const start = 0.15 + (index * 0.05); // 0.15, 0.20, 0.25...
                 const end = 0.6; // They all disappear around the transition
                 
-                // Entrance animation
+                // Entrance animation - pop/scale effect
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 const pointOpacity = useTransform(
                     smoothProgress, 
@@ -150,18 +173,18 @@ export default function AnimatedPoints() {
                     [0, 1, 1, 0]
                 );
                 
-                // Gentle floating movement while visible
+                // Pop/scale from background effect
                 // eslint-disable-next-line react-hooks/rules-of-hooks
-                const yMove = useTransform(
+                const pointScale = useTransform(
                     smoothProgress,
-                    [start, end],
-                    [20, -20]
+                    [start, start + 0.05, end - 0.05, end],
+                    [0.5, 1, 1, 0.8]
                 );
 
                 return (
                     <motion.div
                         key={index}
-                        style={{ opacity: pointOpacity, y: yMove }}
+                        style={{ opacity: pointOpacity, scale: pointScale }}
                         className={`absolute text-sm md:text-lg text-[#8E8E8E] font-mono tracking-widest pointer-events-none ${point.className}`}
                     >
                         {point.text}
@@ -179,15 +202,16 @@ export default function AnimatedPoints() {
                 display: isLocked ? "none" : "flex"
             }}
         >
-            {/* Background Gradient - ORANGE */}
-             <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200">
-                <div className="absolute inset-0 opacity-40 mix-blend-multiply bg-[radial-gradient(circle_at_50%_120%,#fb923c,transparent_60%)]"></div>
-                <div className="absolute inset-0 opacity-30 mix-blend-multiply bg-[radial-gradient(circle_at_0%_0%,#fdba74,transparent_50%)]"></div>
+            {/* Background Gradient - PINK/PEACH */}
+             <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-pink-50 via-rose-100 to-orange-100">
+                <div className="absolute inset-0 opacity-50 mix-blend-multiply bg-[radial-gradient(circle_at_50%_120%,#F472B6,transparent_60%)]"></div>
+                <div className="absolute inset-0 opacity-40 mix-blend-multiply bg-[radial-gradient(circle_at_0%_0%,#FBBF24,transparent_50%)]"></div>
+                <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_100%_50%,#FB7185,transparent_40%)]"></div>
              </div>
 
              {/* Content */}
              <div className="relative z-10 text-center w-full px-4">
-                 <motion.h2 className="text-2xl md:text-4xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 leading-tight whitespace-nowrap overflow-visible">
+                 <motion.h2 className="text-2xl md:text-4xl font-serif text-[#1a1a1a] leading-tight whitespace-nowrap overflow-visible">
                     Composio erases that drag in <span className="font-bold text-black">one call</span>
                  </motion.h2>
              </div>
@@ -213,7 +237,7 @@ export default function AnimatedPoints() {
                     translateY: "-50%"
                  }}
              >
-                 <div className="relative w-[400px] h-[400px] md:w-[600px] md:h-[600px] flex items-center justify-center">
+                 <div className="relative w-[500px] h-[500px] md:w-[700px] md:h-[700px] flex items-center justify-center">
                     {/* Central Hub */}
                     <div className="relative z-20 flex flex-col items-center justify-center">
                         {/* Placeholder Logo */}
@@ -283,19 +307,41 @@ export default function AnimatedPoints() {
                        animate={{ rotate: 360 }}
                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                     >
-                       {orbitIcons.map((item, i) => {
-                          const angle = (i / orbitIcons.length) * 360;
-                          // Alternate radius for up/down effect (zigzag)
-                          const radius = 280 + (i % 2 === 0 ? 20 : -20);
+                       {orbitIconsData.map((item, i) => {
+                          const angle = (i / orbitIconsData.length) * 360;
+                          // Larger radius for bigger circle with consistent spacing
+                          const radius = 280 + (i % 2 === 0 ? 10 : -10);
                           return (
                              <div 
                                key={i}
-                               className="absolute top-1/2 left-1/2 flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2"
+                               className="absolute top-1/2 left-1/2 flex items-center justify-center"
                                style={{ 
                                  transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`, 
                                }}
                              >
-                                <item.Icon size={24} color={item.color} />
+                                {item.type === "img" && item.fallbackIcon && (
+                                   <item.fallbackIcon 
+                                     size={24} 
+                                     color={item.color}
+                                     className="md:w-6 md:h-6"
+                                   />
+                                )}
+                                {item.type === "img" && item.fallbackText && (
+                                   <span 
+                                     className="font-bold text-xs md:text-sm whitespace-nowrap"
+                                     style={{ color: item.color }}
+                                   >
+                                     {item.fallbackText}
+                                   </span>
+                                )}
+                                {item.type === "text" && (
+                                   <span 
+                                     className="font-bold text-base md:text-lg whitespace-nowrap"
+                                     style={{ color: item.color }}
+                                   >
+                                     {item.text}
+                                   </span>
+                                )}
                              </div>
                           );
                        })}

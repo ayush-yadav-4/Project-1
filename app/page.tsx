@@ -25,13 +25,13 @@ export default function Home() {
       <main className="flex flex-col items-center w-full">
         {/* <HeroSection /> */}
         <HeroSection2 />
-        <SubHeroSection />
+        {/* <SubHeroSection /> */}
         {/* <SecuritySection /> */}
         <GlobalEnterprisesSection />
          <AnimatedIconsSection />
         {/* <EnterpriseAdvantage /> */}
         {/* <Cards /> */}
-        <Cards2 />
+        {/* <Cards2 /> */}
         <IntegrationSection />
         <FeaturesSection />
        
