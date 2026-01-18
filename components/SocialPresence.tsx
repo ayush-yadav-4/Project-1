@@ -1,40 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Github, Globe, ArrowRight } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Globe, ArrowRight } from "lucide-react";
 
 const socialLinks = [
   {
     icon: Linkedin,
     title: "LinkedIn",
-    subtitle: "50K+ Followers",
     bg: "bg-blue-50",
     color: "text-blue-600",
-    href: "#"
+    href: "https://www.linkedin.com/company/ailifebot"
   },
   {
     icon: Twitter,
-    title: "Twitter",
-    subtitle: "25K+ Followers",
+    title: "X (Twitter)",
     bg: "bg-sky-50",
     color: "text-sky-500",
-    href: "#"
+    href: "https://x.com/ailifebot"
   },
   {
-    icon: Github,
-    title: "GitHub",
-    subtitle: "10K+ Stars",
-    bg: "bg-gray-50",
-    color: "text-gray-800",
-    href: "#"
+    icon: Instagram,
+    title: "Instagram",
+    bg: "bg-pink-50",
+    color: "text-pink-600",
+    href: "https://www.instagram.com/ailifebot/?hl=en"
   },
   {
     icon: Globe,
     title: "Website",
-    subtitle: "Visit us",
-    bg: "bg-pink-50",
-    color: "text-pink-500",
-    href: "#"
+    bg: "bg-orange-50",
+    color: "text-orange-500",
+    href: "https://www.ailifebot.com/"
   }
 ];
 
@@ -96,10 +92,6 @@ export default function SocialPresence() {
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 {social.title}
               </h3>
-              
-              <p className="text-lg text-gray-500 font-medium">
-                {social.subtitle}
-              </p>
 
               {/* Decorative Hover Effect */}
               <div className="absolute inset-0 rounded-[2rem] border-2 border-transparent group-hover:border-orange-100 transition-colors pointer-events-none" />

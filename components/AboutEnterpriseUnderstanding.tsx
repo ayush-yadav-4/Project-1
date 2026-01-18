@@ -64,8 +64,8 @@ export default function AboutEnterpriseUnderstanding() {
             </div>
             
             <div className="relative pt-6 pl-0 mt-auto">
-               <button className="bg-black text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-all flex items-center gap-2 rounded-full shadow-lg">
-                  Understand More <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+               <button className="bg-white text-black border border-gray-100 px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-all flex items-center gap-2 rounded-full shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] bg-gradient-to-b from-white to-gray-50">
+                  Understand More <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
                </button>
             </div>
           </div>

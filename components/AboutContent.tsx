@@ -6,32 +6,25 @@ import { Lightbulb, Rocket, Users, Award } from 'lucide-react';
 
 const timelineData = [
   {
-    year: "2020",
-    title: "The Idea",
-    description: "Founded with a vision to make AI accessible to every business, not just tech giants.",
+    year: "01",
+    title: "Enhance Customer Experience",
+    description: "Through personalized AI interactions that understand and anticipate customer needs.",
     icon: Lightbulb,
-    color: "bg-rose-400"
+    color: "bg-gradient-to-r from-pink-400 via-pink-300 to-orange-200"
   },
   {
-    year: "2021",
-    title: "Launch",
-    description: "Launched our marketplace with 50 AI agents, serving 100 early adopter companies.",
+    year: "02",
+    title: "Streamline Operations",
+    description: "With AI-powered automation that reduces costs and improves efficiency.",
     icon: Rocket,
-    color: "bg-rose-400"
+    color: "bg-gradient-to-r from-pink-400 via-pink-300 to-orange-200"
   },
   {
-    year: "2022",
-    title: "Growth",
-    description: "Reached 10,000 active users and expanded to 200+ AI agents across 20 categories.",
+    year: "03",
+    title: "Drive Business Growth",
+    description: "By improving scalability and enabling 24/7 customer support.",
     icon: Users,
-    color: "bg-rose-400"
-  },
-  {
-    year: "2024",
-    title: "Industry Leader",
-    description: "Recognized as a leader in AI marketplace technology, serving Fortune 500 companies.",
-    icon: Award,
-    color: "bg-rose-400"
+    color: "bg-gradient-to-r from-pink-400 via-pink-300 to-orange-200"
   }
 ];
 
@@ -51,22 +44,19 @@ export default function AboutContent() {
             className="w-full lg:w-5/12 pt-0 lg:pt-8 sticky top-24 self-start"
           >
             <div className="inline-block px-4 py-2 rounded-full bg-[#EFEBE6] text-gray-800 text-sm font-medium mb-6">
-              Our Story
+              Our Vision
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-              From Vision to Reality
+              Our Mission
             </h2>
             
             <div className="space-y-5 text-gray-600 text-lg leading-relaxed">
               <p>
-                AgentHub was born from a simple observation: while large enterprises were leveraging AI to gain competitive advantages, smaller businesses were being left behind due to complexity and cost barriers.
+                At AI LifeBOT, our mission is to empower businesses with advanced AI solutions.
               </p>
               <p>
-                Our founders, a team of AI researchers and entrepreneurs, set out to change this. We built a marketplace that curates the best AI agents, handles the technical complexity, and makes deployment as simple as installing an app.
-              </p>
-              <p>
-                Today, we're proud to serve over 100,000 businesses worldwide, from solo entrepreneurs to Fortune 500 companies, all benefiting from the power of AI agents.
+                We believe that by harnessing the power of artificial intelligence, companies can transform their interactions, operations, and growth strategies to meet the demands of a digital-first world.
               </p>
             </div>
           </motion.div>
@@ -95,7 +85,7 @@ export default function AboutContent() {
 
                     {/* Content Card */}
                     <div className="flex-1 bg-white p-6 rounded-[1.5rem] shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                      <div className="text-rose-500 font-semibold mb-1">{item.year}</div>
+                      <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400 font-semibold mb-1">{item.year}</div>
                       <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
                       <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         {item.description}

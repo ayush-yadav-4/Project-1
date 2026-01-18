@@ -21,28 +21,28 @@ export default function ContactInfo() {
           {[
             {
               icon: Mail,
-              title: "Chat to us",
+              title: "Email us",
               desc: "Our friendly team is here to help.",
-              link: "hello@agentmarketplace.com",
-              href: "mailto:hello@agentmarketplace.com",
+              link: "contact@Ailifebot.com",
+              href: "mailto:contact@Ailifebot.com",
               gradient: "from-blue-500 to-cyan-500",
               shadow: "shadow-blue-500/20"
             },
             {
               icon: MapPin,
               title: "Visit us",
-              desc: "Come say hello at our office HQ.",
+              desc: "3rd Floor, Orchid Center, Golf Course Road, DLF QE, Sec-53, Gurugram, Haryana (122002)",
               link: "View on Google Maps",
-              href: "#",
+              href: "https://maps.google.com/?q=3rd+Floor,+Orchid+Center,+Golf+Course+Road,+DLF+QE,+Sec-53,+Gurugram,+Haryana+(122002)",
               gradient: "from-orange-500 to-red-500",
               shadow: "shadow-orange-500/20"
             },
             {
               icon: Phone,
               title: "Call us",
-              desc: "Mon-Fri from 8am to 5pm.",
-              link: "+1 (555) 000-0000",
-              href: "tel:+15550000000",
+              desc: "Mon-Fri from 9am to 6pm.",
+              link: "+91 8439266770",
+              href: "tel:+918439266770",
               gradient: "from-green-500 to-emerald-500",
               shadow: "shadow-green-500/20"
             },
@@ -85,63 +85,58 @@ export default function ContactInfo() {
           ))}
         </div>
 
-        {/* Global Presence - Modern Design */}
+        {/* Strategic Partnership - Modern Design */}
         <div className="relative rounded-[3rem] bg-[#111] overflow-hidden p-8 md:p-16 text-white">
-          {/* Abstract Map Background */}
-          <div className="absolute inset-0 opacity-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-no-repeat bg-center bg-contain pointer-events-none mix-blend-overlay" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 pointer-events-none" />
+          {/* Abstract Background */}
+          <div className="absolute inset-0 opacity-30 bg-gradient-to-br from-orange-500/20 via-purple-500/20 to-blue-500/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent opacity-50" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 backdrop-blur-md">
-                <Globe className="w-4 h-4" />
-                <span>Global Network</span>
+                <Clock className="w-4 h-4" />
+                <span>Expert Consultation</span>
               </div>
               <h3 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Operating globally,<br />
+                Ready to Transform <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
-                  available locally.
+                  Your Operations?
                 </span>
               </h3>
-              <p className="text-gray-400 text-lg max-w-md leading-relaxed mb-8">
-                With hubs in major tech capitals, our distributed team ensures 24/7 coverage for your mission-critical agents.
+              <p className="text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
+                Book a free strategy session with our AI specialists. We'll analyze your current workflows and demonstrate how AI LifeBOT can drive efficiency and growth.
               </p>
-              <button className="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors">
-                View all locations
-              </button>
+              
+              <div className="flex flex-wrap gap-4">
+                <button className="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-100 transition-colors flex items-center gap-2">
+                  Schedule a Call
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button className="px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold hover:bg-white/10 transition-colors">
+                  View Case Studies
+                </button>
+              </div>
             </div>
 
-            <div className="grid gap-4">
-               {[
-                 { city: "San Francisco", country: "United States", time: "10:00 AM", status: "Open" },
-                 { city: "London", country: "United Kingdom", time: "6:00 PM", status: "Closing Soon" },
-                 { city: "Singapore", country: "Singapore", time: "1:00 AM", status: "Closed" }
-               ].map((loc, idx) => (
-                 <motion.div 
-                   key={loc.city}
-                   initial={{ opacity: 0, x: 20 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                   transition={{ delay: idx * 0.1 }}
-                   className="group flex items-center justify-between p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all cursor-default backdrop-blur-sm"
-                 >
-                   <div className="flex items-center gap-4">
-                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center border border-white/10">
-                        <MapPin className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-                     </div>
-                     <div>
-                       <h4 className="font-bold text-lg">{loc.city}</h4>
-                       <p className="text-gray-400 text-sm">{loc.country}</p>
-                     </div>
-                   </div>
-                   <div className="text-right">
-                     <div className="font-mono text-lg tracking-wider mb-1">{loc.time}</div>
-                     <div className="flex items-center justify-end gap-2">
-                       <span className={`w-2 h-2 rounded-full ${loc.status === 'Open' ? 'bg-green-500 animate-pulse' : loc.status === 'Closing Soon' ? 'bg-yellow-500' : 'bg-red-500'}`} />
-                       <span className="text-xs font-medium text-gray-500">{loc.status}</span>
-                     </div>
-                   </div>
-                 </motion.div>
-               ))}
+            <div className="relative">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                        <div className="text-3xl font-bold text-orange-400 mb-1">30min</div>
+                        <div className="text-gray-400 text-sm">Free Strategy Phase</div>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                        <div className="text-3xl font-bold text-blue-400 mb-1">Custom</div>
+                        <div className="text-gray-400 text-sm">Solution Design</div>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                        <div className="text-3xl font-bold text-green-400 mb-1">ROI</div>
+                        <div className="text-gray-400 text-sm">Focused Analysis</div>
+                    </div>
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                        <div className="text-3xl font-bold text-purple-400 mb-1">24/7</div>
+                        <div className="text-gray-400 text-sm">Support Coverage</div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>

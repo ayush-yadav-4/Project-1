@@ -48,7 +48,7 @@ export default function AnimatedIconsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Why AgentMarketplace?</h2>
-          <p className="text-2xl font-medium text-black">Your enterprise AI advantage</p>
+          <p className="text-2xl font-medium text-black">Deploy production-ready AI agents in minutes, not months</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -66,9 +66,8 @@ export default function AnimatedIconsSection() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     className="flex gap-4 justify-end"
                   >
-                    <div className="bg-pink-400 text-white p-4 rounded-2xl rounded-tr-sm text-sm shadow-md max-w-[280px]">
-                      Hey, I need help scheduling a team meeting that works well for everyone. 
-                      Any suggestions for finding an optimal time slot?
+                    <div className="bg-gradient-to-r from-pink-400 to-pink-500 text-white p-4 rounded-2xl rounded-tr-sm text-sm shadow-md max-w-[280px]">
+                      I need an AI agent to handle customer support inquiries about shipping and returns. Can you help?
                     </div>
                     <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
                        <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80')] bg-cover"></div>
@@ -109,8 +108,7 @@ export default function AnimatedIconsSection() {
                           <Zap size={16} fill="currentColor" />
                        </div>
                        <div className="bg-white border border-gray-200 text-gray-700 p-4 rounded-2xl rounded-tl-sm text-sm shadow-sm max-w-[280px]">
-                          Based on your calendar patterns, I recommend scheduling the
-                          meeting for Tuesday at 2pm. It has the highest availability.
+                          Found 3 shipping support agents! The top-rated "ShipBot Pro" handles 10,000+ queries/day with 98% accuracy. Deploy now?
                        </div>
                     </motion.div>
                  )}
@@ -122,10 +120,9 @@ export default function AnimatedIconsSection() {
             <div className="relative z-20 mt-auto">
                <div className="h-24 w-full bg-gradient-to-b from-transparent to-white pointer-events-none absolute -top-24 left-0"></div>
                <div className="bg-white px-8 pb-8 pt-2">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Real-time AI Collaboration</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Instant Agent Discovery</h3>
                   <p className="text-gray-500 text-sm">
-                    Experience real-time assistance. Ask your AI Agent to coordinate tasks, 
-                    answer questions, and maintain team alignment.
+                    Find the perfect AI agent for any task. Search 500+ production-ready agents across customer support, sales, HR, and more.
                   </p>
                </div>
             </div>
@@ -149,11 +146,9 @@ export default function AnimatedIconsSection() {
                 <div className="absolute w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-200/80 via-gray-100/50 to-transparent border border-gray-200 shadow-[inset_0_2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm"></div>
 
 
-                {/* Central Icon (Blue) */}
-                <div className="relative z-20 w-16 h-16 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-xl shadow-blue-200 border-4 border-white">
-                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-8 h-8">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                   </svg>
+                {/* Central Icon (Pink Marketplace) */}
+                <div className="relative z-20 w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white shadow-xl shadow-pink-200 border-4 border-white">
+                   <ShoppingBag className="w-8 h-8" strokeWidth={2.5} />
                 </div>
 
                 {/* --- Orbiting Icons --- */}
@@ -273,10 +268,9 @@ export default function AnimatedIconsSection() {
              <div className="relative z-20 mt-auto">
                <div className="h-24 w-full bg-gradient-to-b from-transparent to-white pointer-events-none absolute -top-24 left-0"></div>
                <div className="bg-white px-8 pb-8 pt-2">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Seamless Integrations</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">200+ Pre-built Integrations</h3>
                   <p className="text-gray-500 text-sm">
-                    Unite your favorite tools for effortless connectivity. Boost productivity
-                    through interconnected workflows.
+                    Connect agents to Slack, Salesforce, HubSpot, Zendesk, and 200+ tools. Your AI workforce works where you work.
                   </p>
                </div>
              </div>

@@ -34,8 +34,8 @@ const logosRow2 = [
 export default function EnterpriseScaleSection() {
   return (
     <section className="relative w-full py-24 bg-white overflow-hidden flex flex-col items-center">
-      {/* Orange Gradient Circle */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-200/40 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      {/* Pink/Peach Gradient Circle */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-pink-200/40 to-orange-100/40 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
       <div className="relative z-10 container mx-auto px-4 text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">

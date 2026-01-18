@@ -6,22 +6,22 @@ import { Link2, Linkedin, Twitter } from "lucide-react";
 
 const teamMembers = [
   {
-    name: "Sarah Chen",
+    name: "Puneet Agrawal",
     role: "Founder & CEO",
-    image: "https://i.pravatar.cc/400?u=sarah",
-    bio: "Visionary leader with 15+ years in AI and scalable systems architecture.",
+    image: "/founder.jpg",
+    bio: "Visionary leader with extensive experience in AI and scalable systems architecture.",
   },
   {
-    name: "David Miller",
-    role: "Chief Technology Officer",
-    image: "https://i.pravatar.cc/400?u=david",
-    bio: "Former Principal Engineer at Tech Giants, leading our core infrastructure.",
+    name: "Swati Gupta",
+    role: "Co-Founder",
+    image: "/co-founder.jpg",
+    bio: "Strategic leader focused on operational excellence and sustainable growth.",
   },
   {
-    name: "Elena Rodriguez",
-    role: "Head of Product",
-    image: "https://i.pravatar.cc/400?u=elena",
-    bio: "Product strategist focused on delivering intuitive and powerful AI experiences.",
+    name: "Girish Koppar",
+    role: "Chief Business Advisor - HealthCare",
+    image: "/business-advisor.jpg",
+    bio: "Healthcare industry veteran guiding business strategy and partnerships.",
   },
 ];
 
@@ -67,10 +67,10 @@ export default function AboutTeam() {
                 
                 {/* Overlay for social icons */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <button className="p-3 bg-white rounded-full text-gray-900 hover:bg-orange-500 hover:text-white transition-colors">
+                  <button className="p-3 bg-white rounded-full text-gray-900 hover:bg-pink-500 hover:text-white transition-colors">
                     <Linkedin size={20} />
                   </button>
-                  <button className="p-3 bg-white rounded-full text-gray-900 hover:bg-orange-500 hover:text-white transition-colors">
+                  <button className="p-3 bg-white rounded-full text-gray-900 hover:bg-pink-500 hover:text-white transition-colors">
                     <Twitter size={20} />
                   </button>
                 </div>
@@ -78,7 +78,7 @@ export default function AboutTeam() {
 
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-orange-600 font-semibold mb-4 tracking-wide text-sm uppercase">{member.role}</p>
+                <p className="text-pink-500 font-semibold mb-4 tracking-wide text-sm uppercase">{member.role}</p>
                 <p className="text-gray-600 leading-relaxed">
                   {member.bio}
                 </p>

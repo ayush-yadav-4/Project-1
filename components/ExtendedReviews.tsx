@@ -5,67 +5,67 @@ import { motion } from "framer-motion";
 
 const reviews = [
 	{
-		name: "Alexander Akers",
-		role: "Senior iOS Engineer",
-		company: "Apple",
-		image: "https://i.pravatar.cc/150?u=AlexanderAkers",
-		text: "I get worried when I use a computer without @paste_app. What if there's something important on the clipboard? It's like how you can \"hold\" a piece in Tetris but you have to remember what it is.",
+		name: "Sarah Chen",
+		role: "VP of Engineering",
+		company: "FintechCo",
+		image: "https://i.pravatar.cc/150?u=SarahChen",
+		text: "We reduced our fraud detection latency by 90% by chaining 3 specialized agents from the marketplace. It was literally plug-and-play.",
 	},
 	{
-		name: "João Cunha",
-		role: "Senior Product Manager",
-		company: "Nubank",
-		image: "https://i.pravatar.cc/150?u=JoaoCunha",
-		text: "Few things have had as much impact on my Mac workflow as @paste_app. It may look irrelevant, but think of how many times you copy/paste things over the course of a day — Paste makes this process a gazillion times better.",
+		name: "Marcus Thorne",
+		role: "Head of Product",
+		company: "EnterpriseSaaS",
+		image: "https://i.pravatar.cc/150?u=MarcusThorne",
+		text: "I was skeptical about off-the-shelf agents, but the compliance guardrails here are enterprise-grade. It passed our SecOps review in 2 days.",
 	},
 	{
-		name: "Jonathan Z. White",
-		role: "Designer & Developer",
-		company: "Airbnb",
-		image: "https://i.pravatar.cc/150?u=JonathanZWhite",
-		text: "I've been using an app called @paste_app and it's almost hilarious how much of a workflow improvement it is.",
+		name: "Elena Rodriguez",
+		role: "CTO",
+		company: "HealthTech Inc",
+		image: "https://i.pravatar.cc/150?u=ElenaRodriguez",
+		text: "The 'Universal Agent Protocol' is a game changer. We swapped our customer service agent for a medical-specialized one without rewriting a single line of code.",
 	},
 	{
-		name: "Chris Messina",
-		role: "Hashtag Inventor",
-		company: "",
-		image: "https://i.pravatar.cc/150?u=ChrisMessina",
-		text: "This is a must-have Mac app for me. I use it dozens if not hundreds of times a day. So useful!",
+		name: "David Park",
+		role: "Founder",
+		company: "NextGen AI",
+		image: "https://i.pravatar.cc/150?u=DavidPark",
+		text: "Building reliable agents from scratch is a nightmare. This marketplace let us focus on our unique value prop while outsourcing the utility agents.",
 	},
 	{
-		name: "Kristen Wright",
-		role: "Marketing",
-		company: "Day One Journal",
-		image: "https://i.pravatar.cc/150?u=KristenWright",
-		text: "Finally bought @paste_app and I'm really digging it. Great for code snippets, hex colors & links you frequently use.",
+		name: "Priya Patel",
+		role: "Lead Developer",
+		company: "ShopFlow",
+		image: "https://i.pravatar.cc/150?u=PriyaPatel",
+		text: "The SDK integration took less than an hour. Now we have autonomous agents handling 40% of our returns processing.",
 	},
 	{
-		name: "Diego Freniche Brito",
-		role: "Developer Advocate",
-		company: "Realm/MongoDB",
-		image: "https://i.pravatar.cc/150?u=DiegoFrenicheBrito",
-		text: "Using a clipboard manager has become second nature for me (and a necessity as developer). Have tried a bunch: @paste_app is the best by far. Instabuy. If you program and aren't using one of these, you're wasting time... Your time.",
+		name: "James Wilson",
+		role: "Director of Ops",
+		company: "LogisticsCorp",
+		image: "https://i.pravatar.cc/150?u=JamesWilson",
+		text: "We have agents negotiating shipping rates in real-time. The ROI was visible in the first week. Incredible ecosystem.",
 	},
 	{
-		name: "Sammy Schuckert",
-		role: "UX designer",
-		company: "IBM",
-		image: "https://i.pravatar.cc/150?u=SammySchuckert",
-		text: "I'm a heavy @paste_app user for 3 years. Paste is core to my everyday workflows. Even while writing this tweet I'm using it. It provides me with superpowers and makes me crazy efficient. Every time someone sees me using it they go like, \"Oh hey, what was that? I want that!\"",
+		name: "Linda Wu",
+		role: "Data Scientist",
+		company: "AdVantage",
+		image: "https://i.pravatar.cc/150?u=LindaWu",
+		text: "The discovery features are top-notch. Found a specialized 'Creative Copy' agent that outperformed our fine-tuned Llama 3 models.",
 	},
 	{
-		name: "Matthias Feit",
-		role: "Musician, UX Designer, Dad",
-		company: "",
-		image: "https://i.pravatar.cc/150?u=MatthiasFeit",
-		text: "Thanks to @paste_app, I was able to cut the time I would have spent on copying and pasting today by about 75%.",
+		name: "Michael O'Connor",
+		role: "CISO",
+		company: "BankingGroup",
+		image: "https://i.pravatar.cc/150?u=MichaelOConnor",
+		text: "Finally, a marketplace that takes security seriously. Private VPC deployment means our data never leaves our perimeter.",
 	},
 	{
-		name: "Simon Sturmer",
-		role: "Software Engineer",
-		company: "Google",
-		image: "https://i.pravatar.cc/150?u=SimonSturmer",
-		text: "@paste_app is my new favorite Mac App! I don't know how I went so long without it!",
+		name: "Robert Hoffman",
+		role: "CEO",
+		company: "LegalTech",
+		image: "https://i.pravatar.cc/150?u=RobertHoffman",
+		text: "We use the 'Legal Research' agent extensively. It's like having 50 paralegals working 24/7. The accuracy benchmarks are spot on.",
 	},
 ];
 
@@ -192,10 +192,10 @@ export default function ExtendedReviews() {
 					className="text-center mb-20"
 				>
 					<h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">
-						Hear it from Insiders
+						Trusted by Engineering Teams
 					</h2>
 					<p className="text-xl font-medium text-black">
-						
+						Join the companies deploying millions of autonomous tasks daily.
 					</p>
 				</motion.div>
 
@@ -254,24 +254,24 @@ export default function ExtendedReviews() {
 					<h2 className="text-5xl md:text-7xl font-bold text-[#FFF5E6] mb-12 leading-tight tracking-tight">
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
-							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">Life</span>
+							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">Scale</span>
 						</span>
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
-							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">rewards</span>
+							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">your</span>
 						</span>
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
-							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">action</span>
+							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">workforce</span>
 						</span>
 						<br />
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
-							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">not</span>
+							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">with</span>
 						</span>
 						<span className="relative inline-block mx-2">
 							<span className="absolute inset-0 blur-2xl bg-gradient-to-r from-white/40 to-transparent rounded-full opacity-50"></span>
-							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">intelligence</span>
+							<span className="relative drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">AI Agents</span>
 						</span>
 					</h2>
 					<motion.button

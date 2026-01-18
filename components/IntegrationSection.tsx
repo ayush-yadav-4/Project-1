@@ -12,108 +12,76 @@ const IntegrationSection = () => {
           viewport={{ once: true }}
           className="animate-fade-in-up"
         >
-            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Enterprise - ready integrations</h2>
-            <p className="text-2xl font-medium text-black mb-20">Seamless connectivity with Lyzr</p>
+            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Trusted by Industry Leaders</h2>
+            <p className="text-2xl font-medium text-black mb-20">Powering AI automation at Fortune 500 companies</p>
         </motion.div>
 
         <div className="flex flex-col gap-5 items-center max-w-6xl mx-auto">
            {/* Row 1 */}
            <div className="flex flex-wrap justify-center gap-5 animate-fade-in-up delay-200">
                 <LogoPill>
-                    <div className="h-8 flex items-center justify-center">
-                         <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" className="h-full object-contain filter grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all" style={{ maxHeight: '100%' }} />
-                         <span className="sr-only">AWS</span>
-                         {/* Fallback if image fails or for cleaner look, reusing SVG */}
-                         <div className="hidden">
-                            <svg viewBox="0 0 24 24" className="w-12 h-8 text-black fill-current">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                            </svg>
-                         </div>
-                    </div>
+                    <span className="font-bold text-[#00A1E0] text-xl tracking-wide">salesforce</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <span className="font-bold text-gray-900 text-lg tracking-wider">HITACHI</span>
+                    <span className="font-bold text-[#FF7A59] text-xl">HubSpot</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <span className="font-bold text-gray-900 text-xl flex items-center gap-1">
-                        accenture 
-                        <span className="text-purple-600 text-2xl leading-none font-light mb-1">&gt;</span>
-                    </span>
+                    <span className="font-bold text-[#03363D] text-xl">Zendesk</span>
                 </LogoPill>
 
                 <LogoPill>
                     <div className="flex items-center gap-1">
-                        <div className="w-6 h-6 border-2 border-orange-500 rounded-full border-t-transparent -rotate-45"></div>
-                        <span className="font-bold text-gray-900 italic text-lg">firstsource</span>
+                        <div className="w-5 h-5 bg-[#1264A3] rounded flex items-center justify-center text-white text-xs font-bold">#</div>
+                        <span className="font-bold text-gray-900 text-lg">Slack</span>
                     </div>
                 </LogoPill>
 
                 <LogoPill>
-                   <div className="flex items-center bg-gray-100 rounded-full pr-2">
-                        <div className="bg-red-600 text-white rounded-full p-1 mr-1">
-                            <span className="font-bold italic text-xs">AirAsia</span>
-                        </div>
-                        <span className="bg-green-600 text-white font-bold text-sm px-2 py-0.5 rounded-md">MOVE</span>
-                   </div>
+                    <span className="font-bold text-[#0078D4] text-xl">Microsoft</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <span className="font-black text-black text-xl tracking-tighter">MSP<span className="font-normal text-sm ml-0.5">CORP</span></span>
+                    <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                        <span className="font-bold text-gray-900 text-lg">Google</span>
+                    </div>
                 </LogoPill>
 
                 <LogoPill>
-                    <span className="bg-purple-700 text-white font-bold px-1 text-sm mr-1">HFS</span>
-                    <span className="text-purple-800 font-bold text-sm tracking-widest border border-purple-800 px-1">RESEARCH</span>
+                    <span className="font-bold text-[#FF9900] text-xl">aws</span>
                 </LogoPill>
 
                 <LogoPill>
-                   <span className="text-[#892367] font-bold text-xl">meesho</span>
+                    <span className="font-bold text-[#E01E5A] text-xl">Intercom</span>
                 </LogoPill>
            </div>
 
            {/* Row 2 */}
            <div className="flex flex-wrap justify-center gap-5 animate-fade-in-up delay-300">
                 <LogoPill>
-                    <span className="font-bold text-gray-800 text-lg tracking-wide uppercase">NTT Data</span>
+                    <span className="font-bold text-[#7B68EE] text-xl">Notion</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <div className="flex items-center gap-2">
-                        <span className="text-orange-500 font-light text-2xl">P</span>
-                        <span className="font-bold text-gray-900 text-lg">Persistent</span>
-                    </div>
-                </LogoPill>
-
-                 <LogoPill>
-                    <div className="flex items-center gap-1">
-                        <span className="text-pink-500 font-bold text-xl">M</span>
-                        <span className="font-bold text-gray-800 text-lg">movate</span>
-                    </div>
+                    <span className="font-bold text-[#29B5E8] text-xl">Snowflake</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <div className="flex items-center gap-2">
-                         <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-orange-400"></div>
-                        <span className="text-blue-600 font-bold text-lg uppercase tracking-wide">SAKSOFT</span>
-                    </div>
-                </LogoPill>
-
-                 <LogoPill>
-                    <div className="flex items-center gap-1">
-                         <div className="w-4 h-4 rounded-full border-2 border-orange-500 flex items-center justify-center">
-                             <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                         </div>
-                        <span className="font-bold text-gray-900 text-lg">goML</span>
-                    </div>
+                    <span className="font-bold text-[#635BFF] text-xl">Stripe</span>
                 </LogoPill>
 
                 <LogoPill>
-                    <div className="flex items-center gap-1">
-                        <span className="text-blue-600 font-bold text-xl">√</span>
-                        <span className="font-bold text-gray-900 text-lg">rootquotient</span>
-                    </div>
+                    <span className="font-bold text-[#0052CC] text-xl">Jira</span>
+                </LogoPill>
+
+                <LogoPill>
+                    <span className="font-bold text-[#2EB67D] text-xl">Shopify</span>
+                </LogoPill>
+
+                <LogoPill>
+                    <span className="font-bold text-[#FF6C37] text-xl">Zapier</span>
                 </LogoPill>
            </div>
         </div>

@@ -1,8 +1,106 @@
 "use client";
 
-import { LayoutGrid, MessageSquare, Sparkles, BarChart3 } from "lucide-react";
+import { 
+  LayoutGrid, MessageSquare, Sparkles, BarChart3,
+  Database, Brain, Users, Bot, Heart, FileStack, 
+  Settings, Zap, Globe, ShieldCheck, Lock, Activity,
+  Server, FileText, Scan, RefreshCw, Shield, UserCheck, 
+  PieChart, ShieldAlert, Radar, Eye, FileBadge,
+  MessageCircle, Send, History, CheckSquare, Search,
+  Code2, Cpu, Workflow, Fingerprint
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const WorkflowNode = ({ icon: Icon, label, subLabel, color, delay = 0 }: { icon: any, label: string, subLabel?: string, color: string, delay?: number }) => (
+  <motion.div 
+    initial={{ scale: 0.8, opacity: 0, y: 10 }}
+    animate={{ scale: 1, opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+    className="flex flex-col items-center gap-3 z-10 relative group"
+  >
+    <div className="relative">
+        <div className={`w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-3xl ${color} flex items-center justify-center text-white shadow-xl shadow-gray-200/50 ring-4 md:ring-[6px] ring-white transition-transform duration-300 group-hover:scale-105 z-10 relative`}>
+          <Icon className="w-7 h-7 md:w-10 md:h-10" strokeWidth={1.5} />
+        </div>
+        
+        {/* Pulse Ring */}
+        <motion.div 
+            className={`absolute inset-0 rounded-2xl md:rounded-3xl ${color} opacity-40 z-0`}
+            animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: delay }}
+        />
+    </div>
+
+    <div className="flex flex-col items-center text-center">
+      <span className="text-sm md:text-base font-bold text-gray-800 bg-white/90 px-4 py-1 rounded-full shadow-sm border border-gray-100 backdrop-blur-sm mb-1 whitespace-nowrap">
+        {label}
+      </span>
+      {subLabel && (
+        <span className="text-[10px] md:text-xs font-semibold text-gray-500 uppercase tracking-wider">{subLabel}</span>
+      )}
+    </div>
+  </motion.div>
+);
+
+const SystemNode = ({ icon: Icon, label, delay = 0 }: { icon: any, label: string, delay?: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: delay + 0.3 }}
+    className="flex items-center gap-3 bg-white px-3 py-2 md:px-4 md:py-3 rounded-xl shadow-sm border border-gray-100 z-10"
+  >
+    <div className="p-1.5 md:p-2 rounded-lg bg-gray-50 text-gray-600">
+        <Icon className="w-4 h-4 md:w-5 md:h-5" />
+    </div>
+    <span className="text-xs md:text-sm font-semibold text-gray-600 whitespace-nowrap">{label}</span>
+  </motion.div>
+);
+
+const WorkflowConnector = ({ vertical = false }: { vertical?: boolean }) => (
+  !vertical ? (
+  <div className="flex-1 h-[2px] bg-gray-100 relative mx-2 rounded-full min-w-[30px] md:min-w-[60px] overflow-hidden self-center mb-6 md:mb-8 flex items-center">
+     <div className="absolute inset-0 flex items-center">
+        {/* Moving Gradient 1 */}
+        <motion.div 
+             className="absolute w-1/2 h-full bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-70"
+             initial={{ x: "-100%" }}
+             animate={{ x: "200%" }}
+             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        />
+         {/* Moving Gradient 2 (slower) */}
+         <motion.div 
+             className="absolute w-1/3 h-full bg-gradient-to-r from-transparent via-gray-400 to-transparent opacity-40"
+             initial={{ x: "-100%" }}
+             animate={{ x: "200%" }}
+             transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 1 }}
+        />
+        {/* Moving Dot */}
+        <motion.div 
+            className="absolute h-1.5 w-1.5 rounded-full bg-gray-400 blur-[0.5px]"
+            initial={{ left: "-5%" }}
+            animate={{ left: "105%" }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.5 }}
+        />
+    </div>
+  </div>
+  ) : (
+    <div className="w-[1px] h-8 md:h-12 bg-gray-200 relative mx-auto -my-2 overflow-hidden">
+       <motion.div 
+             className="absolute w-full h-1/2 bg-gradient-to-b from-transparent via-gray-400 to-transparent opacity-50"
+             initial={{ y: "-100%" }}
+             animate={{ y: "200%" }}
+             transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.5 }}
+        />
+        <motion.div 
+             className="absolute w-full h-1/3 bg-gradient-to-b from-transparent via-gray-300 to-transparent opacity-30"
+             initial={{ y: "-100%" }}
+             animate={{ y: "200%" }}
+             transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 0 }}
+        />
+    </div>
+  )
+);
 
 export default function GlobalEnterprisesSection() {
   const [activeTab, setActiveTab] = useState("work");
@@ -45,7 +143,7 @@ export default function GlobalEnterprisesSection() {
         const nextIndex = (currentIndex + 1) % tabs.length;
         return tabs[nextIndex].id;
       });
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -223,17 +321,109 @@ export default function GlobalEnterprisesSection() {
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0 w-full h-full"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full flex flex-col items-center justify-center p-4 md:p-8"
                 >
-                     <img 
-                        src={tabs.find(t => t.id === activeTab)?.image} 
-                        alt={tabs.find(t => t.id === activeTab)?.label}
-                        className="w-full h-full object-cover"
-                     />
+                     {/* Background Grid */}
+                     <div className="absolute inset-0 opacity-[0.03]" 
+                          style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+                     </div>
+
+                     {activeTab === 'work' && (
+                        <div className="flex flex-col items-center w-full max-w-5xl gap-4 md:gap-8">
+                           {/* Top Layer */}
+                           <div className="flex items-center w-full justify-between px-4">
+                               <WorkflowNode icon={Database} label="Data Sources" subLabel="SaaS & DBs" color="bg-blue-600" />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Workflow} label="Orchestration" subLabel="Logic Core" color="bg-indigo-600" delay={0.2} />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Activity} label="Business Impact" subLabel="Automated" color="bg-cyan-600" delay={0.4} />
+                           </div>
+                           
+                           {/* Vertical Connectors */}
+                           <div className="flex w-full justify-around px-12 md:px-24 -mt-4 opacity-50">
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                           </div>
+
+                           {/* Bottom Layer */}
+                           <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
+                               <SystemNode icon={Server} label="API Gateway" delay={0.5} />
+                               <SystemNode icon={Brain} label="LLM Reasoning" delay={0.6} />
+                               <SystemNode icon={FileText} label="Audit Logs" delay={0.7} />
+                           </div>
+                        </div>
+                     )}
+
+                     {activeTab === 'service' && (
+                        <div className="flex flex-col items-center w-full max-w-5xl gap-4 md:gap-8">
+                           <div className="flex items-center w-full justify-between px-4">
+                               <WorkflowNode icon={Users} label="Customers" subLabel="Inbound" color="bg-pink-600" />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Bot} label="AI Agents" subLabel="24/7 Support" color="bg-purple-600" delay={0.2} />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Heart} label="Resolution" subLabel="CSAT 5/5" color="bg-rose-500" delay={0.4} />
+                           </div>
+                           <div className="flex w-full justify-around px-12 md:px-24 -mt-4 opacity-50">
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                           </div>
+                           <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
+                               <SystemNode icon={MessageCircle} label="Live Chat" delay={0.5} />
+                               <SystemNode icon={History} label="Context Window" delay={0.6} />
+                               <SystemNode icon={CheckSquare} label="Ticket Sync" delay={0.7} />
+                           </div>
+                        </div>
+                     )}
+
+                     {activeTab === 'process' && (
+                        <div className="flex flex-col items-center w-full max-w-5xl gap-4 md:gap-8">
+                           <div className="flex items-center w-full justify-between px-4">
+                               <WorkflowNode icon={FileStack} label="Documents" subLabel="Unstructured" color="bg-amber-500" />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Settings} label="Processing" subLabel="Extraction" color="bg-orange-500" delay={0.2} />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Zap} label="ERP Sync" subLabel="Structured" color="bg-yellow-500" delay={0.4} />
+                           </div>
+                           <div className="flex w-full justify-around px-12 md:px-24 -mt-4 opacity-50">
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                           </div>
+                           <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
+                               <SystemNode icon={Scan} label="OCR Engine" delay={0.5} />
+                               <SystemNode icon={RefreshCw} label="Validation" delay={0.6} />
+                               <SystemNode icon={UserCheck} label="Human Loop" delay={0.7} />
+                           </div>
+                        </div>
+                     )}
+
+                     {activeTab === 'security' && (
+                        <div className="flex flex-col items-center w-full max-w-5xl gap-4 md:gap-8">
+                           <div className="flex items-center w-full justify-between px-4">
+                               <WorkflowNode icon={Globe} label="Traffic" subLabel="Global" color="bg-emerald-600" />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={ShieldCheck} label="Guardrails" subLabel="Policy Check" color="bg-teal-600" delay={0.2} />
+                               <WorkflowConnector />
+                               <WorkflowNode icon={Lock} label="Secure" subLabel="Compliance" color="bg-green-600" delay={0.4} />
+                           </div>
+                           <div className="flex w-full justify-around px-12 md:px-24 -mt-4 opacity-50">
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                               <WorkflowConnector vertical />
+                           </div>
+                           <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
+                               <SystemNode icon={ShieldAlert} label="Threat Intel" delay={0.5} />
+                               <SystemNode icon={Eye} label="PII Detection" delay={0.6} />
+                               <SystemNode icon={FileBadge} label="SOC2 Report" delay={0.7} />
+                           </div>
+                        </div>
+                     )}
                 </motion.div>
             </AnimatePresence>
         </div>

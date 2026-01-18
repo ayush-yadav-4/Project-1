@@ -60,19 +60,19 @@ const orbitIconsData = [
 
 const points = [
   {
-    text: "optimising JSON schema for agents",
+    text: "fragmented vendor APIs",
     className: "top-[20%] right-[5%] md:right-[15%]",
   },
   {
-    text: "building integrations",
+    text: "shadow AI procurement",
     className: "top-[28%] left-[5%] md:left-[15%]",
   },
   {
-    text: "managing auth and permissions for tools",
+    text: "compliance blindspots",
     className: "bottom-[28%] left-[5%] md:left-[10%]",
   },
   {
-    text: "scaling to millions of tools execution",
+    text: "zero performance visibility",
     className: "bottom-[15%] right-[5%] md:right-[15%]",
   },
 ];
@@ -154,7 +154,7 @@ export default function AnimatedPoints() {
                 <motion.h2 
                     className="text-3xl md:text-5xl font-serif text-[#1a1a1a] leading-tight whitespace-nowrap"
                 >
-                Building agents that take action <span className="italic font-bold font-serif text-[#4A4A4A]">is hard</span>
+                Scaling an Agent Workforce <span className="italic font-bold font-serif text-[#4A4A4A]">is chaotic</span>
                 </motion.h2>
              </div>
 
@@ -240,9 +240,9 @@ export default function AnimatedPoints() {
                  <div className="relative w-[500px] h-[500px] md:w-[700px] md:h-[700px] flex items-center justify-center">
                     {/* Central Hub */}
                     <div className="relative z-20 flex flex-col items-center justify-center">
-                        {/* Placeholder Logo */}
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-black rounded-xl flex items-center justify-center text-white p-2 shadow-lg z-30">
-                           <img src="https://composio.dev/favicon.ico" alt="C" className="w-full h-full object-contain invert" />
+                        {/* Agent Marketplace Logo */}
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white shadow-xl shadow-pink-200 border-4 border-white z-30">
+                           <ShoppingBag className="w-8 h-8 md:w-10 md:h-10" strokeWidth={2.5} />
                         </div>
                         
                         {/* Connecting Lines & Bubbles matching image */}
@@ -263,24 +263,22 @@ export default function AnimatedPoints() {
                         ></div>
 
                         {/* LLM (Top Right) */}
-                        <motion.div 
+                        <div 
                            className="absolute -right-[10rem] -top-[6rem] bg-gray-50/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-1.5 shadow-sm text-sm font-medium text-gray-500 whitespace-nowrap z-20"
-                           style={{ opacity: panelOpacity }}
                          >
                            LLM
-                        </motion.div>
+                        </div>
                          {/* Connecting Line to LLM */}
-                        <motion.div 
+                        <div 
                            className="absolute w-[130px] h-[1px] bg-gray-300 -z-10"
                            style={{ 
-                                opacity: panelOpacity, 
                                 position: "absolute",
                                 left: "50%",
                                 top: "50%",
                                 transformOrigin: "left center", 
                                 transform: "rotate(-45deg) translateX(25px)" // Pointing top-right
                            }}
-                        ></motion.div>
+                        ></div>
 
                         {/* Tools (Bottom Right - Orange Button) */}
                          <div className="absolute -right-[7rem] -bottom-[5rem] z-20">
