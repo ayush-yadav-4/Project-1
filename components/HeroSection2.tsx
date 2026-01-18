@@ -78,9 +78,6 @@ export default function HeroSection2() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
           <h1 
             className="max-w-5xl text-6xl lg:text-8xl font-medium tracking-tight mb-12 leading-tight font-[family-name:var(--font-inter)] text-black"
-            style={{ 
-              textShadow: '0 0 30px rgba(253, 224, 71, 0.6), 0 0 60px rgba(234, 179, 8, 0.4), 0 0 90px rgba(234, 88, 12, 0.2)'
-            }}
           >
           Bring 
           <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">

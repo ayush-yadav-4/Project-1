@@ -33,9 +33,11 @@ export default function Navbar() {
           style={{ paddingLeft: paddingX, paddingRight: paddingX }}
           className="flex h-16 items-center justify-between px-4 lg:px-6"
         >
+           <Link href="/" className="hover:text-black transition-colors">
           <div className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-400 to-orange-200 whitespace-nowrap">
             AgentMarketplace
           </div>
+         </Link>
           
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
