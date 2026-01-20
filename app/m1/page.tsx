@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import { MarketplaceLayout } from "@/components/marketplace-layout"
 
@@ -25,6 +25,14 @@ import {
   RefreshCw as RefreshIcon,
   ThumbsUp,
   ChevronDown,
+  Database,
+  Network,
+  Calendar,
+  CheckCircle,
+  Settings,
+  ShoppingBag,
+  Heart,
+  Sparkles,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -39,6 +47,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import type { LucideIcon } from "lucide-react"
+import { allAgents, getIntegrationIcons, suites } from "@/lib/agents-data"
+import type { Agent } from "@/lib/agents-data"
 
 // Premium icon components with colored backgrounds
 const InvoiceIcon = () => (
@@ -113,191 +123,57 @@ const ChatSupportIcon = () => (
   </div>
 )
 
-const categories = [
-  { id: "finance", label: "Finance", icon: BarChart3 },
-  { id: "sales", label: "Sales", icon: TrendingUp },
-  { id: "hr", label: "HR", icon: Users },
-  { id: "legal", label: "Legal", icon: Shield },
-  { id: "marketing", label: "Marketing", icon: Target },
-  { id: "analytics", label: "Analytics", icon: BarChart3 },
-  { id: "hospitality", label: "Hospitality", icon: Server },
-  { id: "enterprise", label: "Enterprise", icon: Server },
-  { id: "productivity", label: "Productivity", icon: FileText },
-  { id: "it", label: "IT Support", icon: Zap },
-  { id: "support", label: "Customer Support", icon: Headphones },
-]
+// Map suites to category icons
+const suiteIcons: Record<string, LucideIcon> = {
+  "Sales Suite": TrendingUp,
+  "Marketing Suite": Target,
+  "Customer Service Suite": Headphones,
+  "HR & Talent Suite": Users,
+  "IT & Operations Suite": Zap,
+  "Finance & Banking Suite": CreditCard,
+  "Retail & E-Commerce Suite": ShoppingBag,
+  "Healthcare Suite": Heart,
+  "Cross-Industry Analytics Suite": BarChart3,
+  "Community & Innovation Suite": Sparkles,
+}
 
-const agents = [
-  {
-    id: 1,
-    name: "Invoice Processing Agent",
-    description: "Automates invoice verification and processing with intelligent document analysis and multi-format support for seamless workflow integration.",
-    category: "finance",
-    icon: InvoiceIcon,
-    author: "Sarah Chen",
-    likes: 124,
-  },
-  {
-    id: 2,
-    name: "HR Recruitment Agent",
-    description: "Screens resumes and identifies top candidates using AI-powered matching and skill assessment for faster talent acquisition.",
-    category: "hr",
-    icon: RecruitmentIcon,
-    author: "Michael Torres",
-    likes: 98,
-  },
-  {
-    id: 3,
-    name: "Legal Innovation Agent",
-    description: "Streamlines legal research and document preparation with AI-powered case law analysis and intelligent legal document generation.",
-    category: "legal",
-    icon: RefundIcon,
-    author: "Emma Wilson",
-    likes: 156,
-  },
-  {
-    id: 4,
-    name: "AI Sentiment Analysis",
-    description: "Analyzes customer feedback and social media sentiment in real-time across multiple channels with actionable insights and trend detection.",
-    category: "analytics",
-    icon: SalesCoachIcon,
-    author: "David Park",
-    likes: 203,
-  },
-  {
-    id: 5,
-    name: "Hotel Profiling Agent",
-    description: "Creates comprehensive hotel profiles and recommendations using AI analysis of amenities, reviews, and guest preferences.",
-    category: "hospitality",
-    icon: EnterpriseIcon,
-    author: "Jessica Martinez",
-    likes: 287,
-  },
-  {
-    id: 6,
-    name: "Enterprise GPT",
-    description: "Custom enterprise AI assistant for organizational knowledge with intelligent information retrieval and process automation.",
-    category: "enterprise",
-    icon: EnterpriseIcon,
-    author: "Ryan Thompson",
-    likes: 189,
-  },
-  {
-    id: 7,
-    name: "AI Sales Coach",
-    description: "Provides real-time coaching and sales insights with personalized recommendations and analytics to improve performance metrics.",
-    category: "sales",
-    icon: SalesCoachIcon,
-    author: "Lisa Anderson",
-    likes: 241,
-  },
-  {
-    id: 8,
-    name: "LinkedIn Marketing and Lead Generation Agent",
-    description: "Automates LinkedIn marketing campaigns with personalized outreach and intelligent prospect identification for maximum engagement.",
-    category: "marketing",
-    icon: SalesSDRIcon,
-    author: "James Lee",
-    likes: 175,
-  },
-  {
-    id: 9,
-    name: "LinkedIn Sales Agent",
-    description: "Manages LinkedIn sales prospecting and outreach with automated lead qualification and personalized relationship building at scale.",
-    category: "sales",
-    icon: RecruitmentIcon,
-    author: "Alex Kumar",
-    likes: 312,
-  },
-  {
-    id: 10,
-    name: "Meeting of Minutes Agent",
-    description: "Automatically captures and summarizes meeting minutes with action item tracking and searchable meeting archives.",
-    category: "productivity",
-    icon: InvoiceIcon,
-    author: "Priya Sharma",
-    likes: 198,
-  },
-  {
-    id: 11,
-    name: "AI Newsletter Agent",
-    description: "Creates and personalizes newsletter content automatically with AI-powered curation and optimization for maximum engagement.",
-    category: "marketing",
-    icon: ChatSupportIcon,
-    author: "Daniel Kim",
-    likes: 267,
-  },
-  {
-    id: 12,
-    name: "Marketing Customer Lead Agent",
-    description:
-      "Manages inbound and outbound marketing leads with intelligent scoring, nurturing, and routing into your CRM.",
-    category: "marketing",
-    icon: SalesSDRIcon,
-    author: "Olivia Perez",
-    likes: 154,
-  },
-  {
-    id: 13,
-    name: "Voice Bot",
-    description:
-      "Handles customer calls with natural, human-like conversations and intelligent intent recognition across IVR flows.",
-    category: "support",
-    icon: VoiceBotIcon,
-    author: "Daniel Kim",
-    likes: 212,
-  },
-  {
-    id: 14,
-    name: "AI Avataar Agent",
-    description:
-      "Creates interactive AI avatars for customer engagement, sales demos, and onboarding experiences across channels.",
-    category: "marketing",
-    icon: ChatSupportIcon,
-    author: "Sofia Rossi",
-    likes: 187,
-  },
-  {
-    id: 15,
-    name: "HR Onboarding and Training Agent",
-    description:
-      "Guides new hires through onboarding, policies, and training content with personalized learning paths and Q&A.",
-    category: "hr",
-    icon: ShieldIcon,
-    author: "Michael Torres",
-    likes: 173,
-  },
-  {
-    id: 16,
-    name: "Social Intelligence Platform Agent",
-    description:
-      "Monitors social channels, surfaces insights, and flags brand, competitor, and market signals in real time.",
-    category: "analytics",
-    icon: SalesCoachIcon,
-    author: "Emma Wilson",
-    likes: 201,
-  },
-  {
-    id: 17,
-    name: "Autocad Engineering BOM Generator",
-    description:
-      "Parses engineering drawings to automatically generate accurate bills of materials and export-ready reports.",
-    category: "it",
-    icon: ITHelpDeskIcon,
-    author: "Alex Kumar",
-    likes: 139,
-  },
-  {
-    id: 18,
-    name: "Dimension Measurer Agent",
-    description:
-      "Measures dimensions from drawings or images and validates them against engineering standards and constraints.",
-    category: "it",
-    icon: InvoiceIcon,
-    author: "Priya Sharma",
-    likes: 128,
-  },
-]
+// Create categories from suites
+const categories = suites.map(suite => ({
+  id: suite.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+  label: suite,
+  icon: suiteIcons[suite] || FileText,
+}))
+
+// Add "All" category
+categories.unshift({ id: "all", label: "All", icon: FileText })
+
+// Map agents to display format with icons
+const agents = allAgents.map((agent, index) => {
+  // Assign icons based on suite
+  const iconMap: Record<string, () => React.ReactElement> = {
+    "Sales Suite": SalesSDRIcon,
+    "Marketing Suite": SalesCoachIcon,
+    "Customer Service Suite": HelpdeskIcon,
+    "HR & Talent Suite": RecruitmentIcon,
+    "IT & Operations Suite": ITHelpDeskIcon,
+    "Finance & Banking Suite": BankingIcon,
+    "Retail & E-Commerce Suite": EnterpriseIcon,
+    "Healthcare Suite": ShieldIcon,
+    "Cross-Industry Analytics Suite": SalesCoachIcon,
+    "Community & Innovation Suite": RefundIcon,
+  }
+  
+  return {
+    id: agent.id,
+    name: agent.name,
+    description: agent.description,
+    suite: agent.suite,
+    category: agent.suite.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    icon: iconMap[agent.suite] || InvoiceIcon,
+    author: agent.author || "Team",
+    likes: agent.likes || 100 + (index % 100),
+  }
+})
 
 export default function M1Page() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -305,15 +181,119 @@ export default function M1Page() {
 
   const filteredAgents = agents.filter((agent) => {
     const matchesSearch = agent.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      agent.description.toLowerCase().includes(searchQuery.toLowerCase())
+      agent.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      agent.suite.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = selectedCategory === "all" || agent.category === selectedCategory
     return matchesSearch && matchesCategory
   })
+
+  // Generate integration icons for each agent
+  const getIntegrationIcons = (agentId: number): Array<{ bg: string; icon?: LucideIcon; label: string; isText?: boolean }> => {
+    // Generate 3-4 integration icons per agent based on ID
+    const iconSets: Array<Array<{ bg: string; icon?: LucideIcon; label: string; isText?: boolean }>> = [
+      [
+        { bg: "bg-orange-500", icon: Target, label: "HS" },
+        { bg: "bg-green-500", icon: Headphones, label: "" },
+        { bg: "bg-black", icon: Zap, label: "" },
+        { bg: "bg-gray-400", label: "+1", isText: true },
+      ],
+      [
+        { bg: "bg-blue-500", icon: FileText, label: "" },
+        { bg: "bg-purple-500", icon: Briefcase, label: "" },
+        { bg: "bg-red-500", icon: Zap, label: "" },
+      ],
+      [
+        { bg: "bg-orange-500", icon: Target, label: "HS" },
+        { bg: "bg-indigo-500", icon: Shield, label: "" },
+        { bg: "bg-pink-500", icon: MessageSquare, label: "" },
+        { bg: "bg-gray-400", label: "+2", isText: true },
+      ],
+      [
+        { bg: "bg-green-500", icon: TrendingUp, label: "" },
+        { bg: "bg-blue-500", icon: BarChart3, label: "" },
+        { bg: "bg-purple-500", icon: MessageSquare, label: "" },
+      ],
+      [
+        { bg: "bg-orange-500", icon: Server, label: "" },
+        { bg: "bg-teal-500", icon: Users, label: "" },
+        { bg: "bg-yellow-500", icon: CreditCard, label: "" },
+      ],
+      [
+        { bg: "bg-blue-500", icon: Server, label: "" },
+        { bg: "bg-green-500", icon: Database, label: "" },
+        { bg: "bg-purple-500", icon: Network, label: "" },
+      ],
+      [
+        { bg: "bg-orange-500", icon: Target, label: "HS" },
+        { bg: "bg-pink-500", icon: TrendingUp, label: "" },
+        { bg: "bg-blue-500", icon: BarChart3, label: "" },
+      ],
+      [
+        { bg: "bg-orange-500", icon: Target, label: "HS" },
+        { bg: "bg-blue-500", icon: Briefcase, label: "" },
+        { bg: "bg-green-500", icon: MessageSquare, label: "" },
+      ],
+      [
+        { bg: "bg-indigo-500", icon: Briefcase, label: "" },
+        { bg: "bg-blue-500", icon: MessageSquare, label: "" },
+        { bg: "bg-green-500", icon: Target, label: "" },
+      ],
+      [
+        { bg: "bg-blue-500", icon: FileText, label: "" },
+        { bg: "bg-purple-500", icon: Calendar, label: "" },
+        { bg: "bg-green-500", icon: Users, label: "" },
+      ],
+      [
+        { bg: "bg-pink-500", icon: MessageSquare, label: "" },
+        { bg: "bg-blue-500", icon: Target, label: "" },
+        { bg: "bg-orange-500", icon: TrendingUp, label: "" },
+      ],
+      [
+        { bg: "bg-orange-500", icon: Target, label: "HS" },
+        { bg: "bg-blue-500", icon: BarChart3, label: "" },
+        { bg: "bg-green-500", icon: MessageSquare, label: "" },
+      ],
+      [
+        { bg: "bg-cyan-500", icon: Phone, label: "" },
+        { bg: "bg-blue-500", icon: Headphones, label: "" },
+        { bg: "bg-green-500", icon: MessageSquare, label: "" },
+      ],
+      [
+        { bg: "bg-pink-500", icon: MessageSquare, label: "" },
+        { bg: "bg-purple-500", icon: Shield, label: "" },
+        { bg: "bg-blue-500", icon: Target, label: "" },
+      ],
+      [
+        { bg: "bg-purple-500", icon: Shield, label: "" },
+        { bg: "bg-blue-500", icon: Users, label: "" },
+        { bg: "bg-green-500", icon: FileText, label: "" },
+      ],
+      [
+        { bg: "bg-green-500", icon: TrendingUp, label: "" },
+        { bg: "bg-blue-500", icon: BarChart3, label: "" },
+        { bg: "bg-purple-500", icon: MessageSquare, label: "" },
+      ],
+      [
+        { bg: "bg-lime-500", icon: Wrench, label: "" },
+        { bg: "bg-blue-500", icon: FileText, label: "" },
+        { bg: "bg-green-500", icon: Settings, label: "" },
+      ],
+      [
+        { bg: "bg-blue-500", icon: FileText, label: "" },
+        { bg: "bg-purple-500", icon: Wrench, label: "" },
+        { bg: "bg-green-500", icon: CheckCircle, label: "" },
+      ],
+    ]
+    return iconSets[agentId % iconSets.length] || iconSets[0]
+  }
 
   const AgentCard = ({ agent }: { agent: typeof agents[0] }) => {
     const Icon = agent.icon
     const [likes, setLikes] = useState(agent.likes)
     const [isLiked, setIsLiked] = useState(false)
+    // Generate integration icons based on agent name hash
+    const agentIdNum = agent.name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    const integrationIcons = getIntegrationIcons(agentIdNum)
 
     const handleLike = (e: React.MouseEvent) => {
       e.preventDefault()
@@ -333,47 +313,60 @@ export default function M1Page() {
           }
           className="cursor-none"
         >
-          <Card className="flex flex-col h-full rounded-xl relative bg-card border border-border hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-primary/50 overflow-hidden">
-            {/* Card Header Background - extends beneath the logo */}
-            <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20"></div>
+          <Card className="flex flex-col h-full rounded-xl relative bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-primary/50 overflow-hidden">
+            {/* Card Header Background - light blue */}
+            <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-br from-blue-50 to-blue-100"></div>
 
-            {/* Icon positioned centrally on the edge between header and content */}
-            <div className="relative px-5 z-10 mt-4 mb-0">
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-card dark:bg-card border border-border shadow-sm shrink-0 group-hover:bg-primary/10 dark:group-hover:bg-primary/20 transition-colors">
-                <Icon />
+            {/* Integration Icons - positioned below header */}
+            <div className="relative px-5 z-10 mt-3 mb-3">
+              <div className="flex items-center gap-2">
+                {integrationIcons.map((integration, idx) => (
+                  <div
+                    key={idx}
+                    className={`w-8 h-8 rounded-md ${integration.bg} flex items-center justify-center shadow-sm shrink-0`}
+                  >
+                    {integration.isText ? (
+                      <span className="text-white text-xs font-semibold">{integration.label}</span>
+                    ) : integration.icon ? (
+                      <integration.icon className="w-4 h-4 text-white" />
+                    ) : (
+                      <span className="text-white text-xs font-semibold">{integration.label || "?"}</span>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Card Body */}
-            <div className="flex-grow flex flex-col gap-2.5 px-5 pb-4 relative z-10 -mt-6">
+            <div className="flex-grow flex flex-col gap-2.5 px-5 pb-4 relative z-10">
               {/* Content Section */}
               <div className="block flex-grow">
-                <h3 className="text-base font-semibold mb-1.5 p-0 truncate text-foreground">
+                <h3 className="text-base font-semibold mb-1.5 p-0 truncate text-gray-900">
                   {agent.name}
                 </h3>
-                <p className="text-sm text-muted-foreground line-clamp-3 leading-snug">
+                <p className="text-sm text-gray-600 line-clamp-3 leading-snug">
                   {agent.description}
                 </p>
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-border m-0"></div>
+              <div className="h-px bg-gray-200 m-0"></div>
 
               {/* Category Badges */}
               <div className="flex flex-wrap gap-2 rounded-xl w-full">
-                <Badge variant="secondary" className="text-xs font-medium px-2 py-0.5 rounded-full">
-                  {agent.category}
+                <Badge variant="secondary" className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-700">
+                  {agent.suite}
                 </Badge>
               </div>
 
               {/* Creator and Like Section */}
               <div className="flex items-center justify-between pt-1">
-                <span className="text-xs text-muted-foreground">By {agent.author}</span>
+                <span className="text-xs text-gray-500">By {agent.author}</span>
                 <button
                   onClick={handleLike}
                   className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs transition-colors shadow-sm ${isLiked
                     ? "text-blue-600 bg-blue-50"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                 >
                   <ThumbsUp className="w-3.5 h-3.5" />
@@ -418,8 +411,7 @@ export default function M1Page() {
               <SelectValue placeholder="Select Category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
-              {categories.map((cat) => (
+              {categories.filter(cat => cat.id !== "all").map((cat) => (
                 <SelectItem key={cat.id} value={cat.id}>{cat.label}</SelectItem>
               ))}
             </SelectContent>
@@ -474,7 +466,7 @@ export default function M1Page() {
             </button>
 
             {/* Category Buttons */}
-            {categories.map((category) => {
+            {categories.filter(cat => cat.id !== "all").map((category) => {
               const IconComponent = category.icon as LucideIcon
               const categoryAgents = agents.filter(a => a.category === category.id)
               const isSelected = selectedCategory === category.id

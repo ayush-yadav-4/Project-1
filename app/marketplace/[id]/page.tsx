@@ -21,8 +21,13 @@ import { useParams } from "next/navigation"
 import { MarketplaceLayout } from "@/components/marketplace-layout"
 import { CustomVideoPlayer } from "@/components/ui/custom-video-player"
 import { HoverButton } from "@/components/ui/hover-glow-button"
+import { getAgentById } from "@/lib/agents-data"
+import type { Agent } from "@/lib/agents-data"
+import { FlowChart } from "@/components/flow-chart"
+import { getAgentFlow } from "@/lib/agent-flows"
 
-const allAgents = [
+// Legacy agents for backward compatibility
+const legacyAgents = [
   {
     id: 1,
     name: "Invoice Processing Agent",
@@ -423,8 +428,18 @@ const allAgents = [
 
 export default function AgentDetailPage() {
   const params = useParams()
-  const agentId = Number.parseInt(params.id as string)
-  const agent = allAgents.find((a) => a.id === agentId)
+  const agentId = params.id as string
+  
+  // Try to find agent by string ID first (new agents)
+  let agent = getAgentById(agentId)
+  
+  // If not found, try legacy numeric ID
+  if (!agent) {
+    const numericId = Number.parseInt(agentId)
+    if (!isNaN(numericId)) {
+      agent = legacyAgents.find((a) => a.id === numericId) as any
+    }
+  }
 
   if (!agent) {
     return (
@@ -432,7 +447,7 @@ export default function AgentDetailPage() {
         <div className="flex items-center justify-center min-h-[calc(100vh-200px)]">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Agent not found</h1>
-            <Link href="/marketplace">
+            <Link href="/m1">
               <Button>Back to Marketplace</Button>
             </Link>
           </div>
@@ -441,14 +456,22 @@ export default function AgentDetailPage() {
     )
   }
 
-  const IconComponent = agent.icon
+  // Get icon component - handle both legacy and new agents
+  let IconComponent = FileText
+  if ((agent as any).icon) {
+    if (typeof (agent as any).icon === 'function') {
+      IconComponent = (agent as any).icon
+    } else {
+      IconComponent = FileText
+    }
+  }
 
   return (
     <MarketplaceLayout>
-      <main className="max-w-6xl mx-auto p-6 md:p-12">
+      <main className="max-w-6xl mx-auto p-6 md:p-12 bg-white">
         <div className="mb-8">
           <Link
-            href="/marketplace"
+            href="/m1"
             className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity mb-4"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -467,16 +490,20 @@ export default function AgentDetailPage() {
           <div className="lg:col-span-2 space-y-8">
             {/* Description */}
             <div>
-              <p className="text-lg text-muted-foreground leading-relaxed">{agent.detailedDescription}</p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {(agent as any).detailedDescription || agent.description}
+              </p>
             </div>
 
-            <div className="border border-border rounded-lg p-8 bg-white dark:bg-slate-800/50 backdrop-blur-sm">
+            {(agent.problems && agent.problems.length > 0) || (agent.benefits && agent.benefits.length > 0) ? (
+              <div className="border border-gray-200 rounded-lg p-8 bg-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* The Problem */}
+                  {agent.problems && agent.problems.length > 0 && (
                 <div>
                   <h2 className="text-2xl font-bold mb-4">The Problem</h2>
                   <ul className="space-y-3">
-                    {agent.problems.map((problem, index) => (
+                        {agent.problems.map((problem: string, index: number) => (
                       <li key={index} className="flex gap-3">
                         <span className="text-primary font-bold flex-shrink-0">•</span>
                         <span className="text-muted-foreground text-sm leading-relaxed">{problem}</span>
@@ -484,21 +511,35 @@ export default function AgentDetailPage() {
                     ))}
                   </ul>
                 </div>
+                  )}
 
                 {/* Benefits */}
+                  {agent.benefits && agent.benefits.length > 0 && (
                 <div>
                   <h2 className="text-2xl font-bold mb-4">Benefits</h2>
                   <ul className="space-y-3">
-                    {agent.benefits.map((benefit, index) => (
+                        {agent.benefits.map((benefit: string, index: number) => (
                       <li key={index} className="flex gap-3">
                         <span className="text-primary font-bold flex-shrink-0">•</span>
                         <span className="text-muted-foreground text-sm leading-relaxed">{benefit}</span>
                       </li>
                     ))}
                   </ul>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            ) : null}
+
+            {/* Trigger & Flow Chart */}
+            {(() => {
+              const flow = getAgentFlow(agent.id)
+              return flow ? (
+                <div className="mt-8">
+                  <FlowChart flow={flow} />
+                </div>
+              ) : null
+            })()}
           </div>
 
           {/* Right Column - Video Section */}
@@ -506,7 +547,7 @@ export default function AgentDetailPage() {
             <div className="sticky top-24 space-y-6">
               <div>
                 <h3 className="text-xl font-bold mb-4">How It Works?</h3>
-                <CustomVideoPlayer videoUrl={agent.videoUrl} agentName={agent.name} />
+                <CustomVideoPlayer videoUrl={agent.videoUrl || ""} agentName={agent.name} />
               </div>
 
               <HoverButton

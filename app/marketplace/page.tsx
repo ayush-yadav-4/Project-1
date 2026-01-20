@@ -21,40 +21,69 @@ import {
   RefreshCw,
   CreditCard,
   HelpCircle,
+  Users,
+  BarChart3,
+  Headphones,
+  ShoppingBag,
+  Sparkles,
+  Rocket,
+  Cpu,
+  Globe,
+  Lightbulb,
+  Star,
+  Gem,
+  Crown,
+  Award,
+  Flame,
+  Layers,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { allAgents } from "@/lib/agents-data"
+import { blueprints } from "@/lib/blueprints-data"
+import type { LucideIcon } from "lucide-react"
 
+// Select first 3 blueprints for the marketplace homepage
+const featuredBlueprints = blueprints.slice(0, 3)
 
-const blueprints = [
-  {
-    id: 1,
-    name: "Open Source Perplexity",
-    description: "A self-hosted, open-source AI-powered search engine that combines the power of multiple data sources to provide comprehensive answers.",
-    gradient: "from-orange-400 to-red-500",
-  },
-  {
-    id: 2,
-    name: "McKinsey Lilli Clone",
-    description: "This agent helps in accessing information from both internal and external data sources to provide strategic insights and recommendations.",
-    gradient: "from-green-400 to-yellow-500",
-  },
-  {
-    id: 3,
-    name: "Market Color Analyst Agent",
-    description: "An intelligent agent system that automatically generates professional Market Color Analysis reports for investment decisions.",
-    gradient: "from-blue-400 to-purple-500",
-  },
+// Premium icon and color combinations for modern aesthetic
+const premiumIconColorSets: Array<{ icon: LucideIcon; color: string; gradient?: string }> = [
+  { icon: Sparkles, color: "bg-gradient-to-br from-purple-500 to-pink-500" },
+  { icon: Rocket, color: "bg-gradient-to-br from-blue-500 to-cyan-500" },
+  { icon: Cpu, color: "bg-gradient-to-br from-indigo-500 to-purple-500" },
+  { icon: Globe, color: "bg-gradient-to-br from-emerald-500 to-teal-500" },
+  { icon: Lightbulb, color: "bg-gradient-to-br from-amber-500 to-orange-500" },
+  { icon: Star, color: "bg-gradient-to-br from-rose-500 to-pink-500" },
+  { icon: Gem, color: "bg-gradient-to-br from-violet-500 to-purple-500" },
+  { icon: Crown, color: "bg-gradient-to-br from-yellow-500 to-amber-500" },
+  { icon: Award, color: "bg-gradient-to-br from-blue-600 to-indigo-600" },
+  { icon: Flame, color: "bg-gradient-to-br from-red-500 to-orange-500" },
+  { icon: Layers, color: "bg-gradient-to-br from-slate-600 to-slate-800" },
+  { icon: Zap, color: "bg-gradient-to-br from-yellow-400 to-yellow-600" },
 ]
 
-const preBuiltAgents = [
-  { id: 1, name: "Invoice Processing Agent", color: "bg-blue-500", icon: FileText },
-  { id: 5, name: "Hotel Profiling Agent", color: "bg-amber-500", icon: Server },
-  { id: 2, name: "HR Recruitment Agent", color: "bg-indigo-500", icon: Briefcase },
-  { id: 9, name: "LinkedIn Sales Agent", color: "bg-lime-500", icon: Target },
-  { id: 10, name: "Meeting of Minutes Agent", color: "bg-cyan-500", icon: FileText },
-  { id: 11, name: "AI Newsletter Agent", color: "bg-pink-500", icon: MessageSquare },
-]
+// Helper function to get unique premium icon and color for each agent
+function getPremiumIconAndColor(agentIndex: number, agentName: string): { icon: LucideIcon; color: string } {
+  // Use agent index to cycle through premium sets, ensuring variety
+  const setIndex = agentIndex % premiumIconColorSets.length
+  const selectedSet = premiumIconColorSets[setIndex]
+  
+  return {
+    icon: selectedSet.icon,
+    color: selectedSet.color,
+  }
+}
+
+// Select 6 diverse agents from allAgents with premium styling
+const selectedAgents = allAgents.slice(0, 6).map((agent, index) => {
+  const { icon, color } = getPremiumIconAndColor(index, agent.name)
+  return {
+    id: agent.id,
+    name: agent.name,
+    color,
+    icon,
+  }
+})
 
 export default function MarketplacePage() {
   return (
@@ -126,33 +155,47 @@ export default function MarketplacePage() {
         </div>
 
         {/* Two Column Layout: Blueprints on Left, Pre-built Agents on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Blueprints Column */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col h-full">
+            <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">Blueprints</h2>
-              <Button variant="ghost" className="text-primary" size="sm">
-                View all
-              </Button>
+              <Link href="/blueprints">
+                <Button variant="ghost" className="text-primary" size="sm">
+                  View all
+                </Button>
+              </Link>
             </div>
-            <div className="space-y-3">
-              {blueprints.map((blueprint) => (
-                <Card key={blueprint.id} className="p-3 hover:shadow-lg transition-all cursor-pointer border hover:border-primary/50">
-                  <div className="flex items-start gap-3">
-                    <div className={`w-12 h-12 rounded-lg bg-linear-to-br ${blueprint.gradient} shrink-0`}></div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold mb-1 text-sm">{blueprint.name}</h3>
-                      <p className="text-xs text-muted-foreground line-clamp-2">{blueprint.description}</p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+            <div className="space-y-2">
+              {featuredBlueprints.map((blueprint, index) => {
+                // Assign different gradient colors to each blueprint card
+                const gradients = [
+                  "from-orange-400 to-red-500",
+                  "from-green-400 to-yellow-500",
+                  "from-blue-400 to-purple-500",
+                ]
+                const gradient = gradients[index % gradients.length]
+                
+                return (
+                  <Link key={blueprint.id} href={`/blueprints/${blueprint.id}`} className="block">
+                    <Card className="p-3 hover:shadow-lg transition-all cursor-pointer border hover:border-primary/50">
+                      <div className="flex items-start gap-3">
+                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${gradient} shrink-0`}></div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold mb-0.5 text-sm leading-tight">{blueprint.name}</h3>
+                          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{blueprint.description}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
           {/* Pre-built Agents Column */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col h-full">
+            <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">Our Agents</h2>
               <Link href="/m1">
                 <Button variant="ghost" className="text-primary" size="sm">
@@ -161,13 +204,13 @@ export default function MarketplacePage() {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {preBuiltAgents.map((agent) => {
+              {selectedAgents.map((agent) => {
                 const IconComponent = agent.icon
                 return (
                   <Link key={agent.id} href={`/marketplace/${agent.id}`}>
-                    <Card className="p-3 hover:shadow-lg transition-all cursor-pointer h-20 flex flex-row items-center gap-3 border hover:border-primary/50">
-                      <div className={`w-10 h-10 rounded-lg ${agent.color} flex items-center justify-center shadow-md shrink-0`}>
-                        <IconComponent className="w-5 h-5 text-white" />
+                    <Card className="p-3 hover:shadow-lg transition-all cursor-pointer h-20 flex flex-row items-center gap-3 border hover:border-primary/50 group">
+                      <div className={`w-10 h-10 rounded-lg ${agent.color} flex items-center justify-center shadow-lg shrink-0 transition-transform group-hover:scale-110`}>
+                        <IconComponent className="w-5 h-5 text-white drop-shadow-sm" />
                       </div>
                       <h3 className="font-semibold text-sm truncate">{agent.name}</h3>
                     </Card>

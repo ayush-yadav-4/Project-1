@@ -7,6 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import ResponsibleAIModal from "@/components/modals/ResponsibleAIModal"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -91,6 +92,7 @@ interface MarketplaceLayoutProps {
 
 export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isResponsibleAIModalOpen, setIsResponsibleAIModalOpen] = useState(false)
   const pathname = usePathname()
 
   return (
@@ -199,57 +201,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                       </div>
 
                       <Link
-                        href="/marketplace?category=managerial"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("managerial") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Settings className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <div className="flex items-center gap-2">
-                              <p className="ml-2 text-sm font-medium">Managerial</p>
-                              <Badge
-                                className={cn(
-                                  "flex h-fit w-fit items-center gap-1.5 rounded border-none bg-blue-50 px-1.5 text-blue-600 dark:bg-blue-700 dark:text-blue-300",
-                                )}
-                                variant="outline"
-                              >
-                                BETA
-                              </Badge>
-                            </div>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=workflows"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("workflows") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Zap className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <div className="flex items-center gap-2">
-                              <p className="ml-2 text-sm font-medium">Workflows</p>
-                              <Badge
-                                className={cn(
-                                  "flex h-fit w-fit items-center gap-1.5 rounded border-none bg-blue-50 px-1.5 text-blue-600 dark:bg-blue-700 dark:text-blue-300",
-                                )}
-                                variant="outline"
-                              >
-                                BETA
-                              </Badge>
-                            </div>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=blueprints"
+                        href="/blueprints"
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
                           pathname?.includes("blueprints") && "bg-muted text-blue-600",
@@ -275,64 +227,6 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
 
                       <Separator className="w-full" />
 
-                      {/* Knowledge Source Section */}
-                      <div className="px-2 py-1">
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                              Knowledge Source
-                            </p>
-                          )}
-                        </motion.li>
-                      </div>
-
-                      <Link
-                        href="/marketplace?category=knowledge"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("knowledge") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Database className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Knowledge Bases</p>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=graph"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("graph") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Network className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Knowledge Graph</p>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=context"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("context") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <FileText className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Global Context</p>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Separator className="w-full" />
-
                       {/* Governance Section */}
                       <div className="px-2 py-1">
                         <motion.li variants={variants}>
@@ -344,11 +238,10 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                         </motion.li>
                       </div>
 
-                      <Link
-                        href="/marketplace?category=responsible-ai"
+                      <button
+                        onClick={() => setIsResponsibleAIModalOpen(true)}
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("responsible-ai") && "bg-muted text-blue-600",
                         )}
                       >
                         <Shield className="h-4 w-4" />
@@ -356,54 +249,13 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                           {!isCollapsed && (
                             <div className="flex items-center gap-2">
                               <p className="ml-2 text-sm font-medium">Responsible AI</p>
-                              <Button
-                                size="sm"
-                                className="h-5 px-2 text-xs bg-purple-600 hover:bg-purple-700"
-                              >
+                              <span className="inline-flex items-center justify-center h-5 px-2 text-xs font-medium rounded bg-purple-600 text-white">
                                 Upgrade
-                              </Button>
+                              </span>
                             </div>
                           )}
                         </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=agent-eval"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("agent-eval") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Bug className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <div className="flex items-center gap-2">
-                              <p className="ml-2 text-sm font-medium">Agent Eval</p>
-                              <Button
-                                size="sm"
-                                className="h-5 px-2 text-xs bg-purple-600 hover:bg-purple-700"
-                              >
-                                Upgrade
-                              </Button>
-                            </div>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/marketplace?category=traces"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("traces") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <Telescope className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Traces</p>
-                          )}
-                        </motion.li>
-                      </Link>
+                      </button>
 
                       <Separator className="w-full" />
 
@@ -419,7 +271,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                       </div>
 
                       <Link
-                        href="/marketplace?category=tools"
+                        href="/marketplace/tools"
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
                           pathname?.includes("tools") && "bg-muted text-blue-600",
@@ -434,10 +286,10 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                       </Link>
 
                       <Link
-                        href="/marketplace?category=models"
+                        href="/models"
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("models") && "bg-muted text-blue-600",
+                          pathname === "/models" && "bg-muted text-blue-600",
                         )}
                       >
                         <Cpu className="h-4 w-4" />
@@ -552,6 +404,12 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
       <div className="flex-1 ml-[3.05rem] transition-all duration-200">
         {children}
       </div>
+
+      {/* Responsible AI Modal */}
+      <ResponsibleAIModal
+        isOpen={isResponsibleAIModalOpen}
+        onClose={() => setIsResponsibleAIModalOpen(false)}
+      />
     </div>
   )
 }

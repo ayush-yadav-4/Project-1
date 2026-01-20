@@ -40,7 +40,7 @@ export function ConnectorCard({
   return (
     <Card className="flex flex-col h-full rounded-xl relative bg-card border border-border hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-primary/50 overflow-hidden group">
       {/* Card Header Background - extends beneath the logo */}
-      <div className="absolute top-0 left-0 right-0 h-14 bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20"></div>
+      <div className="absolute top-0 left-0 right-0 h-14 bg-blue-100/60 dark:bg-blue-900/20"></div>
 
       {/* Icon positioned centrally on the edge between header and content */}
       <div className="relative px-5 z-10 mt-4 mb-0">

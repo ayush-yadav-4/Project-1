@@ -19,74 +19,124 @@ import {
 
 // Icon components for connectors
 const WeaviateIcon = () => (
-  <div className="w-6 h-6 rounded bg-green-500 flex items-center justify-center text-white font-bold text-xs">
-    W
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/weaviate-logo.png" 
+      alt="Weaviate" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const QdrantIcon = () => (
-  <div className="w-6 h-6 rounded bg-red-500 flex items-center justify-center text-white font-bold text-xs">
-    Q
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/qdrant-logo.png" 
+      alt="Qdrant" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const PGVectorIcon = () => (
-  <div className="w-6 h-6 rounded bg-blue-500 flex items-center justify-center text-white">
-    <Database className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/pg_vector-logo.png" 
+      alt="PG-Vector" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const Neo4jIcon = () => (
-  <div className="w-6 h-6 rounded bg-emerald-500 flex items-center justify-center text-white font-bold text-xs">
-    N
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/neo4j-logo.png" 
+      alt="Neo4J" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const MongoDBIcon = () => (
-  <div className="w-6 h-6 rounded bg-green-600 flex items-center justify-center text-white">
-    <Server className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/mongodb-logo.png" 
+      alt="MongoDB" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const PostgreSQLIcon = () => (
-  <div className="w-6 h-6 rounded bg-blue-600 flex items-center justify-center text-white">
-    <Database className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/postgres-logo.png" 
+      alt="PostgreSQL" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const PineconeIcon = () => (
-  <div className="w-6 h-6 rounded bg-amber-500 flex items-center justify-center text-white">
-    <Layers className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/pinecone-logo.png" 
+      alt="Pinecone" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const ChromaIcon = () => (
-  <div className="w-6 h-6 rounded bg-purple-500 flex items-center justify-center text-white font-bold text-xs">
-    C
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/chromadb-logo.png" 
+      alt="Chroma" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const MilvusIcon = () => (
-  <div className="w-6 h-6 rounded bg-indigo-500 flex items-center justify-center text-white font-bold text-xs">
-    M
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/milvus-logo.png" 
+      alt="Milvus" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const S3Icon = () => (
-  <div className="w-6 h-6 rounded bg-orange-500 flex items-center justify-center text-white">
-    <HardDrive className="w-4 h-4" />
-  </div>
+
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/aws-bedrock-logo.png" 
+      alt="S3" 
+      className="w-full h-full object-contain"
+    />
+    </div>
+
 )
 
 const GoogleDriveIcon = () => (
-  <div className="w-6 h-6 rounded bg-blue-400 flex items-center justify-center text-white">
-    <Box className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+    <img 
+      src="/googledrive-logo.png" 
+      alt="Google Drive" 
+      className="w-full h-full object-contain"
+    />
   </div>
 )
 
 const DropboxIcon = () => (
-  <div className="w-6 h-6 rounded bg-blue-500 flex items-center justify-center text-white">
-    <Box className="w-4 h-4" />
+  <div className="w-6 h-6 rounded flex items-center justify-center overflow-hidden">
+  <img 
+    src="/dropbox-logo.png" 
+    alt="dropbox" 
+    className="w-full h-full object-contain"
+  />
   </div>
 )
 
@@ -161,8 +211,8 @@ const connectors = [
   },
   {
     id: "neo4j",
-    name: "Neo4j",
-    description: "Connect Neo4j graph database for relationship-based data queries",
+    name: "Neo4J",
+    description: "Connect Neo4J graph database for relationship-based data queries",
     icon: Neo4jIcon,
     category: "database" as const,
     statusText: "0 DB's connected",
