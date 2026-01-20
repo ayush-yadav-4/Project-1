@@ -1,32 +1,26 @@
-
-
 "use client";
 
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import SecuritySection from "@/components/SecuritySection";
-import EnterpriseAdvantage from "@/components/EnterpriseAdvantage";
-import ExpertsSection from "@/components/ExpertsSection";
+import HeroSection2 from "@/components/HeroSection2";
+import GlobalEnterprisesSection from "@/components/GlobalEnterprisesSection";
+import AnimatedIconsSection from "@/components/AnimatedIconsSection";
 import IntegrationSection from "@/components/IntegrationSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import Footer from "@/components/Footer";
+import AnimatedPoints from "@/components/AnimatedPoints";
+import ExtendedReviews from "@/components/ExtendedReviews";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-orange-100">
-      <Navbar />
       <main className="flex flex-col items-center w-full">
-        <HeroSection />
-        <SecuritySection />
-        <EnterpriseAdvantage />
-        <ExpertsSection />
+        <HeroSection2 />
+        <GlobalEnterprisesSection />
+        <AnimatedIconsSection />
         <IntegrationSection />
         <FeaturesSection />
-        <Footer />
+        <AnimatedPoints />
+        <ExtendedReviews />
       </main>
     </div>
   );
 }
 
-
-  
