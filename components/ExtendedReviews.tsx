@@ -201,11 +201,14 @@ export default function ExtendedReviews() {
 
 				<div className="relative">
 					{/* Top Gradient Blur */}
-					<div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white via-white/50 to-transparent z-20 pointer-events-none"></div>
+					<div 
+						className="absolute top-0 left-0 w-full h-32 z-20 pointer-events-none bg-gradient-to-b from-white via-white/80 to-transparent backdrop-blur-sm"
+						style={{ maskImage: 'linear-gradient(to bottom, black, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)' }}
+					></div>
 					
 					{/* Bottom Gradient Blur */}
 					<div 
-						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-white via-white/50 to-transparent backdrop-blur-md"
+						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-[#FFF5F0] via-[#FFF5F0]/80 to-transparent backdrop-blur-sm"
 						style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
 					></div>
 

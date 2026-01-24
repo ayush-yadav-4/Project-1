@@ -202,17 +202,17 @@ export default function AnimatedPoints() {
                 display: isLocked ? "none" : "flex"
             }}
         >
-            {/* Background Gradient - PINK/PEACH */}
-             <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-pink-50 via-rose-100 to-orange-100">
-                <div className="absolute inset-0 opacity-50 mix-blend-multiply bg-[radial-gradient(circle_at_50%_120%,#F472B6,transparent_60%)]"></div>
-                <div className="absolute inset-0 opacity-40 mix-blend-multiply bg-[radial-gradient(circle_at_0%_0%,#FBBF24,transparent_50%)]"></div>
-                <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_100%_50%,#FB7185,transparent_40%)]"></div>
+            {/* Background Gradient - Matching HeroSection2 / Site Theme */}
+             <div className="absolute inset-0 w-full h-full bg-[#FDFBF7]">
+                <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_20%,#ee95c3,transparent_50%)]"></div>
+                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_80%_80%,#FFB6C1,transparent_50%)]"></div>
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,#FFF0F5,transparent_70%)]"></div>
              </div>
 
              {/* Content */}
              <div className="relative z-10 text-center w-full px-4">
-                 <motion.h2 className="text-2xl md:text-4xl font-serif text-[#1a1a1a] leading-tight whitespace-nowrap overflow-visible">
-                    Composio erases that drag in <span className="font-bold text-black">one call</span>
+                 <motion.h2 className="text-3xl md:text-6xl font-sans tracking-tight text-[#1a1a1a] leading-tight">
+                    <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-orange-400">AgentMarketplace</span> erases that drag in <span className="font-extrabold text-black">one call</span>
                  </motion.h2>
              </div>
         </motion.div>
