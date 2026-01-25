@@ -49,6 +49,7 @@ import {
 import type { LucideIcon } from "lucide-react"
 import { allAgents, getIntegrationIcons, suites } from "@/lib/agents-data"
 import type { Agent } from "@/lib/agents-data"
+import { AGENT_BRAND_INTEGRATIONS } from "@/lib/agent-brand-integrations"
 
 // Premium icon components with colored backgrounds
 const InvoiceIcon = () => (
@@ -187,7 +188,109 @@ export default function M1Page() {
     return matchesSearch && matchesCategory
   })
 
-  // Generate integration icons for each agent
+  // Convert brand name to logo file path
+  const getBrandLogoPath = (brandName: string): string | null => {
+    // Special mappings for brands with different file names and extensions
+    const specialMappings: Record<string, { name: string; ext: string }> = {
+      "Azure AD": { name: "azure-active-directory", ext: ".svg" },
+      "Active Directory": { name: "azure-active-directory", ext: ".svg" },
+      "Salesforce": { name: "salesforce (1)", ext: ".png" },
+      "Salesforce Service": { name: "salesforce (1)", ext: ".png" },
+      "Zendesk Guide": { name: "zendesk guide", ext: ".png" },
+      "Zendesk": { name: "zendesk", ext: ".png" },
+      "Slack Communities": { name: "slack communities", ext: ".png" },
+      "Slack": { name: "slack", ext: ".png" },
+      "Google Search Console": { name: "google_search_console", ext: ".png" },
+      "Google Search API": { name: "Google Search API", ext: ".png" },
+      "Google Drive": { name: "google drive", ext: ".png" },
+      "Google Sheets": { name: "google-sheets", ext: ".png" },
+      "Google Ads": { name: "google-ads", ext: ".png" },
+      "Google Calendar": { name: "google-calendar", ext: ".png" },
+      "Microsoft Teams": { name: "microsoft teams", ext: ".png" },
+      "LinkedIn Ads": { name: "linkedin ads", ext: ".png" },
+      "Meta Ads": { name: "meta ads", ext: ".png" },
+      "Jira Service Management": { name: "Jira-Service-Management_icon", ext: ".png" },
+      "Jira": { name: "Jira_icon", ext: ".png" },
+      "GitHub Actions": { name: "GitHub Actions", ext: ".png" },
+      "GitHub": { name: "GitHub", ext: ".png" },
+      "GitLab": { name: "GitLab", ext: ".png" },
+      "Confluence": { name: "Confluence_icon", ext: ".png" },
+      "Outlook": { name: "outlook", ext: ".jpeg" },
+      "SharePoint": { name: "sharepoint", ext: ".svg" },
+      "HubSpot": { name: "hubspot", ext: ".png" },
+      "Freshdesk": { name: "freshdesk", ext: ".png" },
+      "ServiceNow": { name: "ServiceNow", ext: ".png" },
+      "Shopify": { name: "shopify", ext: ".png" },
+      "BigCommerce": { name: "bigcommerce", ext: ".png" },
+      "Stripe": { name: "stripe", ext: ".png" },
+      "Chargebee": { name: "chargebee", ext: ".png" },
+      "Recurly": { name: "recurly", ext: ".png" },
+      "Notion": { name: "notion", ext: ".png" },
+      "Gmail": { name: "gmail", ext: ".png" },
+      "Hootsuite": { name: "Hootsuite", ext: ".png" },
+      "Buffer": { name: "Buffer", ext: ".png" },
+      "Eventbrite": { name: "Eventbrite", ext: ".png" },
+      "SurveyMonkey": { name: "surveymonkey", ext: ".png" },
+      "Typeform": { name: "typeform", ext: ".png" },
+      "WhatsApp": { name: "whatsapp", ext: ".png" },
+      "Discourse": { name: "discourse", ext: ".png" },
+      "Khoros": { name: "khoros", ext: ".png" },
+      "Reddit": { name: "reddit", ext: ".png" },
+      "BambooHR": { name: "BambooHR", ext: ".png" },
+      "Workday": { name: "Workday", ext: ".png" },
+      "Okta": { name: "okta", ext: ".png" },
+      "SAP Concur": { name: "sap concur", ext: ".png" },
+      "Expensify": { name: "expensify", ext: ".png" },
+      "Jenkins": { name: "jenkins", ext: ".png" },
+      "Kubernetes": { name: "Kubernetes", ext: ".png" },
+      "Excel": { name: "excel", ext: ".png" },
+      "Discord": { name: "discord", ext: ".png" },
+      "Ahrefs": { name: "Ahrefs", ext: ".png" },
+      "SEMrush": { name: "SEMrush", ext: ".png" },
+      "Outreach": { name: "outreach", ext: ".png" },
+      "Salesloft": { name: "salesloft", ext: ".png" },
+    }
+
+    // Check special mappings first
+    if (specialMappings[brandName]) {
+      const mapping = specialMappings[brandName]
+      return `/integration-logos/${mapping.name}${mapping.ext}`
+    }
+
+    // Default: convert to lowercase, replace spaces with hyphens
+    const normalized = brandName.toLowerCase().replace(/\s+/g, "-")
+    return `/integration-logos/${normalized}.png`
+  }
+
+  // Get brand logos for an agent
+  const getBrandLogos = (agentName: string): Array<{ logoPath: string; brandName: string } | { label: string; isText: true }> => {
+    const integrations = AGENT_BRAND_INTEGRATIONS[agentName]
+    if (!integrations || integrations.length === 0) {
+      return []
+    }
+
+    const logos: Array<{ logoPath: string; brandName: string } | { label: string; isText: true }> = []
+    const maxVisible = 3
+    const visibleCount = Math.min(integrations.length, maxVisible)
+
+    // Add visible logos
+    for (let i = 0; i < visibleCount; i++) {
+      const brandName = integrations[i]
+      const logoPath = getBrandLogoPath(brandName)
+      if (logoPath) {
+        logos.push({ logoPath, brandName })
+      }
+    }
+
+    // Add "+N" indicator if there are more integrations
+    if (integrations.length > maxVisible) {
+      logos.push({ label: `+${integrations.length - maxVisible}`, isText: true })
+    }
+
+    return logos
+  }
+
+  // Generate integration icons for each agent (fallback for agents without brand mappings)
   const getIntegrationIcons = (agentId: number): Array<{ bg: string; icon?: LucideIcon; label: string; isText?: boolean }> => {
     // Generate 3-4 integration icons per agent based on ID
     const iconSets: Array<Array<{ bg: string; icon?: LucideIcon; label: string; isText?: boolean }>> = [
@@ -291,9 +394,14 @@ export default function M1Page() {
     const Icon = agent.icon
     const [likes, setLikes] = useState(agent.likes)
     const [isLiked, setIsLiked] = useState(false)
-    // Generate integration icons based on agent name hash
+    
+    // Check if agent has brand integrations
+    const brandLogos = getBrandLogos(agent.name)
+    const hasBrandLogos = brandLogos.length > 0
+    
+    // Fallback to placeholder icons if no brand logos
     const agentIdNum = agent.name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)
-    const integrationIcons = getIntegrationIcons(agentIdNum)
+    const integrationIcons = hasBrandLogos ? [] : getIntegrationIcons(agentIdNum)
 
     const handleLike = (e: React.MouseEvent) => {
       e.preventDefault()
@@ -320,20 +428,57 @@ export default function M1Page() {
             {/* Integration Icons - positioned below header */}
             <div className="relative px-5 z-10 mt-3 mb-3">
               <div className="flex items-center gap-2">
-                {integrationIcons.map((integration, idx) => (
-                  <div
-                    key={idx}
-                    className={`w-8 h-8 rounded-md ${integration.bg} flex items-center justify-center shadow-sm shrink-0`}
-                  >
-                    {integration.isText ? (
-                      <span className="text-white text-xs font-semibold">{integration.label}</span>
-                    ) : integration.icon ? (
-                      <integration.icon className="w-4 h-4 text-white" />
-                    ) : (
-                      <span className="text-white text-xs font-semibold">{integration.label || "?"}</span>
-                    )}
-                  </div>
-                ))}
+                {hasBrandLogos ? (
+                  <>
+                    {brandLogos.map((item, idx) => {
+                      if ('isText' in item && item.isText) {
+                        return (
+                          <div
+                            key={idx}
+                            className="w-8 h-8 rounded-md bg-gray-400 flex items-center justify-center shadow-sm shrink-0"
+                          >
+                            <span className="text-white text-xs font-semibold">{item.label}</span>
+                          </div>
+                        )
+                      } else if ('logoPath' in item) {
+                        return (
+                          <div
+                            key={idx}
+                            className="w-8 h-8 rounded-md shadow-sm shrink-0 overflow-hidden"
+                          >
+                            <img
+                              src={item.logoPath}
+                              alt={item.brandName}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                // Silently hide broken images
+                                e.currentTarget.style.display = 'none'
+                              }}
+                            />
+                          </div>
+                        )
+                      }
+                      return null
+                    })}
+                  </>
+                ) : (
+                  <>
+                    {integrationIcons.map((integration, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-8 h-8 rounded-md ${integration.bg} flex items-center justify-center shadow-sm shrink-0`}
+                      >
+                        {integration.isText ? (
+                          <span className="text-white text-xs font-semibold">{integration.label}</span>
+                        ) : integration.icon ? (
+                          <integration.icon className="w-4 h-4 text-white" />
+                        ) : (
+                          <span className="text-white text-xs font-semibold">{integration.label || "?"}</span>
+                        )}
+                      </div>
+                    ))}
+                  </>
+                )}
               </div>
             </div>
 
