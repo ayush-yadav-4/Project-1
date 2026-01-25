@@ -1,99 +1,193 @@
+"use client";
+
 import React from 'react';
 import { motion } from "framer-motion";
 
 const IntegrationSection = () => {
-  return (
-    <section className="w-full py-32 bg-gray-100">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="animate-fade-in-up"
-        >
-            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">Trusted by Industry Leaders</h2>
-            <p className="text-2xl font-medium text-black mb-20">Powering AI automation at Fortune 500 companies</p>
-        </motion.div>
+    const row1Logos = [
+        { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg", color: "#00A1E0" },
+        { name: "LeadSquared", logo: "/logos/leadsquared.svg", color: "#FF6B35", fallbackText: "L²" },
+        { name: "Zoho", logo: "https://www.zohowebstatic.com/sites/zweb/images/zoho_general_pages/zoho-logo-web.svg", color: "#E42527" },
+        { name: "Kapture", logo: "/logos/kapture.svg", color: "#6366F1", fallbackText: "K" },
+        { name: "Dynamics", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg", color: "#0078D4", subtext: "Microsoft" },
+        { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg", color: "#0FAAFF" },
+        { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg", color: "#F80000" },
+        { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", color: "#FF9900" },
+        { name: "Slack", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg", color: "#611F69" },
+    ];
 
-        <div className="flex flex-col gap-5 items-center max-w-6xl mx-auto">
-           {/* Row 1 */}
-           <div className="flex flex-wrap justify-center gap-5 animate-fade-in-up delay-200">
-                <LogoPill>
-                    <span className="font-bold text-[#00A1E0] text-xl tracking-wide">salesforce</span>
-                </LogoPill>
+    const row2Logos = [
+        { name: "Notion", color: "#000000", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" },
+        { name: "Snowflake", color: "#29B5E8", logo: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Snowflake_Logo.svg" },
+        { name: "Stripe", color: "#635BFF", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" },
+        { name: "Jira", color: "#0052CC", logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Jira_Logo.svg" },
+        { name: "Shopify", color: "#96BF48", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" },
+        { name: "Zapier", color: "#FF4F00", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Zapier_logo.svg" },
+    ];
 
-                <LogoPill>
-                    <span className="font-bold text-[#FF7A59] text-xl">HubSpot</span>
-                </LogoPill>
+    return (
+        <section className="w-full py-32 md:py-36 relative overflow-hidden">
+            {/* Creative Background with Pink, Light Pink, Beige, White */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white via-[#FFF5F0] to-[#FFEEE8]" />
+            
+            {/* Decorative Background Elements */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* Large gradient orbs */}
+                <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#FFD6C9]/40 via-[#FFDDD2]/30 to-transparent blur-3xl" />
+                <div className="absolute -bottom-32 -right-32 w-[450px] h-[450px] rounded-full bg-gradient-to-tl from-[#FF6FA5]/20 via-[#FFB8D0]/25 to-transparent blur-3xl" />
+                <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-gradient-to-br from-[#FFF0E6]/50 to-[#FFE4D6]/30 blur-2xl" />
+                
+                {/* Floating geometric shapes */}
+                <motion.div 
+                    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-20 left-[15%] w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FFD6C9]/30 to-[#FFBDA8]/20 backdrop-blur-sm border border-white/50"
+                />
+                <motion.div 
+                    animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-32 right-[20%] w-12 h-12 rounded-full bg-gradient-to-br from-[#FF6FA5]/20 to-[#FFB8D0]/15 backdrop-blur-sm border border-white/40"
+                />
+                <motion.div 
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="absolute top-1/2 left-[8%] w-8 h-8 rounded-lg bg-gradient-to-br from-[#FFEEE8]/60 to-[#FFE0D3]/40 backdrop-blur-sm"
+                />
+                
+                {/* Additional floating circle - New */}
+                <motion.div 
+                    animate={{ y: [0, -25, 0], x: [0, 10, 0] }}
+                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                    className="absolute top-[40%] right-[12%] w-14 h-14 rounded-full bg-gradient-to-br from-[#FFB8D0]/25 to-[#FF9EC4]/15 backdrop-blur-sm border border-[#FFD6C9]/30"
+                />
+                
+                {/* Additional floating square - New */}
+                <motion.div 
+                    animate={{ y: [0, 18, 0], rotate: [0, 8, 0] }}
+                    transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                    className="absolute bottom-[25%] left-[18%] w-10 h-10 rounded-xl bg-gradient-to-br from-[#FFEEE8]/50 to-[#FFD6C9]/30 backdrop-blur-sm border border-white/40"
+                />
+                
+                {/* Subtle grid pattern */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{
+                    backgroundImage: `radial-gradient(circle at 1px 1px, #FF6FA5 1px, transparent 0)`,
+                    backgroundSize: '40px 40px'
+                }} />
+                
+                {/* Diagonal lines accent */}
+                <div className="absolute top-0 right-0 w-full h-full opacity-[0.02]" style={{
+                    backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 50px, #FFD6C9 50px, #FFD6C9 51px)'
+                }} />
+            </div>
 
-                <LogoPill>
-                    <span className="font-bold text-[#03363D] text-xl">Zendesk</span>
-                </LogoPill>
+            <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
+                {/* Header with matching GlobalEnterprisesSection gradient */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="mb-20"
+                >
+                    <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">
+                        <span className="bg-gradient-to-r from-[#FF6FA5] via-[#FFB8A0] to-[#E8B89D] bg-clip-text text-transparent">
+                            Trusted by Industry Leaders
+                        </span>
+                    </h2>
+                    <p className="text-lg md:text-xl font-medium text-gray-600">
+                        Powering AI automation at Fortune 500 companies
+                    </p>
+                </motion.div>
 
-                <LogoPill>
-                    <div className="flex items-center gap-1">
-                        <div className="w-5 h-5 bg-[#1264A3] rounded flex items-center justify-center text-white text-xs font-bold">#</div>
-                        <span className="font-bold text-gray-900 text-lg">Slack</span>
-                    </div>
-                </LogoPill>
+                {/* Logo Grid */}
+                <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto">
+                    {/* Row 1 - Main integrations with logos */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        className="flex flex-wrap justify-center gap-5 md:gap-6"
+                    >
+                        {row1Logos.map((item, index) => (
+                            <motion.div
+                                key={item.name}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                viewport={{ once: true }}
+                                whileHover={{ scale: 1.05, y: -4 }}
+                                className="group relative"
+                            >
+                                <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-white/80 hover:shadow-[0_8px_30px_rgba(255,111,165,0.15)] hover:border-[#FFD6C9]/50 transition-all duration-300 flex items-center gap-4 min-w-[150px]">
+                                    {item.fallbackText ? (
+                                        <div 
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl text-white"
+                                            style={{ backgroundColor: item.color }}
+                                        >
+                                            {item.fallbackText}
+                                        </div>
+                                    ) : (
+                                        <img 
+                                            src={item.logo} 
+                                            alt={item.name} 
+                                            className="w-12 h-12 object-contain"
+                                            onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.display = 'none';
+                                                target.nextElementSibling?.classList.remove('hidden');
+                                            }}
+                                        />
+                                    )}
+                                    <div className={`hidden w-12 h-12 rounded-xl items-center justify-center font-black text-xl text-white`} style={{ backgroundColor: item.color }}>
+                                        {item.name[0]}
+                                    </div>
+                                    <div className="flex flex-col items-start">
+                                        {item.subtext && (
+                                            <span className="text-[10px] font-semibold text-gray-400 -mb-0.5">{item.subtext}</span>
+                                        )}
+                                        <span className="font-bold text-base text-gray-800">{item.name}</span>
+                                    </div>
+                                </div>
+                                {/* Hover glow effect */}
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#FFD6C9]/0 to-[#FF6FA5]/0 group-hover:from-[#FFD6C9]/10 group-hover:to-[#FF6FA5]/5 transition-all duration-300 -z-10 blur-xl" />
+                            </motion.div>
+                        ))}
+                    </motion.div>
 
-                <LogoPill>
-                    <span className="font-bold text-[#0078D4] text-xl">Microsoft</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <div className="flex items-center gap-2">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-                        <span className="font-bold text-gray-900 text-lg">Google</span>
-                    </div>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#FF9900] text-xl">aws</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#E01E5A] text-xl">Intercom</span>
-                </LogoPill>
-           </div>
-
-           {/* Row 2 */}
-           <div className="flex flex-wrap justify-center gap-5 animate-fade-in-up delay-300">
-                <LogoPill>
-                    <span className="font-bold text-[#7B68EE] text-xl">Notion</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#29B5E8] text-xl">Snowflake</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#635BFF] text-xl">Stripe</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#0052CC] text-xl">Jira</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#2EB67D] text-xl">Shopify</span>
-                </LogoPill>
-
-                <LogoPill>
-                    <span className="font-bold text-[#FF6C37] text-xl">Zapier</span>
-                </LogoPill>
-           </div>
-        </div>
-      </div>
-    </section>
-  );
+                    {/* Row 2 - Text-based logos */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        viewport={{ once: true }}
+                        className="flex flex-wrap justify-center gap-5 md:gap-6"
+                    >
+                        {row2Logos.map((item, index) => (
+                            <motion.div
+                                key={item.name}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
+                                viewport={{ once: true }}
+                                whileHover={{ scale: 1.05, y: -4 }}
+                                className="group"
+                            >
+                                <div className="bg-white/60 backdrop-blur-sm rounded-full px-8 py-4 shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-white/70 hover:shadow-[0_6px_25px_rgba(255,111,165,0.12)] hover:border-[#FFD6C9]/40 hover:bg-white/80 transition-all duration-300">
+                                    <span 
+                                        className="font-bold text-xl tracking-tight"
+                                        style={{ color: item.color }}
+                                    >
+                                        {item.name}
+                                    </span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
 };
-
-const LogoPill = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-  <div className={`bg-white rounded-full px-8 py-4 shadow-sm border border-transparent flex items-center justify-center min-w-[140px] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default ${className}`}>
-    {children}
-  </div>
-);
 
 export default IntegrationSection;

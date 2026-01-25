@@ -145,7 +145,7 @@ export default function FeaturesSection() {
     const cardAreaWidth = Math.min(800, containerWidth - 40) // Responsive width
     const leftBound = (containerWidth - cardAreaWidth) / 2
     const rightBound = (containerWidth + cardAreaWidth) / 2
-    
+
     // If mouse is outside the card area, allow default scroll
     if (e.clientX < leftBound || e.clientX > rightBound) return
 
@@ -183,7 +183,7 @@ export default function FeaturesSection() {
   return (
     <div className="bg-white w-full py-28">
       {/* Section Heading */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -193,182 +193,180 @@ export default function FeaturesSection() {
         <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">The Operating System for AI Agents</h2>
         <p className="text-2xl font-medium text-black">Standardize, Secure, and Scale your AI Workforce</p>
       </motion.div>
-    <div
-      ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-white"
-      onMouseMove={handleMouseMove}
-    >
-      
+      <div
+        ref={containerRef}
+        className="relative min-h-screen w-full overflow-hidden bg-white"
+        onMouseMove={handleMouseMove}
+      >
 
-      {/* Header Navigation */}
-      <div className="absolute right-6 top-6 z-50 flex items-center gap-1 rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-sm backdrop-blur-sm">
-        <button
-          className={`rounded-md p-2 transition-colors ${viewMode === "stack" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
-          onClick={() => setViewMode("stack")}
-        >
-          <Archive className="h-5 w-5 text-neutral-700" />
-        </button>
-        <button
-          className={`rounded-md p-2 transition-colors ${viewMode === "list" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
-          onClick={() => setViewMode("list")}
-        >
-          <Menu className="h-5 w-5 text-neutral-700" />
-        </button>
-      </div>
 
-      {viewMode === "stack" ? (
-        <>
-          {/* Cards Stack */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1500px" }}>
-            <div className="relative h-[400px] w-[90%] lg:h-[600px] lg:w-[800px]" style={{ transformStyle: "preserve-3d" }}>
-              {Array.from({ length: 15 }).map((_, i) => {
-                const index = Math.floor(position) + 7 - i
-                const distanceFromActive = index - position
-                const cardIndex = ((index % cards.length) + cards.length) % cards.length
-                const card = cards[cardIndex]
+        {/* Header Navigation */}
+        <div className="absolute right-6 top-6 z-50 flex items-center gap-1 rounded-lg border border-neutral-200 bg-white/80 p-1 shadow-sm backdrop-blur-sm">
+          <button
+            className={`rounded-md p-2 transition-colors ${viewMode === "stack" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
+            onClick={() => setViewMode("stack")}
+          >
+            <Archive className="h-5 w-5 text-neutral-700" />
+          </button>
+          <button
+            className={`rounded-md p-2 transition-colors ${viewMode === "list" ? "bg-neutral-100" : "hover:bg-neutral-100"}`}
+            onClick={() => setViewMode("list")}
+          >
+            <Menu className="h-5 w-5 text-neutral-700" />
+          </button>
+        </div>
 
-                if (distanceFromActive < -1.5 || distanceFromActive > 5) {
-                  return null
-                }
+        {viewMode === "stack" ? (
+          <>
+            {/* Cards Stack */}
+            <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1500px" }}>
+              <div className="relative h-[400px] w-[90%] lg:h-[600px] lg:w-[800px]" style={{ transformStyle: "preserve-3d" }}>
+                {Array.from({ length: 15 }).map((_, i) => {
+                  const index = Math.floor(position) + 7 - i
+                  const distanceFromActive = index - position
+                  const cardIndex = ((index % cards.length) + cards.length) % cards.length
+                  const card = cards[cardIndex]
 
-                const isBehind = distanceFromActive > 0
-                const isInFront = distanceFromActive < 0
+                  if (distanceFromActive < -1.5 || distanceFromActive > 5) {
+                    return null
+                  }
 
-                const translateZ = distanceFromActive * -60
-                const translateY = distanceFromActive * -30
-                const scale = 1 - Math.abs(distanceFromActive) * 0.03
+                  const isBehind = distanceFromActive > 0
+                  const isInFront = distanceFromActive < 0
 
-                let opacity = 1
-                if (isInFront) {
-                  opacity = Math.max(0, 1 + distanceFromActive * 2)
-                }
+                  const translateZ = distanceFromActive * -60
+                  const translateY = distanceFromActive * -30
+                  const scale = 1 - Math.abs(distanceFromActive) * 0.03
 
-                return (
-                  <div
-                    key={`${card.id}-${index}`}
-                    className="absolute inset-0"
-                    style={{
-                      transform: `translateZ(${translateZ}px) translateY(${translateY}px) scale(${Math.max(0.7, scale)})`,
-                      opacity: Math.max(0, opacity),
-                      zIndex: Math.round((cards.length - Math.abs(distanceFromActive)) * 10),
-                      transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
-                      pointerEvents: Math.abs(distanceFromActive) < 0.5 ? "auto" : "none",
-                    }}
-                    onClick={() => handleTimelineClick(cardIndex)}
-                  >
-                    <div className="h-full w-full overflow-hidden bg-white shadow-2xl">
-                      <div className="relative h-[65%] overflow-hidden bg-neutral-200">
-                        <img
-                          src={card.image || "/placeholder.svg"}
-                          alt={card.title}
-                          className="h-full w-full object-cover"
-                        />
-                        {isBehind && (
-                          <div
-                            className="absolute inset-0 bg-black"
-                            style={{
-                              opacity: Math.min(0.3, Math.abs(distanceFromActive) * 0.08),
-                            }}
+                  let opacity = 1
+                  if (isInFront) {
+                    opacity = Math.max(0, 1 + distanceFromActive * 2)
+                  }
+
+                  return (
+                    <div
+                      key={`${card.id}-${index}`}
+                      className="absolute inset-0"
+                      style={{
+                        transform: `translateZ(${translateZ}px) translateY(${translateY}px) scale(${Math.max(0.7, scale)})`,
+                        opacity: Math.max(0, opacity),
+                        zIndex: Math.round((cards.length - Math.abs(distanceFromActive)) * 10),
+                        transition: "transform 0.15s ease-out, opacity 0.15s ease-out",
+                        pointerEvents: Math.abs(distanceFromActive) < 0.5 ? "auto" : "none",
+                      }}
+                      onClick={() => handleTimelineClick(cardIndex)}
+                    >
+                      <div className="h-full w-full overflow-hidden bg-white shadow-2xl">
+                        <div className="relative h-[65%] overflow-hidden bg-neutral-200">
+                          <img
+                            src={card.image || "/placeholder.svg"}
+                            alt={card.title}
+                            className="h-full w-full object-cover"
                           />
-                        )}
-                      </div>
-                      <div className="bg-white p-8">
-                        <h2 className="text-3xl font-semibold tracking-tight text-neutral-900">{card.title}</h2>
-                        <p className="mt-2 text-lg text-neutral-500">{card.subtitle}</p>
-                        <p className="mt-3 text-sm text-neutral-400">{card.date}</p>
+                          {isBehind && (
+                            <div
+                              className="absolute inset-0 bg-black"
+                              style={{
+                                opacity: Math.min(0.3, Math.abs(distanceFromActive) * 0.08),
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div className="bg-white p-8">
+                          <h2 className="text-3xl font-semibold tracking-tight text-neutral-900">{card.title}</h2>
+                          <p className="mt-2 text-lg text-neutral-500">{card.subtitle}</p>
+                          <p className="mt-3 text-sm text-neutral-400">{card.date}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div className="hidden lg:flex absolute bottom-20 right-8 top-20 z-40 flex-col items-end justify-between py-8">
+              {cards.map((card, index) => {
+                const isActive = index === activeIndex
+                const isNow = index === 0
+
+                return (
+                  <button
+                    key={card.id}
+                    className="group flex items-center gap-2 transition-all duration-300"
+                    onClick={() => handleTimelineClick(index)}
+                  >
+                    <span
+                      className={`text-sm font-medium transition-all duration-300 ${isActive ? "text-orange-500" : "text-neutral-400 group-hover:text-neutral-600"
+                        }`}
+                    >
+                      {isNow ? "Now" : card.dateLabel}
+                    </span>
+                    <div className="relative flex items-center">
+                      <div
+                        className={`h-0.5 transition-all duration-300 ${isActive ? "w-8 bg-orange-500" : "w-4 bg-neutral-300 group-hover:w-6 group-hover:bg-neutral-400"
+                          }`}
+                      />
+                      {isActive && <div className="absolute -right-1 h-2 w-2 rounded-full bg-orange-500" />}
+                    </div>
+                  </button>
                 )
               })}
             </div>
-          </div>
 
-          {/* Timeline */}
-          <div className="hidden lg:flex absolute bottom-20 right-8 top-20 z-40 flex-col items-end justify-between py-8">
-            {cards.map((card, index) => {
-              const isActive = index === activeIndex
-              const isNow = index === 0
-
-              return (
-                <button
-                  key={card.id}
-                  className="group flex items-center gap-2 transition-all duration-300"
-                  onClick={() => handleTimelineClick(index)}
-                >
-                  <span
-                    className={`text-sm font-medium transition-all duration-300 ${
-                      isActive ? "text-orange-500" : "text-neutral-400 group-hover:text-neutral-600"
-                    }`}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-neutral-400">
+              Scroll or click timeline to navigate
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="mx-auto max-w-5xl px-6 pb-12 pt-24">
+              <div className="divide-y divide-neutral-200">
+                {cards.map((card, index) => (
+                  <button
+                    key={card.id}
+                    className="group flex w-full items-center gap-3 md:gap-6 py-6 md:py-4 text-left transition-colors hover:bg-neutral-50"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={() => {
+                      setViewMode("stack")
+                      setPosition(index)
+                    }}
                   >
-                    {isNow ? "Now" : card.dateLabel}
-                  </span>
-                  <div className="relative flex items-center">
-                    <div
-                      className={`h-0.5 transition-all duration-300 ${
-                        isActive ? "w-8 bg-orange-500" : "w-4 bg-neutral-300 group-hover:w-6 group-hover:bg-neutral-400"
-                      }`}
-                    />
-                    {isActive && <div className="absolute -right-1 h-2 w-2 rounded-full bg-orange-500" />}
-                  </div>
-                </button>
-              )
-            })}
-          </div>
-
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-neutral-400">
-            Scroll or click timeline to navigate
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="mx-auto max-w-5xl px-6 pb-12 pt-24">
-            <div className="divide-y divide-neutral-200">
-              {cards.map((card, index) => (
-                <button
-                  key={card.id}
-                  className="group flex w-full items-center gap-6 py-4 text-left transition-colors hover:bg-neutral-50"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => {
-                    setViewMode("stack")
-                    setPosition(index)
-                  }}
-                >
-                  <span className="w-32 shrink-0 text-sm text-neutral-400">
-                    {card.date.split(",")[0]}, {card.date.split(",")[1]?.trim().split(" ")[0]}
-                  </span>
-                  <span className="min-w-0 shrink-0 font-medium text-neutral-900" style={{ width: "280px" }}>
-                    {card.title}
-                  </span>
-                  <span className="min-w-0 flex-1 text-neutral-400">{card.subtitle}</span>
-                  <ChevronRight className="h-4 w-4 shrink-0 text-neutral-300 transition-transform group-hover:translate-x-1 group-hover:text-neutral-500" />
-                </button>
-              ))}
+                    <span className="hidden md:block w-32 shrink-0 text-sm text-neutral-400">
+                      {card.date.split(",")[0]}, {card.date.split(",")[1]?.trim().split(" ")[0]}
+                    </span>
+                    <span className="min-w-0 shrink-0 font-medium text-neutral-900 w-full md:w-[280px]">
+                      {card.title}
+                    </span>
+                    <span className="min-w-0 flex-1 text-neutral-400 hidden md:block">{card.subtitle}</span>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-neutral-300 transition-transform group-hover:translate-x-1 group-hover:text-neutral-500" />
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Floating preview image */}
-          {hoveredIndex !== null && (
-            <div
-              className="pointer-events-none fixed z-50 overflow-hidden shadow-2xl transition-opacity duration-200"
-              style={{
-                left: mousePos.x + 20,
-                top: mousePos.y - 100,
-                width: 280,
-                height: 180,
-              }}
-            >
-              <img
-                src={cards[hoveredIndex].image || "/placeholder.svg"}
-                alt={cards[hoveredIndex].title}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          )}
-        </>
-      )}
-    </div>
+            {/* Floating preview image */}
+            {hoveredIndex !== null && (
+              <div
+                className="pointer-events-none fixed z-50 overflow-hidden shadow-2xl transition-opacity duration-200"
+                style={{
+                  left: mousePos.x + 20,
+                  top: mousePos.y - 100,
+                  width: 280,
+                  height: 180,
+                }}
+              >
+                <img
+                  src={cards[hoveredIndex].image || "/placeholder.svg"}
+                  alt={cards[hoveredIndex].title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   )
 }

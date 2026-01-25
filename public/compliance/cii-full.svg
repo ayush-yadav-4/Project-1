@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" fill="none">
+  <!-- CII Logo -->
+  <g transform="translate(10, 5)">
+    <text x="0" y="32" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#1a365d">CII</text>
+  </g>
+  <!-- Confederation of Indian Industry text -->
+  <text x="90" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#4a5568">Confederation of Indian Industry</text>
+</svg>

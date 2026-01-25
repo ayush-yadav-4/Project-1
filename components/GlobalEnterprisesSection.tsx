@@ -1,10 +1,10 @@
 "use client";
 
-import { 
+import {
   LayoutGrid, MessageSquare, Sparkles, BarChart3,
-  Database, Brain, Users, Bot, Heart, FileStack, 
+  Database, Brain, Users, Bot, Heart, FileStack,
   Settings, Zap, Globe, ShieldCheck, Lock, Activity,
-  Server, FileText, Scan, RefreshCw, Shield, UserCheck, 
+  Server, FileText, Scan, RefreshCw, Shield, UserCheck,
   PieChart, ShieldAlert, Radar, Eye, FileBadge,
   MessageCircle, Send, History, CheckSquare, Search,
   Code2, Cpu, Workflow, Fingerprint
@@ -33,9 +33,9 @@ const WorkAnimation = () => (
 
     {/* Main Content - Horizontal Layout with Central Hub */}
     <div className="relative flex items-center justify-center gap-8 md:gap-16 w-full">
-      
+
       {/* Left Panel - Data Sources */}
-      <motion.div 
+      <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         className="flex flex-col gap-3"
@@ -73,23 +73,23 @@ const WorkAnimation = () => (
       {/* Central AI Orchestrator - Futuristic Design */}
       <div className="relative">
         {/* Outer Ring */}
-        <motion.div 
+        <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute -inset-6 md:-inset-8 rounded-full border-2 border-dashed border-blue-200"
         />
-        
+
         {/* Inner Rotating Ring */}
-        <motion.div 
+        <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="absolute -inset-3 md:-inset-4 rounded-full border border-indigo-300/50"
         >
           {[0, 1, 2, 3].map((i) => (
-            <div 
+            <div
               key={i}
               className="absolute w-2 h-2 bg-indigo-400 rounded-full"
-              style={{ 
+              style={{
                 top: i === 0 ? '0' : i === 2 ? '100%' : '50%',
                 left: i === 1 ? '100%' : i === 3 ? '0' : '50%',
                 transform: 'translate(-50%, -50%)'
@@ -99,23 +99,23 @@ const WorkAnimation = () => (
         </motion.div>
 
         {/* Central Core */}
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 3, repeat: Infinity }}
           className="w-20 h-20 md:w-28 md:h-28 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-2xl shadow-blue-300/50 relative"
         >
           <Workflow className="w-10 h-10 md:w-14 md:h-14 text-white" />
-          
+
           {/* Glowing Effect */}
-          <motion.div 
+          <motion.div
             animate={{ opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-0 rounded-2xl bg-blue-400 blur-xl -z-10"
           />
         </motion.div>
-        
+
         {/* Status Badge */}
-        <motion.div 
+        <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full shadow-lg border border-gray-100"
@@ -138,7 +138,7 @@ const WorkAnimation = () => (
       </div>
 
       {/* Right Panel - Outputs */}
-      <motion.div 
+      <motion.div
         initial={{ x: 50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         className="flex flex-col gap-3"
@@ -162,7 +162,7 @@ const WorkAnimation = () => (
     </div>
 
     {/* Bottom Stats */}
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-gray-900/90 backdrop-blur-sm rounded-full px-5 py-2 shadow-xl"
@@ -186,7 +186,7 @@ const ServiceAnimation = () => (
     <div className="relative flex items-center gap-6 md:gap-12">
       {/* User Side */}
       <div className="flex flex-col items-center gap-3">
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-pink-100 to-rose-200 flex items-center justify-center shadow-xl border-4 border-white"
@@ -202,17 +202,16 @@ const ServiceAnimation = () => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -20, scale: 0.8 }}
-            animate={{ 
-              opacity: [0, 1, 1, 0], 
+            animate={{
+              opacity: [0, 1, 1, 0],
               x: [0, 60, 120, 180],
               y: [0, -10, 0, 10]
             }}
             transition={{ duration: 3, repeat: Infinity, delay: i * 1, ease: "easeInOut" }}
-            className={`absolute left-0 ${i === 0 ? 'top-0' : i === 1 ? 'top-1/2 -translate-y-1/2' : 'bottom-0'} px-3 py-2 rounded-xl text-[8px] md:text-[10px] font-bold whitespace-nowrap shadow-lg ${
-              i % 2 === 0 
-                ? 'bg-pink-500 text-white rounded-bl-none' 
+            className={`absolute left-0 ${i === 0 ? 'top-0' : i === 1 ? 'top-1/2 -translate-y-1/2' : 'bottom-0'} px-3 py-2 rounded-xl text-[8px] md:text-[10px] font-bold whitespace-nowrap shadow-lg ${i % 2 === 0
+                ? 'bg-pink-500 text-white rounded-bl-none'
                 : 'bg-white text-gray-700 border border-gray-100 rounded-br-none'
-            }`}
+              }`}
           >
             {i === 0 ? "Need help!" : i === 1 ? "I'm here 24/7" : "Thanks! ⭐"}
           </motion.div>
@@ -221,7 +220,7 @@ const ServiceAnimation = () => (
 
       {/* AI Agent */}
       <div className="flex flex-col items-center gap-3">
-        <motion.div 
+        <motion.div
           animate={{ rotate: [0, 5, 0, -5, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
           className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-2xl shadow-pink-200 border-4 border-white"
@@ -233,7 +232,7 @@ const ServiceAnimation = () => (
     </div>
 
     {/* Satisfaction Meter */}
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
@@ -241,8 +240,8 @@ const ServiceAnimation = () => (
     >
       <span className="text-[10px] font-black text-gray-500 uppercase">CSAT</span>
       <div className="flex gap-0.5">
-        {[1,2,3,4,5].map((star) => (
-          <motion.div 
+        {[1, 2, 3, 4, 5].map((star) => (
+          <motion.div
             key={star}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -282,7 +281,7 @@ const ProcessAnimation = () => (
 
       {/* Arrow with particles */}
       <div className="relative w-12 md:w-20">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, 40, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="w-2 h-2 bg-orange-400 rounded-full absolute top-1/2 -translate-y-1/2 shadow-lg shadow-orange-200"
@@ -291,7 +290,7 @@ const ProcessAnimation = () => (
       </div>
 
       {/* Processing Core */}
-      <motion.div 
+      <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         className="relative"
@@ -306,7 +305,7 @@ const ProcessAnimation = () => (
             className="absolute w-2 h-2 bg-orange-300 rounded-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            style={{ 
+            style={{
               top: '50%', left: '50%',
               transformOrigin: `${(i % 2 ? 50 : -50)}px 0px`
             }}
@@ -316,7 +315,7 @@ const ProcessAnimation = () => (
 
       {/* Arrow */}
       <div className="relative w-12 md:w-20">
-        <motion.div 
+        <motion.div
           animate={{ x: [0, 40, 0] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
           className="w-2 h-2 bg-emerald-400 rounded-full absolute top-1/2 -translate-y-1/2 shadow-lg shadow-emerald-200"
@@ -342,7 +341,7 @@ const ProcessAnimation = () => (
     </div>
 
     {/* Stats Bar */}
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 rounded-full px-4 py-2 flex items-center gap-4 shadow-xl"
@@ -364,9 +363,9 @@ const SecurityAnimation = () => (
   <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
     {/* Full Width Layout with Side Panels */}
     <div className="relative flex items-center justify-center gap-8 md:gap-16 w-full px-4">
-      
+
       {/* Left Panel - Threat Detection */}
-      <motion.div 
+      <motion.div
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         className="flex flex-col gap-3 shrink-0"
@@ -384,7 +383,7 @@ const SecurityAnimation = () => (
             transition={{ delay: i * 0.1 }}
             className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-md border border-gray-100"
           >
-            <motion.div 
+            <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
               className={`w-2 h-2 rounded-full ${item.color === 'emerald' ? 'bg-emerald-500' : 'bg-red-500'}`}
@@ -397,26 +396,26 @@ const SecurityAnimation = () => (
       {/* Central Shield */}
       <div className="relative shrink-0">
         {/* Outer rotating ring */}
-        <motion.div 
+        <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           className="absolute -inset-8 md:-inset-12 rounded-full border-2 border-dashed border-emerald-200 opacity-60"
         />
-        
-        <motion.div 
+
+        <motion.div
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 3, repeat: Infinity }}
           className="w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl shadow-emerald-200 border-4 border-white relative z-10"
         >
           <ShieldCheck className="w-12 h-12 md:w-16 md:h-16 text-white" strokeWidth={1.5} />
-          
+
           {/* Pulse rings */}
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.6], opacity: [0.4, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-0 rounded-3xl border-2 border-emerald-400"
           />
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.8], opacity: [0.3, 0] }}
             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             className="absolute inset-0 rounded-3xl border border-emerald-300"
@@ -433,8 +432,8 @@ const SecurityAnimation = () => (
           <motion.div
             key={i}
             className="absolute w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white shadow-lg flex items-center justify-center border border-emerald-100"
-            style={{ 
-              top: '50%', 
+            style={{
+              top: '50%',
               left: '50%',
               transform: `translate(-50%, -50%) rotate(${item.angle}deg) translateX(60px) rotate(-${item.angle}deg)`
             }}
@@ -445,7 +444,7 @@ const SecurityAnimation = () => (
       </div>
 
       {/* Right Panel - Compliance & Policies */}
-      <motion.div 
+      <motion.div
         initial={{ x: 30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         className="flex flex-col gap-3 shrink-0"
@@ -474,12 +473,12 @@ const SecurityAnimation = () => (
     </div>
 
     {/* Security Status Bar */}
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-5 py-2 shadow-xl border border-gray-100 flex items-center gap-4"
     >
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 1, repeat: Infinity }}
         className="w-2 h-2 bg-emerald-500 rounded-full"
@@ -541,18 +540,17 @@ export default function GlobalEnterprisesSection() {
     <section className="w-full bg-white pt-8 pb-24 px-4 md:px-8 flex flex-col items-center">
       <div className="w-full max-w-7xl bg-gradient-to-br from-[#FFD6C9] to-[#FF6FA5] rounded-[2.5rem] p-8 md:p-12 pb-0 overflow-hidden relative">
         {/* Texture Overlay */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none" 
-             style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 11px)' }}>
+        <div className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.3) 10px, rgba(255,255,255,0.3) 11px)' }}>
         </div>
 
         {/* Tabs Header */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 relative z-10 ">
           {tabs.map((tab) => (
-            <div 
+            <div
               key={tab.id}
-              className={`flex flex-col gap-3 cursor-pointer transition-opacity duration-300 ${
-                activeTab === tab.id ? "opacity-100" : "opacity-60 hover:opacity-80"
-              }`}
+              className={`flex flex-col gap-3 cursor-pointer transition-opacity duration-300 ${activeTab === tab.id ? "opacity-100" : "opacity-60 hover:opacity-80"
+                }`}
               onClick={() => setActiveTab(tab.id)}
             >
               <div className="flex items-center gap-2 text-gray-900">
@@ -569,31 +567,31 @@ export default function GlobalEnterprisesSection() {
         </div>
 
         {/* Content Area - Sleek Futuristic Container */}
-        <div className="w-[102%] -ml-[1%] bg-white rounded-[2.5rem] h-[320px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
-            {/* White bottom extension to create clean white curved bottom */}
-            <div className="absolute -bottom-4 left-0 right-0 h-20 bg-white rounded-b-[2.5rem]" />
-            
-            {/* Subtle corner accents */}
-            <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-gray-100 rounded-tl-xl opacity-60 z-10" />
-            <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-gray-100 rounded-tr-xl opacity-60 z-10" />
-            <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-gray-100 rounded-bl-xl opacity-60 z-10" />
-            <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-gray-100 rounded-br-xl opacity-60 z-10" />
-            
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.02 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10"
-                >
-                     {activeTab === 'work' && <WorkAnimation />}
-                     {activeTab === 'service' && <ServiceAnimation />}
-                     {activeTab === 'process' && <ProcessAnimation />}
-                     {activeTab === 'security' && <SecurityAnimation />}
-                </motion.div>
-            </AnimatePresence>
+        <div className="w-[102%] -ml-[1%] bg-white rounded-[2.5rem] h-[550px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
+          {/* White bottom extension to create clean white curved bottom */}
+          <div className="absolute -bottom-4 left-0 right-0 h-20 bg-white rounded-b-[2.5rem]" />
+
+          {/* Subtle corner accents */}
+          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-gray-100 rounded-tl-xl opacity-60 z-10" />
+          <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-gray-100 rounded-tr-xl opacity-60 z-10" />
+          <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-gray-100 rounded-bl-xl opacity-60 z-10" />
+          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-gray-100 rounded-br-xl opacity-60 z-10" />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10"
+            >
+              {activeTab === 'work' && <WorkAnimation />}
+              {activeTab === 'service' && <ServiceAnimation />}
+              {activeTab === 'process' && <ProcessAnimation />}
+              {activeTab === 'security' && <SecurityAnimation />}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Bottom White Cover to hide orange border/padding at bottom */}

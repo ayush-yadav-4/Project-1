@@ -72,9 +72,9 @@ const reviews = [
 const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
 	<div className="bg-gradient-to-br from-white/40 to-white/10 backdrop-filter backdrop-blur-lg border border-white/30 p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300">
 		<div className="flex items-start gap-4 mb-4">
-			<img 
-				src={review.image} 
-				alt={review.name} 
+			<img
+				src={review.image}
+				alt={review.name}
 				className="w-12 h-12 rounded-full object-cover shrink-0 bg-white/20"
 			/>
 			<div>
@@ -95,7 +95,7 @@ const ReviewCard = ({ review }: { review: typeof reviews[0] }) => (
 export default function ExtendedReviews() {
 	return (
 		<section className="w-full relative flex flex-col overflow-hidden">
-      <style>{`
+			<style>{`
         @keyframes scrollDown {
           from { transform: translateY(-50%); }
           to { transform: translateY(0%); }
@@ -114,19 +114,19 @@ export default function ExtendedReviews() {
           animation-play-state: paused;
         }
       `}</style>
-			
+
 			{/* Creative Background for Reviews Section - Full Width */}
 			<div className="absolute inset-0 z-0 w-screen left-1/2 -translate-x-1/2">
 				{/* Base Gradient */}
 				<div className="absolute inset-0 bg-gradient-to-b from-white via-[#FFF5F0] to-[#FFE4D6]"></div>
-				
+
 				{/* Floating Gradient Orbs */}
 				<div className="absolute top-[5%] left-[10%] w-[400px] h-[400px] bg-gradient-to-br from-pink-300/40 via-rose-200/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
 				<div className="absolute top-[20%] right-[5%] w-[500px] h-[500px] bg-gradient-to-br from-orange-200/30 via-peach-100/20 to-transparent rounded-full blur-3xl"></div>
 				<div className="absolute top-[50%] left-[5%] w-[350px] h-[350px] bg-gradient-to-br from-pink-200/30 to-transparent rounded-full blur-3xl"></div>
 				<div className="absolute top-[40%] right-[15%] w-[300px] h-[300px] bg-gradient-to-br from-amber-100/40 to-transparent rounded-full blur-2xl"></div>
 				<div className="absolute bottom-[30%] left-[30%] w-[450px] h-[450px] bg-gradient-to-br from-rose-100/30 via-pink-50/20 to-transparent rounded-full blur-3xl"></div>
-				
+
 				{/* Decorative Mesh Grid */}
 				<svg className="absolute inset-0 w-full h-full opacity-[0.03]" width="100%" height="100%">
 					<defs>
@@ -136,13 +136,13 @@ export default function ExtendedReviews() {
 					</defs>
 					<rect fill="url(#reviews-grid)" width="100%" height="100%" />
 				</svg>
-				
+
 				{/* Decorative Floating Shapes */}
 				<div className="absolute top-[15%] left-[20%] w-20 h-20 border-2 border-pink-200/30 rounded-full"></div>
 				<div className="absolute top-[25%] right-[25%] w-16 h-16 border-2 border-orange-200/30 rounded-full"></div>
 				<div className="absolute top-[60%] left-[15%] w-12 h-12 border-2 border-rose-200/30 rounded-full"></div>
 				<div className="absolute top-[45%] right-[10%] w-24 h-24 border-2 border-pink-100/30 rounded-full"></div>
-				
+
 				{/* Subtle Curved Lines */}
 				<svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1200 800" preserveAspectRatio="none">
 					<path d="M0,200 Q300,100 600,200 T1200,200" fill="none" stroke="url(#reviewCurve)" strokeWidth="2" />
@@ -159,8 +159,10 @@ export default function ExtendedReviews() {
 			</div>
 
 			{/* Background Image covering the CTA section only */}
+			{/* Background Image covering the CTA section only */}
+			<div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 bg-pink-700 md:bg-transparent" />
 			<div
-				className="absolute bottom-0 left-0 right-0 h-[700px] z-0"
+				className="absolute bottom-0 left-0 right-0 h-[700px] z-0 hidden md:block"
 				style={{
 					backgroundImage: "url('/Bg-4.png')",
 					backgroundSize: "cover",
@@ -169,85 +171,85 @@ export default function ExtendedReviews() {
 				}}
 			/>
 
-            {/* Tilted Vectors Background for CTA */}
-            <div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 pointer-events-none overflow-hidden">
-                <svg className="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="tilted-lines" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-25)">
-                            <line x1="0" y1="0" x2="0" y2="40" stroke="white" strokeWidth="2" />
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#tilted-lines)" />
-                </svg>
-            </div>
+			{/* Tilted Vectors Background for CTA */}
+			<div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 pointer-events-none overflow-hidden">
+				<svg className="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<pattern id="tilted-lines" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-25)">
+							<line x1="0" y1="0" x2="0" y2="40" stroke="white" strokeWidth="2" />
+						</pattern>
+					</defs>
+					<rect width="100%" height="100%" fill="url(#tilted-lines)" />
+				</svg>
+			</div>
 
 			{/* Reviews Section */}
 			<div className="relative z-10 w-full px-4 pt-24 pb-20">
 				<div className="max-w-7xl mx-auto">
-				<motion.div 
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					viewport={{ once: true }}
-					className="text-center mb-20"
-				>
-					<h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">
-						Trusted by Engineering Teams
-					</h2>
-					<p className="text-xl font-medium text-black">
-						Join the companies deploying millions of autonomous tasks daily.
-					</p>
-				</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.6 }}
+						viewport={{ once: true }}
+						className="text-center mb-20"
+					>
+						<h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-300 to-orange-200 mb-4 tracking-tight">
+							Trusted by Engineering Teams
+						</h2>
+						<p className="text-xl font-medium text-black">
+							Join the companies deploying millions of autonomous tasks daily.
+						</p>
+					</motion.div>
 
-				<div className="relative">
-					{/* Top Gradient Blur */}
-					<div 
-						className="absolute top-0 left-0 w-full h-32 z-20 pointer-events-none bg-gradient-to-b from-white via-white/80 to-transparent backdrop-blur-sm"
-						style={{ maskImage: 'linear-gradient(to bottom, black, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)' }}
-					></div>
-					
-					{/* Bottom Gradient Blur */}
-					<div 
-						className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-[#FFF5F0] via-[#FFF5F0]/80 to-transparent backdrop-blur-sm"
-						style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
-					></div>
+					<div className="relative">
+						{/* Top Gradient Blur */}
+						<div
+							className="absolute top-0 left-0 w-full h-32 z-20 pointer-events-none bg-gradient-to-b from-white via-white/80 to-transparent backdrop-blur-sm"
+							style={{ maskImage: 'linear-gradient(to bottom, black, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)' }}
+						></div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[1000px] overflow-hidden mask-gradient">
-					{/* Column 1 - Scroll Down */}
-					<div className="relative h-full overflow-hidden">
-						<div className="flex flex-col gap-6 animate-scroll-down">
-							{[...reviews.slice(0, 3), ...reviews.slice(0, 3), ...reviews.slice(0, 3)].map((review, index) => (
-								<ReviewCard key={`col1-${index}`} review={review} />
-							))}
-						</div>
-					</div>
+						{/* Bottom Gradient Blur */}
+						<div
+							className="absolute bottom-0 left-0 w-full h-40 z-20 pointer-events-none bg-gradient-to-t from-[#FFF5F0] via-[#FFF5F0]/80 to-transparent backdrop-blur-sm"
+							style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }}
+						></div>
 
-					{/* Column 2 - Scroll Up */}
-					<div className="relative h-full overflow-hidden hidden md:block">
-						<div className="flex flex-col gap-6 animate-scroll-up">
-							{[...reviews.slice(3, 6), ...reviews.slice(3, 6), ...reviews.slice(3, 6)].map((review, index) => (
-								<ReviewCard key={`col2-${index}`} review={review} />
-							))}
-						</div>
-					</div>
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-[1000px] overflow-hidden mask-gradient">
+							{/* Column 1 - Scroll Down */}
+							<div className="relative h-full overflow-hidden">
+								<div className="flex flex-col gap-6 animate-scroll-down">
+									{[...reviews.slice(0, 3), ...reviews.slice(0, 3), ...reviews.slice(0, 3)].map((review, index) => (
+										<ReviewCard key={`col1-${index}`} review={review} />
+									))}
+								</div>
+							</div>
 
-					{/* Column 3 - Scroll Down */}
-					<div className="relative h-full overflow-hidden hidden lg:block">
-						<div className="flex flex-col gap-6 animate-scroll-down" style={{ animationDuration: '42s' }}>
-							{[...reviews.slice(6, 9), ...reviews.slice(6, 9), ...reviews.slice(6, 9)].map((review, index) => (
-								<ReviewCard key={`col3-${index}`} review={review} />
-							))}
+							{/* Column 2 - Scroll Up */}
+							<div className="relative h-full overflow-hidden hidden md:block">
+								<div className="flex flex-col gap-6 animate-scroll-up">
+									{[...reviews.slice(3, 6), ...reviews.slice(3, 6), ...reviews.slice(3, 6)].map((review, index) => (
+										<ReviewCard key={`col2-${index}`} review={review} />
+									))}
+								</div>
+							</div>
+
+							{/* Column 3 - Scroll Down */}
+							<div className="relative h-full overflow-hidden hidden lg:block">
+								<div className="flex flex-col gap-6 animate-scroll-down" style={{ animationDuration: '42s' }}>
+									{[...reviews.slice(6, 9), ...reviews.slice(6, 9), ...reviews.slice(6, 9)].map((review, index) => (
+										<ReviewCard key={`col3-${index}`} review={review} />
+									))}
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				</div>
-			</div>
 			</div>
 
 			{/* CTA Section */}
 			<div className="relative z-10 w-full h-[600px] flex flex-col items-center justify-center mt-30">
 				{/* Content */}
-				<motion.div 
+				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}

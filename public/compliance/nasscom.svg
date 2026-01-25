@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" fill="none">
+  <rect x="2" y="2" width="116" height="96" rx="8" fill="#b91c1c" stroke="#991b1b" stroke-width="2"/>
+  <!-- NASSCOM text -->
+  <text x="60" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="white">NASSCOM</text>
+  <!-- Member text -->
+  <text x="60" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#fecaca">MEMBER</text>
+</svg>
