@@ -27,6 +27,8 @@ import {
   Network,
   FileText,
   Shield,
+  ShieldCheck,
+  AlertTriangle,
   Bug,
   Telescope,
   Wrench,
@@ -90,10 +92,18 @@ interface MarketplaceLayoutProps {
   children: React.ReactNode
 }
 
+type GovernanceFeature = 'responsible-ai' | 'hallucination-manager' | 'guardrails'
+
 export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [isResponsibleAIModalOpen, setIsResponsibleAIModalOpen] = useState(false)
+  const [activeGovernanceFeature, setActiveGovernanceFeature] = useState<GovernanceFeature>('responsible-ai')
   const pathname = usePathname()
+
+  const handleGovernanceFeatureClick = (feature: GovernanceFeature) => {
+    setActiveGovernanceFeature(feature)
+    setIsResponsibleAIModalOpen(true)
+  }
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-blue-50 via-blue-50 to-purple-50">
@@ -173,16 +183,16 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                       </Link>
                       
                       <Link
-                        href="/marketplace"
+                        href="/m1"
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("marketplace") && "bg-muted text-blue-600",
+                          pathname?.includes("m1") && "bg-muted text-blue-600",
                         )}
                       >
-                        <Users className="h-4 w-4" />
+                        <ShoppingBag className="h-4 w-4" />
                         <motion.li variants={variants}>
                           {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Agents</p>
+                            <p className="ml-2 text-sm font-medium">Marketplace</p>
                           )}
                         </motion.li>
                       </Link>
@@ -239,7 +249,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                       </div>
 
                       <button
-                        onClick={() => setIsResponsibleAIModalOpen(true)}
+                        onClick={() => handleGovernanceFeatureClick('responsible-ai')}
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
                         )}
@@ -249,6 +259,44 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
                           {!isCollapsed && (
                             <div className="flex items-center gap-2">
                               <p className="ml-2 text-sm font-medium">Responsible AI</p>
+                              <span className="inline-flex items-center justify-center h-5 px-2 text-xs font-medium rounded bg-purple-600 text-white">
+                                Upgrade
+                              </span>
+                            </div>
+                          )}
+                        </motion.li>
+                      </button>
+
+                      <button
+                        onClick={() => handleGovernanceFeatureClick('hallucination-manager')}
+                        className={cn(
+                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
+                        )}
+                      >
+                        <AlertTriangle className="h-4 w-4" />
+                        <motion.li variants={variants}>
+                          {!isCollapsed && (
+                            <div className="flex items-center gap-2">
+                              <p className="ml-2 text-sm font-medium">Hallucinations</p>
+                              <span className="inline-flex items-center justify-center h-5 px-2 text-xs font-medium rounded bg-purple-600 text-white">
+                                Upgrade
+                              </span>
+                            </div>
+                          )}
+                        </motion.li>
+                      </button>
+
+                      <button
+                        onClick={() => handleGovernanceFeatureClick('guardrails')}
+                        className={cn(
+                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
+                        )}
+                      >
+                        <ShieldCheck className="h-4 w-4" />
+                        <motion.li variants={variants}>
+                          {!isCollapsed && (
+                            <div className="flex items-center gap-2">
+                              <p className="ml-2 text-sm font-medium">Guardrails</p>
                               <span className="inline-flex items-center justify-center h-5 px-2 text-xs font-medium rounded bg-purple-600 text-white">
                                 Upgrade
                               </span>
@@ -319,31 +367,16 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
 
                       {/* Secondary Navigation */}
                       <Link
-                        href="/m1"
+                        href="/"
                         className={cn(
                           "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("m1") && "bg-muted text-blue-600",
-                        )}
-                      >
-                        <ShoppingBag className="h-4 w-4" />
-                        <motion.li variants={variants}>
-                          {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Marketplace</p>
-                          )}
-                        </motion.li>
-                      </Link>
-
-                      <Link
-                        href="/help"
-                        className={cn(
-                          "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                          pathname?.includes("help") && "bg-muted text-blue-600",
+                          pathname === "/" && "bg-muted text-blue-600",
                         )}
                       >
                         <HelpCircle className="h-4 w-4" />
                         <motion.li variants={variants}>
                           {!isCollapsed && (
-                            <p className="ml-2 text-sm font-medium">Help</p>
+                            <p className="ml-2 text-sm font-medium">AgentMarketplace</p>
                           )}
                         </motion.li>
                       </Link>
@@ -409,6 +442,7 @@ export function MarketplaceLayout({ children }: MarketplaceLayoutProps) {
       <ResponsibleAIModal
         isOpen={isResponsibleAIModalOpen}
         onClose={() => setIsResponsibleAIModalOpen(false)}
+        feature={activeGovernanceFeature}
       />
     </div>
   )

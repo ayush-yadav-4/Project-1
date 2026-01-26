@@ -98,19 +98,18 @@ export default function MarketplacePage() {
             </div>
             
             {/* Top Right Navigation */}
-            <div className="flex gap-3">
-              <Button variant="ghost" size="sm" className="gap-2">
-                Docs
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="gap-2">
-                APIs
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm" className="gap-2">
-                Tutorials
-                <ExternalLink className="w-4 h-4" />
-              </Button>
+            <div className="flex items-center gap-3">
+              <Link href="/" className="hover:opacity-80 transition-opacity">
+                <div className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-400 to-orange-200 whitespace-nowrap">
+                  AgentMarketplace
+                </div>
+              </Link>
+              <Link href="/blueprints">
+                <Button variant="ghost" size="sm" className="gap-2 hover:underline">
+                  Tutorials
+                  <ExternalLink className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -157,7 +156,7 @@ export default function MarketplacePage() {
         {/* Two Column Layout: Blueprints on Left, Pre-built Agents on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Blueprints Column */}
-          <div className="flex flex-col h-full">
+          <div id="blueprints" className="flex flex-col h-full">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">Blueprints</h2>
               <Link href="/blueprints">
