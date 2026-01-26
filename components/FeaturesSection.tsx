@@ -94,7 +94,7 @@ const cards: Card[] = [
     subtitle: "Granular permission scopes ensure agents only access the specific data they need to function.",
     date: "Security",
     dateLabel: "RBAC",
-    image: "/Experts.png",
+    image: "/role-based-acess.png",
   },
   {
     id: 11,
@@ -102,7 +102,7 @@ const cards: Card[] = [
     subtitle: "Seamlessly route high-stakes decisions to human reviewers before final execution.",
     date: "Workflow",
     dateLabel: "Review",
-    image: "/signupbg.png",
+    image: "/Human-in-Loop.png",
   },
   {
     id: 12,
@@ -110,7 +110,7 @@ const cards: Card[] = [
     subtitle: "Chain multiple specialized agents together to solve complex, multi-step business problems.",
     date: "Orchestration",
     dateLabel: "Chaining",
-    image: "/Footer.png",
+    image: "/Multi-Agent-Orchestration.png",
   },
 ]
 
