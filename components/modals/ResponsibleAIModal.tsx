@@ -3,14 +3,26 @@
 import { ShieldCheckIcon } from "@heroicons/react/24/solid"
 import { ChevronRight, MoveUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+type GovernanceFeature = 'responsible-ai' | 'hallucination-manager' | 'guardrails'
 
 interface ResponsibleAIModalProps {
   isOpen: boolean
   onClose: () => void
+  feature?: GovernanceFeature
 }
 
-export default function ResponsibleAIModal({ isOpen, onClose }: ResponsibleAIModalProps) {
+const featureHeadings: Record<GovernanceFeature, string> = {
+  'responsible-ai': 'Responsible AI is available only to Custom plan users',
+  'hallucination-manager': 'Hallucination Manager is available only to Custom plan users',
+  'guardrails': 'Guardrails are available only to Custom plan users',
+}
+
+export default function ResponsibleAIModal({ isOpen, onClose, feature = 'responsible-ai' }: ResponsibleAIModalProps) {
   if (!isOpen) return null
+
+  const heading = featureHeadings[feature]
 
   return (
     <div
@@ -32,14 +44,14 @@ export default function ResponsibleAIModal({ isOpen, onClose }: ResponsibleAIMod
             <ShieldCheckIcon className="w-5 h-5 text-indigo-600" />
           </div>
           <h2 className="text-lg font-semibold leading-none tracking-tight">
-            Responsible AI is available only to Custom plan users
+            {heading}
           </h2>
         </div>
 
         <div className="shrink-0 bg-border h-[1px] w-full" />
 
         <div>
-          <p>Add guardrails to make your AI safe, fair, and reliable.</p>
+          <p>Implement enterprise-ready governance controls to ensure your AI systems remain secure, compliant, transparent, and aligned with responsible AI standards.</p>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-1 text-muted-foreground underline underline-offset-4">
               <p className="text-sm">View all benefits from Custom Plan</p>
@@ -54,23 +66,15 @@ export default function ResponsibleAIModal({ isOpen, onClose }: ResponsibleAIMod
           </div>
         </div>
 
-        <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-4">
-          <button
-            type="button"
-            onClick={(e) => e.preventDefault()}
+        <div>
+          <Link
+            href="/contact"
+            onClick={onClose}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
           >
             Speak to us
             <MoveUpRight className="ml-2 size-4" />
-          </button>
-          <button
-            type="button"
-            onClick={(e) => e.preventDefault()}
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
-          >
-            Book a Demo
-            <MoveUpRight className="ml-2 size-4" />
-          </button>
+          </Link>
         </div>
 
         <button

@@ -19,7 +19,7 @@ export default function AboutCTA() {
               Browse and deploy our pre-built templates
             </p>
           </div>
-          <Link href="/marketplace">
+          <Link href="/marketplace" target="_blank" rel="noopener noreferrer">
             <button className="bg-white text-black border border-gray-100 px-8 py-3 text-sm font-medium hover:bg-gray-50 transition-all flex items-center gap-2 whitespace-nowrap rounded-full shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] bg-gradient-to-b from-white to-gray-50">
               Marketplace <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
             </button>
