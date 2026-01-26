@@ -165,7 +165,7 @@ const WorkAnimation = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-gray-900/90 backdrop-blur-sm rounded-full px-5 py-2 shadow-xl"
+      className="absolute bottom-12 md:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-gray-900/90 backdrop-blur-sm rounded-full px-5 py-2 shadow-xl"
     >
       <div className="flex items-center gap-2">
         <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1, repeat: Infinity }} className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
@@ -236,7 +236,7 @@ const ServiceAnimation = () => (
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
-      className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-lg border border-gray-100 flex items-center gap-3"
+      className="absolute bottom-14 md:bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-full px-4 py-2 shadow-lg border border-gray-100 flex items-center gap-3"
     >
       <span className="text-[10px] font-black text-gray-500 uppercase">CSAT</span>
       <div className="flex gap-0.5">
@@ -344,7 +344,7 @@ const ProcessAnimation = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 rounded-full px-4 py-2 flex items-center gap-4 shadow-xl"
+      className="absolute bottom-14 md:bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 rounded-full px-4 py-2 flex items-center gap-4 shadow-xl"
     >
       <div className="flex items-center gap-2">
         <Activity className="w-3 h-3 text-emerald-400" />
@@ -361,16 +361,16 @@ const ProcessAnimation = () => (
 
 const SecurityAnimation = () => (
   <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-    {/* Full Width Layout with Side Panels */}
-    <div className="relative flex items-center justify-center gap-8 md:gap-16 w-full px-4">
+    {/* Full Width Layout - Vertical on mobile, Horizontal on desktop */}
+    <div className="relative flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-16 w-full px-4">
 
-      {/* Left Panel - Threat Detection */}
+      {/* Left Panel - Threat Detection (Top on mobile) */}
       <motion.div
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="flex flex-col gap-3 shrink-0"
+        className="flex flex-row lg:flex-col gap-2 lg:gap-3 shrink-0 order-1 lg:order-1"
       >
-        <div className="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Threat Monitor</div>
+        <div className="hidden lg:block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Threat Monitor</div>
         {[
           { label: "DDoS Protection", status: "Active", color: "emerald" },
           { label: "SQL Injection", status: "Blocked", color: "red" },
@@ -381,33 +381,33 @@ const SecurityAnimation = () => (
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: i * 0.1 }}
-            className="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-md border border-gray-100"
+            className="flex items-center gap-2 bg-white rounded-lg px-2 lg:px-3 py-1.5 lg:py-2 shadow-md border border-gray-100"
           >
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
               className={`w-2 h-2 rounded-full ${item.color === 'emerald' ? 'bg-emerald-500' : 'bg-red-500'}`}
             />
-            <span className="text-[9px] md:text-[10px] font-bold text-gray-700">{item.label}</span>
+            <span className="text-[8px] lg:text-[10px] font-bold text-gray-700">{item.label}</span>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Central Shield */}
-      <div className="relative shrink-0">
+      {/* Central Shield (Middle on all screens) */}
+      <div className="relative shrink-0 order-2 lg:order-2 my-2 lg:my-0">
         {/* Outer rotating ring */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-8 md:-inset-12 rounded-full border-2 border-dashed border-emerald-200 opacity-60"
+          className="absolute -inset-6 lg:-inset-12 rounded-full border-2 border-dashed border-emerald-200 opacity-60"
         />
 
         <motion.div
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl shadow-emerald-200 border-4 border-white relative z-10"
+          className="w-20 h-20 lg:w-32 lg:h-32 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-2xl shadow-emerald-200 border-4 border-white relative z-10"
         >
-          <ShieldCheck className="w-12 h-12 md:w-16 md:h-16 text-white" strokeWidth={1.5} />
+          <ShieldCheck className="w-10 h-10 lg:w-16 lg:h-16 text-white" strokeWidth={1.5} />
 
           {/* Pulse rings */}
           <motion.div
@@ -422,7 +422,7 @@ const SecurityAnimation = () => (
           />
         </motion.div>
 
-        {/* Orbiting Security Badges */}
+        {/* Orbiting Security Badges - Hidden on mobile to prevent overlap */}
         {[
           { icon: Lock, angle: 45 },
           { icon: Eye, angle: 135 },
@@ -431,25 +431,25 @@ const SecurityAnimation = () => (
         ].map((item, i) => (
           <motion.div
             key={i}
-            className="absolute w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white shadow-lg flex items-center justify-center border border-emerald-100"
+            className="hidden lg:flex absolute w-10 h-10 rounded-lg bg-white shadow-lg items-center justify-center border border-emerald-100"
             style={{
               top: '50%',
               left: '50%',
               transform: `translate(-50%, -50%) rotate(${item.angle}deg) translateX(60px) rotate(-${item.angle}deg)`
             }}
           >
-            <item.icon className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
+            <item.icon className="w-5 h-5 text-emerald-600" />
           </motion.div>
         ))}
       </div>
 
-      {/* Right Panel - Compliance & Policies */}
+      {/* Right Panel - Compliance & Policies (Bottom on mobile) */}
       <motion.div
         initial={{ x: 30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="flex flex-col gap-3 shrink-0"
+        className="flex flex-row lg:flex-col gap-2 lg:gap-3 shrink-0 order-3 lg:order-3"
       >
-        <div className="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Compliance</div>
+        <div className="hidden lg:block text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Compliance</div>
         {[
           { label: "SOC2 Type II", icon: FileBadge, status: "Certified" },
           { label: "GDPR Ready", icon: Globe, status: "Compliant" },
@@ -460,12 +460,12 @@ const SecurityAnimation = () => (
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: i * 0.1 }}
-            className="flex items-center gap-2 bg-emerald-50 rounded-lg px-3 py-2 shadow-md border border-emerald-100"
+            className="flex items-center gap-2 bg-emerald-50 rounded-lg px-2 lg:px-3 py-1.5 lg:py-2 shadow-md border border-emerald-100"
           >
-            <item.icon className="w-3 h-3 md:w-4 md:h-4 text-emerald-600" />
+            <item.icon className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-600" />
             <div className="flex flex-col">
-              <span className="text-[9px] md:text-[10px] font-bold text-gray-700">{item.label}</span>
-              <span className="text-[7px] md:text-[8px] font-semibold text-emerald-600">{item.status}</span>
+              <span className="text-[8px] lg:text-[10px] font-bold text-gray-700">{item.label}</span>
+              <span className="text-[6px] lg:text-[8px] font-semibold text-emerald-600">{item.status}</span>
             </div>
           </motion.div>
         ))}
@@ -476,7 +476,7 @@ const SecurityAnimation = () => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-5 py-2 shadow-xl border border-gray-100 flex items-center gap-4"
+      className="absolute bottom-12 md:bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-5 py-2 shadow-xl border border-gray-100 flex items-center gap-4"
     >
       <motion.div
         animate={{ scale: [1, 1.2, 1] }}
@@ -567,7 +567,7 @@ export default function GlobalEnterprisesSection() {
         </div>
 
         {/* Content Area - Sleek Futuristic Container */}
-        <div className="w-[102%] -ml-[1%] bg-white rounded-[2.5rem] h-[550px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
+        <div className="w-[102%] -ml-[1%] bg-white rounded-[2.5rem] h-[620px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
           {/* White bottom extension to create clean white curved bottom */}
           <div className="absolute -bottom-4 left-0 right-0 h-20 bg-white rounded-b-[2.5rem]" />
 
@@ -584,7 +584,7 @@ export default function GlobalEnterprisesSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10"
+              className="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10 -mt-8 md:mt-0"
             >
               {activeTab === 'work' && <WorkAnimation />}
               {activeTab === 'service' && <ServiceAnimation />}

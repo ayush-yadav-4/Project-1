@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
     const user = process.env.EMAIL_USER;
     const pass = process.env.GMAIL_APP_PASSWORD;
-    const recipientEmail = process.env.RECIPIENT_EMAIL || 'puneet@ailifebot.com';
+    const recipientEmail = process.env.RECIPIENT_EMAIL;
 
     if (!user || !pass) {
       console.error('Missing email configuration (EMAIL_USER or GMAIL_APP_PASSWORD)');

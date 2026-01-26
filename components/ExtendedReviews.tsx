@@ -160,7 +160,7 @@ export default function ExtendedReviews() {
 
 			{/* Background Image covering the CTA section only */}
 			{/* Background Image covering the CTA section only */}
-			<div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 bg-pink-700 md:bg-transparent" />
+			<div className="absolute bottom-0 left-0 right-0 h-[700px] z-0 bg-pink-400 md:bg-transparent" />
 			<div
 				className="absolute bottom-0 left-0 right-0 h-[700px] z-0 hidden md:block"
 				style={{

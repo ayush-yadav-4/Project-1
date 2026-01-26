@@ -3,32 +3,120 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Logo components with inline SVGs for reliability
+const LogoColgate = () => (
+  <div className="flex items-center gap-2">
+    <span className="text-2xl font-bold text-red-600">Colgate</span>
+  </div>
+);
+
+const LogoAxisBank = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-8 h-8 bg-[#97144D] rounded-full flex items-center justify-center">
+      <span className="text-white font-bold text-xs">AB</span>
+    </div>
+    <span className="text-xl font-bold text-[#97144D]">Axis Bank</span>
+  </div>
+);
+
+const LogoAutodesk = () => (
+  <div className="flex items-center gap-1">
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#0696D7">
+      <path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.5l8 4.5v9l-8 4.5-8-4.5v-9l8-4.5z"/>
+    </svg>
+    <span className="text-xl font-bold text-[#0696D7]">Autodesk</span>
+  </div>
+);
+
+const LogoAMD = () => (
+  <div className="flex items-center">
+    <span className="text-3xl font-black text-[#ED1C24] tracking-tight">AMD</span>
+  </div>
+);
+
+const LogoAssurant = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded flex items-center justify-center">
+      <span className="text-white font-bold text-sm">A</span>
+    </div>
+    <span className="text-xl font-bold text-gray-800">Assurant</span>
+  </div>
+);
+
+const LogoCocaCola = () => (
+  <div className="flex items-center">
+    <span className="text-2xl font-bold italic text-[#F40009]" style={{ fontFamily: 'Georgia, serif' }}>Coca-Cola</span>
+  </div>
+);
+
+const LogoAirbus = () => (
+  <div className="flex items-center gap-2">
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#00205B">
+      <circle cx="12" cy="12" r="10" stroke="#00205B" strokeWidth="2" fill="none"/>
+      <path d="M12 6l6 6-6 6-6-6z" fill="#00205B"/>
+    </svg>
+    <span className="text-xl font-bold text-[#00205B]">AIRBUS</span>
+  </div>
+);
+
+const LogoMorganStanley = () => (
+  <div className="flex items-center gap-2">
+    <div className="w-8 h-8 bg-[#002855] flex items-center justify-center">
+      <span className="text-white font-bold text-xs">MS</span>
+    </div>
+    <span className="text-lg font-semibold text-[#002855]">Morgan Stanley</span>
+  </div>
+);
+
+const LogoPfizer = () => (
+  <div className="flex items-center gap-2">
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+      <circle cx="12" cy="12" r="10" fill="#0093D0"/>
+      <path d="M8 12h8M12 8v8" stroke="white" strokeWidth="2"/>
+    </svg>
+    <span className="text-xl font-bold text-[#0093D0]">Pfizer</span>
+  </div>
+);
+
+const LogoSiemens = () => (
+  <div className="flex items-center">
+    <span className="text-2xl font-bold text-[#009999]">SIEMENS</span>
+  </div>
+);
+
+const LogoDeloitte = () => (
+  <div className="flex items-center">
+    <span className="text-2xl font-bold text-[#86BC25]">Deloitte</span>
+    <span className="text-[#86BC25] text-2xl">.</span>
+  </div>
+);
+
 const logosRow1 = [
-  { name: "Colgate", url: "https://logo.clearbit.com/colgate.com" },
-  { name: "Axis Bank", url: "https://logo.clearbit.com/axisbank.com" },
-  { name: "Autodesk", url: "https://logo.clearbit.com/autodesk.com" },
-  { name: "AMD", url: "https://logo.clearbit.com/amd.com" },
-  { name: "Assurant", url: "https://logo.clearbit.com/assurant.com" },
+  { name: "Colgate", Component: LogoColgate },
+  { name: "Axis Bank", Component: LogoAxisBank },
+  { name: "Autodesk", Component: LogoAutodesk },
+  { name: "AMD", Component: LogoAMD },
+  { name: "Assurant", Component: LogoAssurant },
   // Duplicates for seamless loop
-  { name: "Colgate", url: "https://logo.clearbit.com/colgate.com" },
-  { name: "Axis Bank", url: "https://logo.clearbit.com/axisbank.com" },
-  { name: "Autodesk", url: "https://logo.clearbit.com/autodesk.com" },
-  { name: "AMD", url: "https://logo.clearbit.com/amd.com" },
-  { name: "Assurant", url: "https://logo.clearbit.com/assurant.com" },
+  { name: "Colgate", Component: LogoColgate },
+  { name: "Axis Bank", Component: LogoAxisBank },
+  { name: "Autodesk", Component: LogoAutodesk },
+  { name: "AMD", Component: LogoAMD },
+  { name: "Assurant", Component: LogoAssurant },
 ];
 
 const logosRow2 = [
-  { name: "CocaCola", url: "https://logo.clearbit.com/coca-cola.com" },
-  { name: "Airbus", url: "https://logo.clearbit.com/airbus.com" },
-  { name: "Morgan Stanley", url: "https://logo.clearbit.com/morganstanley.com" },
-  { name: "Pfizer", url: "https://logo.clearbit.com/pfizer.com" },
-  { name: "CocaCola", url: "https://logo.clearbit.com/coca-cola.com" },
+  { name: "CocaCola", Component: LogoCocaCola },
+  { name: "Airbus", Component: LogoAirbus },
+  { name: "Morgan Stanley", Component: LogoMorganStanley },
+  { name: "Pfizer", Component: LogoPfizer },
+  { name: "Siemens", Component: LogoSiemens },
   // Duplicates for seamless loop
-  { name: "CocaCola", url: "https://logo.clearbit.com/coca-cola.com" },
-  { name: "Airbus", url: "https://logo.clearbit.com/airbus.com" },
-  { name: "Morgan Stanley", url: "https://logo.clearbit.com/morganstanley.com" },
-  { name: "Pfizer", url: "https://logo.clearbit.com/pfizer.com" },
-  { name: "CocaCola", url: "https://logo.clearbit.com/coca-cola.com" },
+  { name: "CocaCola", Component: LogoCocaCola },
+  { name: "Airbus", Component: LogoAirbus },
+  { name: "Morgan Stanley", Component: LogoMorganStanley },
+  { name: "Pfizer", Component: LogoPfizer },
+  { name: "Deloitte", Component: LogoDeloitte },
 ];
 
 export default function EnterpriseScaleSection() {
@@ -57,18 +145,9 @@ export default function EnterpriseScaleSection() {
             {logosRow1.map((logo, idx) => (
               <div
                 key={`r1-${idx}`}
-                className="w-[250px] h-[120px] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-8 hover:shadow-md transition-shadow"
+                className="w-[250px] h-[120px] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-6 hover:shadow-md transition-shadow grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
               >
-                <img 
-                  src={logo.url} 
-                  alt={logo.name} 
-                  className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100"
-                  onError={(e) => {
-                    // Fallback if image fails
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    (e.target as HTMLImageElement).parentElement!.innerText = logo.name;
-                  }}
-                />
+                <logo.Component />
               </div>
             ))}
           </motion.div>
@@ -84,17 +163,9 @@ export default function EnterpriseScaleSection() {
             {logosRow2.map((logo, idx) => (
               <div
                 key={`r2-${idx}`}
-                className="w-[250px] h-[120px] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-8 hover:shadow-md transition-shadow"
+                className="w-[250px] h-[120px] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-6 hover:shadow-md transition-shadow grayscale hover:grayscale-0 opacity-70 hover:opacity-100"
               >
-                <img 
-                   src={logo.url} 
-                   alt={logo.name} 
-                   className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100"
-                   onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    (e.target as HTMLImageElement).parentElement!.innerText = logo.name;
-                   }}
-                />
+                <logo.Component />
               </div>
             ))}
           </motion.div>

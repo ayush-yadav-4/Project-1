@@ -57,7 +57,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8 sm:gap-10 lg:gap-12 relative z-10 animate-fade-in-up">
         {/* Left Side - AI LifeBot Brand Tag */}
-        <div className="flex flex-col gap-3 sm:gap-4 max-w-sm">
+        <div className="flex flex-col gap-3 sm:gap-4 max-w-md">
           {/* Brand Attribution Text */}
           <p className="text-gray-600 text-xs sm:text-sm font-medium tracking-wide uppercase">
             An Enterprise Product By
@@ -91,6 +91,37 @@ export default function Footer() {
           <p className="text-gray-500 text-xs leading-relaxed max-w-xs">
             Revolutionizing Customer Experience with Conversational AI Agents & Co-Pilot
           </p>
+
+          {/* Contact Details */}
+          <div className="flex flex-col gap-3 mt-2 pt-3 border-t border-gray-200/60">
+            {/* Address */}
+            <div className="flex items-start gap-2.5">
+              <svg className="w-4 h-4 text-pink-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <p className="text-gray-600 text-sm  leading-relaxed">
+                3rd Floor, Orchid Center, Golf Course Road,<br />
+                DLF QE, Sec-53, Gurugram, Haryana (122002)
+              </p>
+            </div>
+            
+            {/* Phone */}
+            <a href="tel:+918439266770" className="flex items-center gap-2.5 group">
+              <svg className="w-4 h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span className="text-gray-600 text-sm group-hover:text-pink-600 transition-colors">+91 8439266770</span>
+            </a>
+            
+            {/* Email */}
+            <a href="mailto:contact@Ailifebot.com" className="flex items-center gap-2.5 group">
+              <svg className="w-4 h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span className="text-gray-600 text-sm group-hover:text-pink-600 transition-colors">contact@Ailifebot.com</span>
+            </a>
+          </div>
         </div>
 
         {/* Right Side - Links */}
@@ -144,7 +175,7 @@ export default function Footer() {
       </div>
 
       {/* Compliance & Strategic Section */}
-      <div className="max-w-7xl mx-auto mt-10 sm:mt-14 lg:mt-16 pt-8 sm:pt-10 border-t border-gray-200/60 relative z-10">
+      <div className="max-w-7xl mx-auto mt-4 sm:mt-14 lg:mt-16 pt-6 sm:pt-10 border-t border-gray-200/60 relative z-10">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
           {/* Left - Newsletter CTA with AI LifeBot branding */}
           <div className="hidden lg:block max-w-sm">
@@ -227,10 +258,10 @@ export default function Footer() {
           
           {/* Legal Links */}
           <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 order-1 sm:order-2">
-            <Link href="#" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Terms and Conditions</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Privacy Policy</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Refund Policy</Link>
-            <Link href="#" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Cookie Policy</Link>
+            <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20terms%20and%20conditions.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Terms and Conditions</a>
+            <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20privacy%C2%A0policy.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Privacy Policy</a>
+            <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20terms%20Refund.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Refund Policy</a>
+            <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20cookies.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Cookie Policy</a>
           </div>
           
           {/* Social Icons */}
