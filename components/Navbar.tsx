@@ -27,14 +27,14 @@ export default function Navbar() {
     <>
       <motion.nav 
         style={{ maxWidth: width }}
-        className="fixed top-6 left-0 right-0 z-50 mx-4 lg:mx-auto rounded-full bg-gray-50/80 backdrop-blur-md border border-white shadow-sm"
+        className="fixed top-4 md:top-6 left-0 right-0 z-50 mx-3 md:mx-4 lg:mx-auto rounded-full bg-gray-50/80 backdrop-blur-md border border-white shadow-sm"
       >
         <motion.div 
           style={{ paddingLeft: paddingX, paddingRight: paddingX }}
-          className="flex h-16 items-center justify-between px-4 lg:px-6"
+          className="flex h-11 md:h-16 items-center justify-between px-2.5 md:px-4 lg:px-6"
         >
            <Link href="/" className="hover:text-black transition-colors">
-          <div className="font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-400 to-orange-200 whitespace-nowrap">
+          <div className="font-bold text-sm md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-pink-400 to-orange-200 whitespace-nowrap">
             AgentMarketplace
           </div>
          </Link>
@@ -63,10 +63,10 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button 
-            className="lg:hidden p-2 text-gray-600"
+            className="lg:hidden p-1 md:p-2 text-gray-600"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-4 w-4 md:h-6 md:w-6" /> : <Menu className="h-4 w-4 md:h-6 md:w-6" />}
           </button>
         </motion.div>
       </motion.nav>

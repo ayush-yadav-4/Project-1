@@ -32,7 +32,7 @@ export default function HeroSection2() {
 
   return (
     <section 
-      className="relative w-full overflow-hidden flex flex-col items-center text-center pt-32 mb-20 lg:pt-40 lg:pb-24"
+      className="relative w-full overflow-hidden flex flex-col items-center text-center pt-24 pb-20 mb-20 md:pt-32 md:pb-20 lg:pt-40 lg:pb-24"
       style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
     >
       
@@ -66,9 +66,9 @@ export default function HeroSection2() {
         animate="visible"
       >
         {/* Badge */}
-        <motion.div className="relative z-10 mb-10" variants={itemVariants}>
-          <div className="inline-flex items-center gap-3 rounded-full bg-white border border-gray-100 px-8 py-3 text-lg font-medium text-gray-800 shadow-sm animate-float">
-            <Sparkles className="h-5 w-5 text-orange-500 animate-pulse" />
+        <motion.div className="relative z-10 mb-6 md:mb-10" variants={itemVariants}>
+          <div className="inline-flex items-center gap-2 md:gap-3 rounded-full bg-white border border-gray-100 px-4 py-2 md:px-8 md:py-3 text-sm md:text-lg font-medium text-gray-800 shadow-sm animate-float">
+            <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-orange-500 animate-pulse" />
             Bridging gap between Agents and Daily Life
           </div>
         </motion.div>
@@ -77,12 +77,12 @@ export default function HeroSection2() {
         <motion.div className="relative z-10" variants={itemVariants}>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-pink-200/50 blur-3xl -z-10 rounded-full pointer-events-none animate-pulse-glow"></div>
           <h1 
-            className="max-w-5xl text-6xl lg:text-8xl font-medium tracking-tight mb-12 leading-tight font-[family-name:var(--font-inter)] text-black"
+            className="max-w-5xl text-4xl md:text-6xl lg:text-8xl font-medium tracking-tight mb-8 md:mb-12 leading-tight font-[family-name:var(--font-inter)] text-black px-2"
           >
           Bring 
-          <span className="inline-flex items-center justify-center mx-3 align-middle hover:rotate-12 transition-transform duration-300">
-            <div className="h-12 w-12 lg:h-16 lg:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
-                <Sparkles className="h-6 w-6 lg:h-8 lg:w-8 text-white" />
+          <span className="inline-flex items-center justify-center mx-2 md:mx-3 align-middle hover:rotate-12 transition-transform duration-300">
+            <div className="h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16 bg-orange-500 rounded-xl rotate-12 flex items-center justify-center shadow-lg shadow-orange-200 hover:rotate-0 transition-transform duration-300">
+                <Sparkles className="h-4 w-4 md:h-6 md:w-6 lg:h-8 lg:w-8 text-white" />
             </div>
           </span>
           your AI Agents
@@ -92,22 +92,22 @@ export default function HeroSection2() {
         </motion.div>
         
         {/* Subtext */}
-        <motion.p className="relative z-10 max-w-2xl text-lg text-gray-600 mb-10" variants={itemVariants}>
+        <motion.p className="relative z-10 max-w-2xl text-xs md:text-lg text-gray-600 mb-6 md:mb-10 px-4" variants={itemVariants}>
           World's 1st Agent builder platform with built-in Responsible
           <br />
           AI and Hallucination Manager.
         </motion.p>
         
         {/* CTA */}
-        <motion.div className="relative z-10 mb-10" variants={itemVariants}>
+        <motion.div className="relative z-10 mb-6 md:mb-10" variants={itemVariants}>
           <Link 
             href="/marketplace" 
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-white border-2 border-white px-12 py-3 text-lg font-semibold text-black shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(255,255,255,1)] hover:-translate-y-1 active:scale-95"
+            className="group relative inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-full bg-white border-2 border-white px-5 py-1.5 md:px-12 md:py-3 text-xs md:text-lg font-semibold text-black shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(255,255,255,1)] hover:-translate-y-1 active:scale-95"
           >
             Explore Marketplace 
-            <ChevronDown className="h-5 w-5 -rotate-90 transition-transform duration-300 group-hover:translate-x-1" />
+            <ChevronDown className="h-3.5 w-3.5 md:h-5 md:w-5 -rotate-90 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </motion.div>

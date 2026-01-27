@@ -26,7 +26,7 @@ const IntegrationSection = () => {
     ];
 
     return (
-        <section className="w-full py-32 md:py-36 relative overflow-hidden">
+        <section className="w-full py-20 md:py-32 lg:py-36 relative overflow-hidden">
             {/* Creative Background with Pink, Light Pink, Beige, White */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-[#FFF5F0] to-[#FFEEE8]" />
             
@@ -87,27 +87,27 @@ const IntegrationSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="mb-20"
+                    className="mb-12 md:mb-20"
                 >
-                    <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 tracking-tight">
                         <span className="bg-gradient-to-r from-[#FF6FA5] via-[#FFB8A0] to-[#E8B89D] bg-clip-text text-transparent">
                             Trusted by Industry Leaders
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl font-medium text-gray-600">
+                    <p className="text-base md:text-lg lg:text-xl font-medium text-gray-600">
                         Powering AI automation at Fortune 500 companies
                     </p>
                 </motion.div>
 
                 {/* Logo Grid */}
-                <div className="flex flex-col gap-8 items-center max-w-6xl mx-auto">
+                <div className="flex flex-col gap-6 md:gap-8 items-center max-w-6xl mx-auto">
                     {/* Row 1 - Main integrations with logos */}
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="flex flex-wrap justify-center gap-5 md:gap-6"
+                        className="flex flex-wrap justify-center gap-3 md:gap-5 lg:gap-6"
                     >
                         {row1Logos.map((item, index) => (
                             <motion.div
@@ -119,10 +119,10 @@ const IntegrationSection = () => {
                                 whileHover={{ scale: 1.05, y: -4 }}
                                 className="group relative"
                             >
-                                <div className="bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-white/80 hover:shadow-[0_8px_30px_rgba(255,111,165,0.15)] hover:border-[#FFD6C9]/50 transition-all duration-300 flex items-center gap-4 min-w-[150px]">
+                                <div className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl px-3 py-2.5 md:px-6 md:py-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-white/80 hover:shadow-[0_8px_30px_rgba(255,111,165,0.15)] hover:border-[#FFD6C9]/50 transition-all duration-300 flex items-center gap-2 md:gap-4 min-w-[120px] md:min-w-[150px]">
                                     {item.fallbackText ? (
                                         <div 
-                                            className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-xl text-white"
+                                            className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center font-black text-sm md:text-xl text-white"
                                             style={{ backgroundColor: item.color }}
                                         >
                                             {item.fallbackText}
@@ -131,7 +131,7 @@ const IntegrationSection = () => {
                                         <img 
                                             src={item.logo} 
                                             alt={item.name} 
-                                            className="w-12 h-12 object-contain"
+                                            className="w-8 h-8 md:w-12 md:h-12 object-contain"
                                             onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
                                                 target.style.display = 'none';
@@ -139,14 +139,14 @@ const IntegrationSection = () => {
                                             }}
                                         />
                                     )}
-                                    <div className={`hidden w-12 h-12 rounded-xl items-center justify-center font-black text-xl text-white`} style={{ backgroundColor: item.color }}>
+                                    <div className={`hidden w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl items-center justify-center font-black text-sm md:text-xl text-white`} style={{ backgroundColor: item.color }}>
                                         {item.name[0]}
                                     </div>
                                     <div className="flex flex-col items-start">
                                         {item.subtext && (
-                                            <span className="text-[10px] font-semibold text-gray-400 -mb-0.5">{item.subtext}</span>
+                                            <span className="text-[8px] md:text-[10px] font-semibold text-gray-400 -mb-0.5">{item.subtext}</span>
                                         )}
-                                        <span className="font-bold text-base text-gray-800">{item.name}</span>
+                                        <span className="font-bold text-sm md:text-base text-gray-800">{item.name}</span>
                                     </div>
                                 </div>
                                 {/* Hover glow effect */}
@@ -161,7 +161,7 @@ const IntegrationSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
-                        className="flex flex-wrap justify-center gap-5 md:gap-6"
+                        className="flex flex-wrap justify-center gap-3 md:gap-5 lg:gap-6"
                     >
                         {row2Logos.map((item, index) => (
                             <motion.div
@@ -173,9 +173,9 @@ const IntegrationSection = () => {
                                 whileHover={{ scale: 1.05, y: -4 }}
                                 className="group"
                             >
-                                <div className="bg-white/60 backdrop-blur-sm rounded-full px-8 py-4 shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-white/70 hover:shadow-[0_6px_25px_rgba(255,111,165,0.12)] hover:border-[#FFD6C9]/40 hover:bg-white/80 transition-all duration-300">
+                                <div className="bg-white/60 backdrop-blur-sm rounded-full px-5 py-2.5 md:px-8 md:py-4 shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-white/70 hover:shadow-[0_6px_25px_rgba(255,111,165,0.12)] hover:border-[#FFD6C9]/40 hover:bg-white/80 transition-all duration-300">
                                     <span 
-                                        className="font-bold text-xl tracking-tight"
+                                        className="font-bold text-sm md:text-xl tracking-tight"
                                         style={{ color: item.color }}
                                     >
                                         {item.name}

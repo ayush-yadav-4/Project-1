@@ -567,7 +567,7 @@ export default function GlobalEnterprisesSection() {
         </div>
 
         {/* Content Area - Sleek Futuristic Container */}
-        <div className="w-[102%] -ml-[1%] bg-white rounded-[2.5rem] h-[620px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
+        <div className="w-[106%] -ml-[3%] md:w-[102%] md:-ml-[1%] bg-white rounded-[2rem] md:rounded-[2.5rem] h-[500px] md:h-[440px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative overflow-hidden border-[4px] md:border-[12px] border-[#FFF5F8] border-b-0 -mb-12">
           {/* White bottom extension to create clean white curved bottom */}
           <div className="absolute -bottom-4 left-0 right-0 h-20 bg-white rounded-b-[2.5rem]" />
 
@@ -584,12 +584,14 @@ export default function GlobalEnterprisesSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10 -mt-8 md:mt-0"
+              className="absolute inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 lg:p-10 -mt-8 md:mt-0"
             >
-              {activeTab === 'work' && <WorkAnimation />}
-              {activeTab === 'service' && <ServiceAnimation />}
-              {activeTab === 'process' && <ProcessAnimation />}
-              {activeTab === 'security' && <SecurityAnimation />}
+              <div className="scale-75 md:scale-100 w-full h-full">
+                {activeTab === 'work' && <WorkAnimation />}
+                {activeTab === 'service' && <ServiceAnimation />}
+                {activeTab === 'process' && <ProcessAnimation />}
+                {activeTab === 'security' && <SecurityAnimation />}
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

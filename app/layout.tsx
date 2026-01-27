@@ -6,22 +6,30 @@ import { Preloader } from "@/components/ui/Preloader";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap", // Optimize font loading
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false, // Reduce initial font load
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["700", "900"], // Bold and Black
+  display: "swap",
+  preload: false, // Load on demand
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  preload: false, // Load on demand
 });
 
 export const metadata: Metadata = {

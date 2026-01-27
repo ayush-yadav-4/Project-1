@@ -11,10 +11,10 @@ const complianceBadges = [
   { name: "CMMI", src: "/compliance/cmmi.svg", alt: "CMMI Level 3" },
 ];
 
-// Strategic Planner badges
+// Strategic Planner badges (updated to use new logo images)
 const strategicPlannerBadges = [
-  { name: "CII", src: "/compliance/cii-full.svg", alt: "Confederation of Indian Industry" },
-  { name: "NASSCOM", src: "/compliance/nasscom-full.svg", alt: "NASSCOM Member" },
+  { name: "CII", src: "/CII-logo.png", alt: "Confederation of Indian Industry" },
+  { name: "NASSCOM", src: "/Nasscom-logo.png", alt: "NASSCOM Member" },
 ];
 
 export default function Footer() {
@@ -55,11 +55,11 @@ export default function Footer() {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8 sm:gap-10 lg:gap-12 relative z-10 animate-fade-in-up">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-6 sm:gap-8 lg:gap-12 relative z-10 animate-fade-in-up">
         {/* Left Side - AI LifeBot Brand Tag */}
-        <div className="flex flex-col gap-3 sm:gap-4 max-w-md">
+        <div className="flex flex-col gap-2.5 sm:gap-3 max-w-md w-full lg:w-auto">
           {/* Brand Attribution Text */}
-          <p className="text-gray-600 text-xs sm:text-sm font-medium tracking-wide uppercase">
+          <p className="text-gray-600 text-[10px] sm:text-xs font-medium tracking-wide uppercase">
             An Enterprise Product By
           </p>
           
@@ -68,17 +68,17 @@ export default function Footer() {
             href="https://www.ailifebot.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300 w-fit"
+            className="group inline-flex items-center gap-2 px-3 py-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300 w-fit"
           >
             <Image
               src="/company_logo-01.jpg"
               alt="AI LifeBOT - Enterprise AI Agent Platform"
-              width={140}
-              height={40}
-              className="h-8 sm:h-10 w-auto object-contain"
+              width={120}
+              height={32}
+              className="h-6 sm:h-7 w-auto object-contain"
             />
             <svg 
-              className="w-4 h-4 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all" 
+              className="w-3.5 h-3.5 text-gray-400 group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all" 
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
@@ -87,45 +87,45 @@ export default function Footer() {
             </svg>
           </a>
           
-          {/* Tagline */}
-          <p className="text-gray-500 text-xs leading-relaxed max-w-xs">
-            Revolutionizing Customer Experience with Conversational AI Agents & Co-Pilot
+          {/* Venture Attribution */}
+          <p className="text-gray-500 text-[10px] sm:text-xs leading-relaxed max-w-xs">
+            as a venture of Ignited Wings Technology Pvt Ltd
           </p>
 
           {/* Contact Details */}
-          <div className="flex flex-col gap-3 mt-2 pt-3 border-t border-gray-200/60">
+          <div className="flex flex-col gap-2.5 sm:gap-3 mt-2 pt-3 border-t border-gray-200/60">
             {/* Address */}
-            <div className="flex items-start gap-2.5">
-              <svg className="w-4 h-4 text-pink-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex items-start gap-2">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <p className="text-gray-600 text-sm  leading-relaxed">
+              <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                 3rd Floor, Orchid Center, Golf Course Road,<br />
                 DLF QE, Sec-53, Gurugram, Haryana (122002)
               </p>
             </div>
             
             {/* Phone */}
-            <a href="tel:+918439266770" className="flex items-center gap-2.5 group">
-              <svg className="w-4 h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <a href="tel:+918439266770" className="flex items-center gap-2 group">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <span className="text-gray-600 text-sm group-hover:text-pink-600 transition-colors">+91 8439266770</span>
+              <span className="text-gray-600 text-xs sm:text-sm group-hover:text-pink-600 transition-colors break-all">+91 8439266770</span>
             </a>
             
             {/* Email */}
-            <a href="mailto:contact@Ailifebot.com" className="flex items-center gap-2.5 group">
-              <svg className="w-4 h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <a href="mailto:contact@Ailifebot.com" className="flex items-center gap-2 group">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-pink-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <span className="text-gray-600 text-sm group-hover:text-pink-600 transition-colors">contact@Ailifebot.com</span>
+              <span className="text-gray-600 text-xs sm:text-sm group-hover:text-pink-600 transition-colors break-all">contact@Ailifebot.com</span>
             </a>
           </div>
         </div>
 
         {/* Right Side - Links */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 w-full lg:w-auto">
           {/* Product */}
           <div className="flex flex-col gap-3 sm:gap-4">
             <h5 className="font-bold text-gray-900 text-sm sm:text-base">Product</h5>
@@ -175,8 +175,8 @@ export default function Footer() {
       </div>
 
       {/* Compliance & Strategic Section */}
-      <div className="max-w-7xl mx-auto mt-4 sm:mt-14 lg:mt-16 pt-6 sm:pt-10 border-t border-gray-200/60 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto mt-6 sm:mt-10 lg:mt-16 pt-6 sm:pt-8 lg:pt-10 border-t border-gray-200/60 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 sm:gap-8 lg:gap-12">
           {/* Left - Newsletter CTA with AI LifeBot branding */}
           <div className="hidden lg:block max-w-sm">
             <p className="text-gray-700 text-sm leading-relaxed">
@@ -196,11 +196,11 @@ export default function Footer() {
 
           {/* Center - Compliance Badges */}
           <div className="flex-1 w-full lg:w-auto">
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8">
+            <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               {complianceBadges.map((badge, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
+                  className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100"
                   title={badge.alt}
                 >
                   <Image
@@ -221,13 +221,13 @@ export default function Footer() {
           </div>
 
           {/* Right - Strategic Planner with CII & NASSCOM */}
-          <div className="hidden lg:flex flex-col items-end gap-4">
-            <h4 className="text-xl font-semibold text-gray-800">Strategic Planner</h4>
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col items-center gap-3 sm:gap-4 w-full lg:w-auto">
+            <h4 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800">Strategic Planner</h4>
+            <div className="flex items-center gap-4 sm:gap-6">
               {strategicPlannerBadges.map((badge, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center justify-center h-14 grayscale-0 opacity-90 hover:opacity-100 transition-all duration-300"
+                  className="flex items-center justify-center h-10 sm:h-12 lg:h-14 grayscale-0 opacity-90 hover:opacity-100 transition-all duration-300"
                   title={badge.alt}
                 >
                   <Image
@@ -249,43 +249,46 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar - Copyright & Legal */}
-      <div className="max-w-7xl mx-auto mt-8 sm:mt-10 py-6 border-t border-gray-200/60 relative z-10">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-          {/* Copyright */}
-          <p className="text-gray-500 text-xs sm:text-sm order-2 sm:order-1">
-            © AI LifeBOT Inc. All rights reserved.
-          </p>
-          
+      <div className="max-w-7xl mx-auto mt-6 sm:mt-8 lg:mt-10 py-4 sm:py-6 border-t border-gray-200/60 relative z-10">
+        <div className="flex flex-col items-center gap-4 sm:gap-5">
           {/* Legal Links */}
-          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 order-1 sm:order-2">
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
             <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20terms%20and%20conditions.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Terms and Conditions</a>
             <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20privacy%C2%A0policy.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Privacy Policy</a>
             <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20terms%20Refund.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Refund Policy</a>
             <a href="https://www.ailifebot.com/pdf-view/AI%20Lifebot%20cookies.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700 text-xs sm:text-sm transition-colors">Cookie Policy</a>
           </div>
           
-          {/* Social Icons */}
-          <div className="flex items-center gap-3 order-3">
-            <a href="https://www.linkedin.com/company/ailifebot" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+          {/* Copyright & Social Icons Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 w-full">
+            {/* Copyright */}
+            <p className="text-gray-500 text-xs sm:text-sm text-center sm:text-left">
+              © AI LifeBOT. All rights reserved.
+            </p>
+            
+            {/* Social Icons */}
+            <div className="flex items-center gap-2 sm:gap-3">
+            <a href="https://www.linkedin.com/company/ailifebot" target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
-            <a href="https://www.instagram.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://www.instagram.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
             </a>
-            <a href="https://www.facebook.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://www.facebook.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
               </svg>
             </a>
-            <a href="https://x.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://x.com/ailifebot" target="_blank" rel="noopener noreferrer" className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </a>
+            </div>
           </div>
         </div>
       </div>
