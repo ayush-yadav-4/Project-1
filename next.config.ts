@@ -36,9 +36,6 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
-  // Enable SWC minification (faster than Terser)
-  swcMinify: true,
-  
   // Optimize production builds
   productionBrowserSourceMaps: false, // Disable source maps in production for smaller bundles
   
