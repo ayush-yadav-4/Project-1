@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/Marketplace logo.svg",
   },
+  verification: {
+    google: 'kSMER6ZfHGOd4U7P1Z-0eeRcUboAdrUSlXBcF5wIQDA', // Replace with your actual code
+  },
 };
 
 export default function RootLayout({
